@@ -6,11 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerConfig playerConfig;
     public FloatingJoystick joystick;
+    public List<PlayerAttacks> playerAttacks;
 
     private Vector3 moveVector;
     private float movementSpeed;
     private float attackSpeed;
     private float rotationSpeed = 25f;
+    private bool canAttack;
 
     private Rigidbody playerRb;
     private Animator playerAnim;
@@ -21,11 +23,17 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
         movementSpeed = playerConfig.movementSpeed;
+        attackSpeed = playerConfig.attackSpeed;
     }
 
     private void FixedUpdate()
     {
         Move();
+    }
+
+    private void Update()
+    {
+        StartCoroutine(Attack());
     }
 
     private void Move()
@@ -47,6 +55,17 @@ public class PlayerController : MonoBehaviour
         }
 
         playerRb.MovePosition(playerRb.position + moveVector);
+    }
 
+    private IEnumerator Attack()
+    {
+        while (canAttack)
+        {
+            yield return new WaitForSeconds(attackSpeed);
+            foreach(PlayerAttacks playerAttack in playerAttacks)
+            {
+                playerAttack.Attack();
+            }
+        }
     }
 }
