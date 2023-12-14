@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public List<PlayerAttacks> playerAttacks;
 
     private Vector3 moveVector;
+    private float lastAttackTime;
     private float movementSpeed;
     private float attackSpeed;
     private float rotationSpeed = 25f;
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        StartCoroutine(Attack());
+        PlayerAttack();
     }
 
     private void Move()
@@ -48,23 +49,25 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(direction);
 
             playerAnim.SetBool("running", true);
+            canAttack = true;
         }
         else if (joystick.Horizontal == 0 && joystick.Vertical == 0)
         {
             playerAnim.SetBool("running", false);
+            canAttack = false;
         }
 
         playerRb.MovePosition(playerRb.position + moveVector);
     }
 
-    private IEnumerator Attack()
+    private void PlayerAttack()
     {
-        while (canAttack)
+        if(Time.time - lastAttackTime >= attackSpeed && canAttack)
         {
-            yield return new WaitForSeconds(attackSpeed);
             foreach(PlayerAttacks playerAttack in playerAttacks)
             {
                 playerAttack.Attack();
+                lastAttackTime = Time.time;
             }
         }
     }
