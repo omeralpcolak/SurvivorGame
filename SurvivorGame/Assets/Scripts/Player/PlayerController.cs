@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerConfig playerConfig;
     public FloatingJoystick joystick;
-    public List<PlayerAttacks> playerAttacks;
+    public List<Skill> skills;
+    public Transform spawnPoint;
 
     private Vector3 moveVector;
     private float lastAttackTime;
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody playerRb;
     private Animator playerAnim;
-
+    
 
     private void Start()
     {
@@ -34,7 +35,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        PlayerAttack();
+        
+        if (canAttack)
+        {
+            PlayerAttack();
+        }
     }
 
     private void Move()
@@ -48,13 +53,13 @@ public class PlayerController : MonoBehaviour
             Vector3 direction = Vector3.RotateTowards(transform.forward, moveVector, rotationSpeed * Time.deltaTime, 0);
             transform.rotation = Quaternion.LookRotation(direction);
 
-            playerAnim.SetBool("running", true);
             canAttack = true;
+            playerAnim.SetBool("running", true);
         }
         else if (joystick.Horizontal == 0 && joystick.Vertical == 0)
         {
-            playerAnim.SetBool("running", false);
             canAttack = false;
+            playerAnim.SetBool("running", false);
         }
 
         playerRb.MovePosition(playerRb.position + moveVector);
@@ -62,11 +67,11 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerAttack()
     {
-        if(Time.time - lastAttackTime >= attackSpeed && canAttack)
+        if(Time.time - lastAttackTime >= attackSpeed*.1f)
         {
-            foreach(PlayerAttacks playerAttack in playerAttacks)
+            foreach(Skill skill in skills)
             {
-                playerAttack.Attack();
+                skill.Activate(spawnPoint);
                 lastAttackTime = Time.time;
             }
         }
