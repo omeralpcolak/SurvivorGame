@@ -6,8 +6,14 @@ using UnityEngine;
 public class Skill : ScriptableObject
 {
     public string skillName;
+    public int damage;
 
     public virtual void Activate(Transform spawnPos)
+    {
+
+    }
+
+    public virtual void Upgrade()
     {
 
     }
