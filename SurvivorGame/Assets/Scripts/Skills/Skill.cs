@@ -5,11 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="New Skill", menuName ="Skill")]
 public class Skill : ScriptableObject
 {
-    public enum SkillType {Projectile,Melee }
+    public enum SkillType {Projectile,Melee,Area }
     public SkillType skillType;
-
     public string skillName;
     public int damage;
+    public int increaseAmount;
+
 
     public virtual void Activate(Transform spawnPos)
     {
@@ -27,6 +28,12 @@ public class Skill : ScriptableObject
         {
             case SkillType.Projectile:
                 instance.AddComponent<ProjectileController>();
+                break;
+            case SkillType.Melee:
+                //instance.AddComponent<MeeleController>();
+                break;
+            case SkillType.Area:
+                //instance.AddComponent<AreaController>();
                 break;
         }
     }

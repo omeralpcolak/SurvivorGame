@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public PlayerConfig playerConfig;
     public FloatingJoystick joystick;
     public List<Skill> skills;
-    public Transform spawnPoint;
+    public Transform projectileSpawnPos;
 
     private Vector3 moveVector;
     private float lastAttackTime;
@@ -67,12 +67,15 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerAttack()
     {
-        if(Time.time - lastAttackTime >= attackSpeed*.1f)
+        foreach(Skill skill in skills)
         {
-            foreach(Skill skill in skills)
+            if(skill.skillType == Skill.SkillType.Projectile)
             {
-                skill.Activate(spawnPoint);
-                lastAttackTime = Time.time;
+                if(Time.time - lastAttackTime >= attackSpeed * .1f)
+                {
+                    skill.Activate(projectileSpawnPos);
+                    lastAttackTime = Time.time;
+                }
             }
         }
     }

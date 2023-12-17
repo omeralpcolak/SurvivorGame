@@ -11,9 +11,6 @@ public class ProjectileController : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(projectileDamage);
-        Debug.Log(projectileSpeed);
-
         transform.localScale = Vector3.zero;
         transform.DOScale(new Vector3(0.25f, 0.25f, 0.25f), 0.1f).OnComplete(delegate
         {
@@ -35,5 +32,17 @@ public class ProjectileController : MonoBehaviour
             transform.Translate(Vector3.forward * Time.deltaTime * projectileSpeed);
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            transform.DOScale(0, 0.1f).OnComplete(delegate
+            {
+                Destroy(gameObject);
+            });
+            
+        }
     }
 }

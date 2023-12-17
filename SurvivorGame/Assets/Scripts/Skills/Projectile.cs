@@ -6,7 +6,6 @@ using UnityEngine;
 public class Projectile : Skill
 {
     public GameObject projectilePrefab;
-    public int increaseAmount;
     public float projectileSpeed;
 
     public override void Activate(Transform spawnPos)
@@ -18,7 +17,7 @@ public class Projectile : Skill
 
     public override void Upgrade()
     {
-        damage += increaseAmount;
-        projectileSpeed += increaseAmount;
+        damage += this.increaseAmount;
+        projectileSpeed += this.increaseAmount;
     }
 }
