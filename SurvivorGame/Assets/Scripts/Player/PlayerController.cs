@@ -67,16 +67,18 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerAttack()
     {
-        foreach(Skill skill in skills)
+
+        foreach (Skill skill in skills)
         {
-            if(skill.skillType == Skill.SkillType.Projectile)
+            if (skill.skillType == Skill.SkillType.Projectile && Time.time - lastAttackTime >= attackSpeed * .1f)
             {
-                if(Time.time - lastAttackTime >= attackSpeed * .1f)
-                {
-                    skill.Activate(projectileSpawnPos);
-                    lastAttackTime = Time.time;
-                }
+                skill.Activate(projectileSpawnPos);
             }
+        }
+
+        if (Time.time - lastAttackTime >= attackSpeed * .1f)
+        {
+            lastAttackTime = Time.time;
         }
     }
 }

@@ -7,10 +7,11 @@ public class Projectile : Skill
 {
     public GameObject projectilePrefab;
     public float projectileSpeed;
+    public float cooldown;
 
     public override void Activate(Transform spawnPos)
     {
-        GameObject projectileInstance = Instantiate(projectilePrefab, spawnPos.position, Quaternion.LookRotation(spawnPos.forward),spawnPos);
+        GameObject projectileInstance = Instantiate(projectilePrefab, spawnPos.position, Quaternion.LookRotation(spawnPos.forward), spawnPos);
         AddController(this.skillType, projectileInstance);
         projectileInstance.GetComponent<ProjectileController>().ProjectileUpgrade(damage, projectileSpeed);
     }

@@ -4,16 +4,6 @@ using UnityEngine;
 
 public class SkillController : MonoBehaviour
 {
-    public List<SkillController> controller;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+    
 }

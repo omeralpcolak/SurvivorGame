@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
@@ -12,6 +13,8 @@ public class EnemyController : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        transform.localScale = Vector3.zero;
+        transform.DOScale(new Vector3(1, 1, 1), 0.5f);
     }
 
     
