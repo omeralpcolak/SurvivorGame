@@ -20,6 +20,10 @@ public class EnemyController : MonoBehaviour
     
     void FixedUpdate()
     {
-        navMeshAgent.destination = player.position;
+        if (gameObject)
+        {
+            navMeshAgent.destination = player.position;
+        }
+        
     }
 }

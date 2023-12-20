@@ -455,7 +455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268346, y: -0.000000022481217, z: 0.000000009312026, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 0.00000002248122, z: -0.000000009312027, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 10.025, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -905,7 +905,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059975918}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268346, y: -0.000000022481217, z: 0.000000009312026, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 0.00000002248122, z: -0.000000009312027, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 10.025, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2952,7 +2952,7 @@ MonoBehaviour:
   skills:
   - {fileID: 11400000, guid: dbcc6cc05a48d46c6912eccd0f1853f6, type: 2}
   - {fileID: 11400000, guid: 219ded2b9d7ef44deb9b23dc6da4283f, type: 2}
-  projectileSpawnPos: {fileID: 930139926}
+  projectileSpawnPos: {fileID: 8371567385080908740}
 --- !u!54 &7643415169471140841
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -5,7 +5,8 @@ using DG.Tweening;
 
 public class ProjectileController : MonoBehaviour
 {
-    bool canMove = false;
+    private GameObject targetEnemy = null;
+    private float searchRadius = 10f;
     private int projectileDamage;
     private float projectileSpeed;
 
@@ -14,9 +15,27 @@ public class ProjectileController : MonoBehaviour
         transform.localScale = Vector3.zero;
         transform.DOScale(new Vector3(0.25f, 0.25f, 0.25f), 0.1f).OnComplete(delegate
         {
-            canMove = true;
             transform.parent = null;
+            //FindNearestEnemy();
         });
+    }
+
+    private void FindNearestEnemy()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        float minDistance = Mathf.Infinity;
+        Vector3 currentPos = transform.position;
+        targetEnemy = null;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distToEnemy = Vector3.Distance(enemy.transform.position, currentPos);
+            if (distToEnemy < minDistance && distToEnemy <= searchRadius)
+            {
+                targetEnemy = enemy;
+                minDistance = distToEnemy;
+            }
+        }
     }
 
     public void ProjectileUpgrade(int newDamage, float newSpeed)
@@ -27,9 +46,21 @@ public class ProjectileController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (canMove)
+        FindNearestEnemy();
+        if (targetEnemy != null && targetEnemy.activeInHierarchy)
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * projectileSpeed);
+            Vector3 directionToTarget = targetEnemy.transform.position - transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * projectileSpeed);
+
+            transform.position = Vector3.MoveTowards(transform.position, targetEnemy.transform.position, projectileSpeed * Time.deltaTime);
+        }
+        else
+        {
+            transform.DOScale(Vector3.zero, 0.1f).OnComplete(delegate
+            {
+                Destroy(gameObject);
+            });
         }
     }
 
@@ -38,14 +69,10 @@ public class ProjectileController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             other.GetComponent<Health>().TakeDamage(projectileDamage);
-            transform.DOScale(0, 0.1f).OnComplete(delegate
+            transform.DOScale(Vector3.zero, 0.1f).OnComplete(delegate
             {
                 Destroy(gameObject);
             });
-
-
         }
     }
-
-
 }
