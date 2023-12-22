@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public FloatingJoystick joystick;
     public List<Skill> skills;
     public Transform projectileSpawnPos;
+    public Transform meleeSpawnPos;
 
     private Vector3 moveVector;
     private float lastAttackTime;
@@ -74,6 +75,11 @@ public class PlayerController : MonoBehaviour
             {
                 skill.Activate(projectileSpawnPos);
             }
+            if(skill.skillType == Skill.SkillType.Melee)
+            {
+                skill.Activate(meleeSpawnPos);
+            }
+
         }
 
         if (Time.time - lastAttackTime >= attackSpeed * .1f)

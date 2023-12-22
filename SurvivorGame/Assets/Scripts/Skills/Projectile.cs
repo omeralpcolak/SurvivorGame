@@ -11,7 +11,7 @@ public class Projectile : Skill
 
     public override void Activate(Transform spawnPos)
     {
-        GameObject projectileInstance = Instantiate(projectilePrefab, spawnPos.position, Quaternion.LookRotation(spawnPos.forward), spawnPos);
+        GameObject projectileInstance = Instantiate(projectilePrefab, spawnPos.position, Quaternion.identity, spawnPos);
         AddController(this.skillType, projectileInstance);
         projectileInstance.GetComponent<ProjectileController>().ProjectileUpgrade(damage, projectileSpeed);
     }
