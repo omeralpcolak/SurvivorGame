@@ -9,14 +9,16 @@ public class ProjectileController : MonoBehaviour
     private float searchRadius = 10f;
     private int projectileDamage;
     private float projectileSpeed;
+    private bool canMove = false;
 
     private void Start()
     {
         transform.localScale = Vector3.zero;
         transform.DOScale(new Vector3(0.25f, 0.25f, 0.25f), 0.1f).OnComplete(delegate
         {
+            FindNearestEnemy();
             transform.parent = null;
-            //FindNearestEnemy();
+            canMove = true;
         });
     }
 
@@ -46,22 +48,26 @@ public class ProjectileController : MonoBehaviour
 
     void FixedUpdate()
     {
-        FindNearestEnemy();
-        if (targetEnemy != null && targetEnemy.activeInHierarchy)
+        if (canMove)
         {
-            Vector3 directionToTarget = targetEnemy.transform.position - transform.position;
-            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * projectileSpeed);
-
-            transform.position = Vector3.MoveTowards(transform.position, targetEnemy.transform.position, projectileSpeed * Time.deltaTime);
-        }
-        else
-        {
-            transform.DOScale(Vector3.zero, 0.1f).OnComplete(delegate
+            //FindNearestEnemy();
+            if (targetEnemy != null && targetEnemy.activeInHierarchy)
             {
-                Destroy(gameObject);
-            });
+                Vector3 directionToTarget = targetEnemy.transform.position - transform.position;
+                Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * projectileSpeed);
+
+                transform.position = Vector3.MoveTowards(transform.position, targetEnemy.transform.position, projectileSpeed * Time.deltaTime);
+            }
+            else
+            {
+                transform.DOScale(Vector3.zero, 0.1f).OnComplete(delegate
+                {
+                    Destroy(gameObject);
+                });
+            }
         }
+        
     }
 
     private void OnTriggerEnter(Collider other)

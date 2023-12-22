@@ -26,8 +26,8 @@ public class MeleeController : MonoBehaviour
         //transform.Rotate(0, spinningSpeed * Time.deltaTime, 0);
         transform.DORotate(new Vector3(0f, 360f, 0f), 10 / spinningSpeed, RotateMode.FastBeyond360)
             .SetLoops(-1, LoopType.Restart)
-            .SetRelative()
-            .SetEase(Ease.Linear);
+            .SetRelative();
+            
 
             
     }

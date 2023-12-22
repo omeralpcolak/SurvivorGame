@@ -9,6 +9,11 @@ public class Melee : Skill
     public GameObject meleePrefab;
     public bool canCreated;
 
+    private void OnEnable()
+    {
+        canCreated = true;
+    }
+
     public override void Activate(Transform spawnPos)
     {
         if (canCreated)
