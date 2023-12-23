@@ -76,21 +76,21 @@ public class PlayerController : MonoBehaviour
             switch (skill.skillType)
             {
                 case Skill.SkillType.Projectile:
-                    if (currentTime - projectileLastAttackTime >= attackSpeed * .1f)
+                    if (currentTime - skill.lastActivationTime >= attackSpeed * .1f)
                     {
                         skill.Activate(projectileSpawnPos);
-                        projectileLastAttackTime = currentTime;
+                        skill.lastActivationTime = currentTime; // Update this skill's last activation time
                     }
                     break;
 
                 case Skill.SkillType.Melee:
-                    skill.Activate(transform);
+                    skill.Activate(meleeSpawnPos);
                     break;
 
                 case Skill.SkillType.Area:
                     if (currentTime - areaLastAttackTime >= attackSpeed)
                     {
-                        skill.Activate(projectileSpawnPos);
+                        skill.Activate(transform);
                         areaLastAttackTime = currentTime;
                     }
                     break;

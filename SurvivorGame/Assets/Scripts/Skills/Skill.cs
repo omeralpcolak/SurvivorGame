@@ -10,7 +10,18 @@ public class Skill : ScriptableObject
     public string skillName;
     public int damage;
     public int increaseAmount;
+    public float lastActivationTime = -Mathf.Infinity;
 
+
+    private void OnEnable()
+    {
+        ResetCooldown();
+    }
+
+    private void ResetCooldown()
+    {
+        lastActivationTime = -Mathf.Infinity;
+    }
 
     public virtual void Activate(Transform spawnPos)
     {
