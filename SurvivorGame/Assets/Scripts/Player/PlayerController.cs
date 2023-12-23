@@ -11,11 +11,12 @@ public class PlayerController : MonoBehaviour
     public Transform meleeSpawnPos;
 
     private Vector3 moveVector;
-    private float lastAttackTime;
+    private float projectileLastAttackTime;
+    private float areaLastAttackTime;
     private float movementSpeed;
     private float attackSpeed;
     private float rotationSpeed = 25f;
-    private bool canAttack;
+    private bool canAttack = true;
 
     private Rigidbody playerRb;
     private Animator playerAnim;
@@ -68,23 +69,35 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerAttack()
     {
+        float currentTime = Time.time;
 
         foreach (Skill skill in skills)
         {
-            if (skill.skillType == Skill.SkillType.Projectile && Time.time - lastAttackTime >= attackSpeed * .1f)
+            switch (skill.skillType)
             {
-                skill.Activate(projectileSpawnPos);
-            }
-            if(skill.skillType == Skill.SkillType.Melee)
-            {
-                skill.Activate(meleeSpawnPos);
-            }
+                case Skill.SkillType.Projectile:
+                    if (currentTime - projectileLastAttackTime >= attackSpeed * .1f)
+                    {
+                        skill.Activate(projectileSpawnPos);
+                        projectileLastAttackTime = currentTime;
+                    }
+                    break;
 
-        }
+                case Skill.SkillType.Melee:
+                    skill.Activate(transform);
+                    break;
 
-        if (Time.time - lastAttackTime >= attackSpeed * .1f)
-        {
-            lastAttackTime = Time.time;
+                case Skill.SkillType.Area:
+                    if (currentTime - areaLastAttackTime >= attackSpeed)
+                    {
+                        skill.Activate(projectileSpawnPos);
+                        areaLastAttackTime = currentTime;
+                    }
+                    break;
+            }
         }
     }
+
+
 }
+

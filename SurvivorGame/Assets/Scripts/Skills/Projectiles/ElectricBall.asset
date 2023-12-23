@@ -16,6 +16,6 @@ MonoBehaviour:
   skillName: ElectricBall
   damage: 10
   increaseAmount: 2
+  cooldown: 1
   projectilePrefab: {fileID: 3306086564107689143, guid: a03b2dffa986e4b12859489327e8656f, type: 3}
   projectileSpeed: 15
-  cooldown: 0

@@ -33,7 +33,7 @@ public class Skill : ScriptableObject
                 instance.AddComponent<MeleeController>();
                 break;
             case SkillType.Area:
-                //instance.AddComponent<AreaController>();
+                instance.AddComponent<AreaController>();
                 break;
         }
     }

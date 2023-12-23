@@ -16,5 +16,6 @@ MonoBehaviour:
   skillName: SpinningSwords
   damage: 10
   increaseAmount: 5
-  spinningSpeed: 30
+  spinningSpeed: 3
   meleePrefab: {fileID: 8529188879578338004, guid: 920450428586e4ceebec1c13ead91c1a, type: 3}
+  canCreated: 0
