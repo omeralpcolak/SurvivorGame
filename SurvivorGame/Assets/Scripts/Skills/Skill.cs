@@ -5,12 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="New Skill", menuName ="Skill")]
 public class Skill : ScriptableObject
 {
-    public enum SkillType {Projectile,Melee,Area }
+    public enum SkillType {Projectile,Melee,Meteor }
     public SkillType skillType;
     public string skillName;
     public int damage;
     public int increaseAmount;
-    public float lastActivationTime = -Mathf.Infinity;
+    [HideInInspector]public float lastActivationTime = -Mathf.Infinity;
 
 
     private void OnEnable()
@@ -43,8 +43,8 @@ public class Skill : ScriptableObject
             case SkillType.Melee:
                 instance.AddComponent<MeleeController>();
                 break;
-            case SkillType.Area:
-                instance.AddComponent<AreaController>();
+            case SkillType.Meteor:
+                instance.AddComponent<MeteorController>();
                 break;
         }
     }

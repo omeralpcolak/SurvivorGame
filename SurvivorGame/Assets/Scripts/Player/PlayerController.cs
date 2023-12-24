@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
                     if (currentTime - skill.lastActivationTime >= attackSpeed * .1f)
                     {
                         skill.Activate(projectileSpawnPos);
-                        skill.lastActivationTime = currentTime; // Update this skill's last activation time
+                        skill.lastActivationTime = currentTime;
                     }
                     break;
 
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
                     skill.Activate(meleeSpawnPos);
                     break;
 
-                case Skill.SkillType.Area:
+                case Skill.SkillType.Meteor:
                     if (currentTime - areaLastAttackTime >= attackSpeed)
                     {
                         skill.Activate(transform);

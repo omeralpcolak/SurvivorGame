@@ -33,7 +33,6 @@ public class MeleeController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             other.GetComponent<Health>().TakeDamage(meleeDamage);
-            Debug.Log(meleeDamage);
         }
     }
 }
