@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public Transform meleeSpawnPos;
 
     private Vector3 moveVector;
-    private float projectileLastAttackTime;
     private float areaLastAttackTime;
     private float movementSpeed;
     private float attackSpeed;

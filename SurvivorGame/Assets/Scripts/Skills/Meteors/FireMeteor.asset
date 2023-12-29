@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillType: 2
   skillName: FireMeteor
-  damage: 5
+  damage: 20
   increaseAmount: 1
   lastActivationTime: -Infinity
   areaSkillPrefab: {fileID: 1733153140792892841, guid: 0174d350e24a1493b9cd6992d40c5436, type: 3}
   maxScale: {x: 0.75, y: 0.75, z: 0.75}
   spawnRadius: 6
+  timePerDamage: 1

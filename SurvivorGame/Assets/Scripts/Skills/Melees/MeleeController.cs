@@ -7,18 +7,19 @@ public class MeleeController : MonoBehaviour
 {
     private int meleeDamage;
     private float spinningSpeed;
-
+    private Vector3 maxScale;
 
     private void Start()
     {
         transform.localScale = Vector3.zero;
-        transform.DOScale(new Vector3(1f, 1f, 1f), 1f);
+        transform.DOScale(maxScale, 1f);
     }
 
-    public void MeleeUpgrade(int newDamage, float spinningSpeed)
+    public void MeleeUpgrade(int newDamage, float spinningSpeed,Vector3 maxScale)
     {
         meleeDamage = newDamage;
         this.spinningSpeed = spinningSpeed;
+        this.maxScale = maxScale;
     }
 
     private void FixedUpdate()

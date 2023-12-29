@@ -14,7 +14,7 @@ public class ProjectileController : MonoBehaviour
     private void Start()
     {
         transform.localScale = Vector3.zero;
-        transform.DOScale(new Vector3(0.25f, 0.25f, 0.25f), 0.1f).OnComplete(delegate
+        transform.DOScale(new Vector3(0.25f, 0.25f, 0.25f), 0.2f).OnComplete(delegate
         {
             FindNearestEnemy();
             transform.parent = null;

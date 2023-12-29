@@ -8,6 +8,8 @@ public class Melee : Skill
     public float spinningSpeed;
     public GameObject meleePrefab;
     public bool canCreated;
+    public Vector3 maxScale;
+
 
     private void OnEnable()
     {
@@ -21,7 +23,7 @@ public class Melee : Skill
             canCreated = false;
             GameObject meleeInstance = Instantiate(meleePrefab, spawnPos.position, Quaternion.identity, spawnPos);
             AddController(this.skillType, meleeInstance);
-            meleeInstance.GetComponent<MeleeController>().MeleeUpgrade(damage, spinningSpeed);
+            meleeInstance.GetComponent<MeleeController>().MeleeUpgrade(damage, spinningSpeed,maxScale);
         }
         
         
