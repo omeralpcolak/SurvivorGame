@@ -10,18 +10,8 @@ public class Skill : ScriptableObject
     public string skillName;
     public int damage;
     public int increaseAmount;
-    [HideInInspector]public float lastActivationTime = -Mathf.Infinity;
-
-
-    private void OnEnable()
-    {
-        ResetCooldown();
-    }
-
-    private void ResetCooldown()
-    {
-        lastActivationTime = -Mathf.Infinity;
-    }
+    public float cooldownDuration;
+    [HideInInspector] public float cooldownTime;
 
     public virtual void Activate(Transform spawnPos)
     {
@@ -31,6 +21,16 @@ public class Skill : ScriptableObject
     public virtual void Upgrade()
     {
 
+    }
+
+    private void OnEnable()
+    {
+        ResetCooldownTime();
+    }
+
+    private void ResetCooldownTime()
+    {
+        cooldownTime = 0f;
     }
 
     public void AddController(SkillType skillType,GameObject instance)

@@ -19,14 +19,13 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody playerRb;
     private Animator playerAnim;
-    
 
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
         movementSpeed = playerConfig.movementSpeed;
-        attackSpeed = playerConfig.attackSpeed;
+        attackSpeed = playerConfig.attackSpeed; // Ensure this is updated elsewhere in your code as well
     }
 
     private void FixedUpdate()
@@ -36,7 +35,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
         if (canAttack)
         {
             PlayerAttack();
@@ -70,12 +68,33 @@ public class PlayerController : MonoBehaviour
     {
         float currentTime = Time.time;
 
-        foreach (Skill skill in skills)
+        foreach(Skill skill in skills)
+        {
+            if(currentTime >= skill.cooldownTime)
+            {
+                switch (skill.skillType)
+                {
+                    case Skill.SkillType.Projectile:
+                        skill.Activate(projectileSpawnPos);
+                        skill.cooldownTime = currentTime + skill.cooldownDuration;
+                        break;
+                    case Skill.SkillType.Meteor:
+                        skill.Activate(transform);
+                        skill.cooldownTime = currentTime + skill.cooldownDuration;
+                        break;
+                    case Skill.SkillType.Melee:
+                        skill.Activate(meleeSpawnPos);
+                        break;
+                }
+            }
+        }
+
+        /*foreach (Skill skill in skills)
         {
             switch (skill.skillType)
             {
                 case Skill.SkillType.Projectile:
-                    if (currentTime - skill.lastActivationTime >= attackSpeed * .1f)
+                    if (currentTime - skill.lastActivationTime >= attackSpeed * 0.1)
                     {
                         skill.Activate(projectileSpawnPos);
                         skill.lastActivationTime = currentTime;
@@ -87,16 +106,14 @@ public class PlayerController : MonoBehaviour
                     break;
 
                 case Skill.SkillType.Meteor:
-                    if (currentTime - areaLastAttackTime >= attackSpeed)
+                    if (currentTime - skill.lastActivationTime >= 4 / attackSpeed)
                     {
+                        Debug.Log("Meteor activated at time: " + currentTime + " with attack speed: " + attackSpeed);
                         skill.Activate(transform);
-                        areaLastAttackTime = currentTime;
+                        skill.lastActivationTime = currentTime;
                     }
                     break;
             }
-        }
+        }*/
     }
-
-
 }
-

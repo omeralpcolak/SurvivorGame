@@ -6,7 +6,7 @@ public class CameraShake : MonoBehaviour
 {
     public static CameraShake instance;
     public CinemachineVirtualCamera cinemachineVirtualCamera;
-    private float shakeDuration = 0f;
+    private float shakeDuration;
     private bool isShaking = false;
 
     private void Awake()

@@ -45,7 +45,7 @@ public class MeteorController : MonoBehaviour
         while (enemy != null && enemy.gameObject.CompareTag("Enemy"))
         {
             enemy.GetComponent<Health>().TakeDamage(meteorDamage);
-            Debug.Log($"Dealing {meteorDamage} damage to {enemy.name}");
+            //Debug.Log($"Dealing {meteorDamage} damage to {enemy.name}");
             yield return new WaitForSeconds(timePerDamage);
         }
         if (damageCoroutines.ContainsKey(enemy))
@@ -56,7 +56,7 @@ public class MeteorController : MonoBehaviour
 
     IEnumerator DestroyMeteor()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3.5f);
         foreach (var routine in damageCoroutines.Values)
         {
             StopCoroutine(routine);

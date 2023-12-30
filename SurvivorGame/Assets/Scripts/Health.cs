@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
     {
         health -= damage;
         Instantiate(hitEffect, transform.position, Quaternion.identity,transform);
-        CameraShake.instance.Shake(0.2f, 1.5f);
+        CameraShake.instance.Shake(0.4f, 2f);
         if (health<= 0)
         {
             transform.DOScale(Vector3.zero, 0.2f).OnComplete(delegate
