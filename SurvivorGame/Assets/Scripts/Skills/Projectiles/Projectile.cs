@@ -19,5 +19,6 @@ public class Projectile : Skill
     {
         damage += this.increaseAmount;
         projectileSpeed += this.increaseAmount;
+        this.cooldownDuration /= 2;
     }
 }

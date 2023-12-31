@@ -34,5 +34,6 @@ public class Meteor : Skill
         maxScale.x += this.increaseAmount * .5f;
         maxScale.y += this.increaseAmount * .5f;
         maxScale.z += this.increaseAmount * .5f;
+        this.cooldownDuration /= 2;
     }
 }

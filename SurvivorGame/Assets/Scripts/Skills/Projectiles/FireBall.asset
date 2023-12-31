@@ -16,6 +16,7 @@ MonoBehaviour:
   skillName: FireBall
   damage: 10
   increaseAmount: 2
-  cooldown: 1
+  cooldownDuration: 0.2
+  cooldownTime: 0
   projectilePrefab: {fileID: 3306086564107689143, guid: 769e54d2de7bc4fec9c5e3e9287b16d8, type: 3}
   projectileSpeed: 20

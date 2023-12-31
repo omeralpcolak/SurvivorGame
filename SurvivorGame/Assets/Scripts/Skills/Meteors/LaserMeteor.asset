@@ -16,7 +16,8 @@ MonoBehaviour:
   skillName: LaserMeteor
   damage: 25
   increaseAmount: 1
-  lastActivationTime: -Infinity
+  cooldownDuration: 5
+  cooldownTime: 0
   areaSkillPrefab: {fileID: 9081367835186609784, guid: f256feedc8a48457ca7c059b56a684b1, type: 3}
   maxScale: {x: 0.75, y: 0.75, z: 0.75}
   spawnRadius: 10
