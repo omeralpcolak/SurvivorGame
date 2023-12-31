@@ -32,11 +32,6 @@ public class PlayerController : MonoBehaviour
         if (GameManager.instance.gameStart)
         {
             Move();
-            canAttack = true;
-        }
-        else
-        {
-            canAttack = false;
         }
         
     }

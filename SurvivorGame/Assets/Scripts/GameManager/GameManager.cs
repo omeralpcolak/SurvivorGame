@@ -29,7 +29,9 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
+        selectedSkillsUI.GetComponent<CanvasGroup>().DOFade(0, 1f);
         gameStart = true;
+        playerController.joystick.gameObject.SetActive(true);
         StartCoroutine(enemySpawner.SpawnEnemy(enemySpawner.cooldown));
     }
 
