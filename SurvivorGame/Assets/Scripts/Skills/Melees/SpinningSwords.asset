@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: SpinningSwords
   m_EditorClassIdentifier: 
   skillType: 1
-  skillName: SpinningSwords
+  skillName: Spinning Swords
   damage: 10
   increaseAmount: 5
-  lastActivationTime: -Infinity
+  cooldownDuration: 0
+  cooldownTime: 0
   spinningSpeed: 3
   meleePrefab: {fileID: 8529188879578338004, guid: 920450428586e4ceebec1c13ead91c1a, type: 3}
-  canCreated: 0
+  canCreated: 1
   maxScale: {x: 1, y: 1, z: 1}

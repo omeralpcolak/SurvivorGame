@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: SpinningMagicCircle
   m_EditorClassIdentifier: 
   skillType: 1
-  skillName: SpinningMagicCircle
+  skillName: Spinning Magic Circle
   damage: 10
   increaseAmount: 2
-  lastActivationTime: -Infinity
+  cooldownDuration: 0
+  cooldownTime: 0
   spinningSpeed: 3
   meleePrefab: {fileID: 3258411308623279685, guid: 80d42c7af514645e78d15d7f1a1608bf, type: 3}
   canCreated: 1

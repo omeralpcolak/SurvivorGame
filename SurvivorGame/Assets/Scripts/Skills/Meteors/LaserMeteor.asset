@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LaserMeteor
   m_EditorClassIdentifier: 
   skillType: 2
-  skillName: LaserMeteor
+  skillName: Laser Meteor
   damage: 25
   increaseAmount: 1
   cooldownDuration: 5

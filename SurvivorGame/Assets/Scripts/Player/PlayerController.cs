@@ -11,11 +11,10 @@ public class PlayerController : MonoBehaviour
     public Transform meleeSpawnPos;
 
     private Vector3 moveVector;
-    private float areaLastAttackTime;
     private float movementSpeed;
     private float attackSpeed;
     private float rotationSpeed = 25f;
-    private bool canAttack = true;
+    private bool canAttack;
 
     private Rigidbody playerRb;
     private Animator playerAnim;
@@ -30,7 +29,16 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if (GameManager.instance.gameStart)
+        {
+            Move();
+            canAttack = true;
+        }
+        else
+        {
+            canAttack = false;
+        }
+        
     }
 
     private void Update()

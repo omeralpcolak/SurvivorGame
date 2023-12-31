@@ -8,21 +8,29 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemy;
     public float cooldown;
     public float radius;
+    private bool canSpawn = true;
 
 
     void Start()
     {
+        
+    }
+
+    private void Update()
+    {
         StartCoroutine(SpawnEnemy(cooldown));
     }
 
-    
-    IEnumerator SpawnEnemy(float cooldown)
+
+    public IEnumerator SpawnEnemy(float cooldown)
     {
-        while (true)
+        while (GameManager.instance.gameStart && canSpawn)
         {
+            canSpawn = false;
             Vector3 spawnPos = RandomCircle(player.transform.position, radius);
             Instantiate(enemy, spawnPos, Quaternion.identity);
             yield return new WaitForSeconds(cooldown);
+            canSpawn = true;
         }
     }
 
