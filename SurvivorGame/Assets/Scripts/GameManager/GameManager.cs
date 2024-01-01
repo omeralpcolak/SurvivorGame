@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     PlayerController playerController;
     EnemySpawner enemySpawner;
 
-    public TMP_Text skillText1, skillText2, skillText3;
+    public List<TMP_Text> skillTexts;
     public bool gameStart;
 
     private void Start()
@@ -29,7 +29,10 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
-        selectedSkillsUI.GetComponent<CanvasGroup>().DOFade(0, 1f);
+        selectedSkillsUI.GetComponent<CanvasGroup>().DOFade(0, 1f).OnComplete(delegate
+        {
+            selectedSkillsUI.SetActive(false);
+        });
         gameStart = true;
         playerController.joystick.gameObject.SetActive(true);
         StartCoroutine(enemySpawner.SpawnEnemy(enemySpawner.cooldown));
@@ -38,12 +41,18 @@ public class GameManager : MonoBehaviour
 
     public void SelectingRandomSkills()
     {
-        mainMenuUI.GetComponent<CanvasGroup>().DOFade(0f, 1f);
+        mainMenuUI.GetComponent<CanvasGroup>().DOFade(0f, 1f).OnComplete(delegate
+        {
+            mainMenuUI.SetActive(false);
+        });
+
         playerController.skills = SelectRandomSkill(allSkills, randomSkillCount);
         selectedSkillsUI.GetComponent<CanvasGroup>().DOFade(1f, 1f);
-        skillText1.text = playerController.skills[0].skillName;
-        skillText2.text = playerController.skills[1].skillName;
-        skillText3.text = playerController.skills[2].skillName;
+
+        for(int i = 0; i < randomSkillCount; i++)
+        {
+            skillTexts[i].text = playerController.skills[i].skillName;
+        }
        
     }
 
