@@ -24,12 +24,13 @@ public class GameManager : MonoBehaviour
         instance = this;
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         enemySpawner = GetComponent<EnemySpawner>();
+        Application.targetFrameRate = 60;
         //SelectingRandomSkills();
     }
 
     public void GameStart()
     {
-        selectedSkillsUI.GetComponent<CanvasGroup>().DOFade(0, 1f).OnComplete(delegate
+        selectedSkillsUI.GetComponent<CanvasGroup>().DOFade(0, 0.5f).OnComplete(delegate
         {
             selectedSkillsUI.SetActive(false);
         });
@@ -41,13 +42,13 @@ public class GameManager : MonoBehaviour
 
     public void SelectingRandomSkills()
     {
-        mainMenuUI.GetComponent<CanvasGroup>().DOFade(0f, 1f).OnComplete(delegate
+        mainMenuUI.GetComponent<CanvasGroup>().DOFade(0f, 0.5f).OnComplete(delegate
         {
             mainMenuUI.SetActive(false);
         });
 
         playerController.skills = SelectRandomSkill(allSkills, randomSkillCount);
-        selectedSkillsUI.GetComponent<CanvasGroup>().DOFade(1f, 1f);
+        selectedSkillsUI.GetComponent<CanvasGroup>().DOFade(1f, 0.5f);
 
         for(int i = 0; i < randomSkillCount; i++)
         {
