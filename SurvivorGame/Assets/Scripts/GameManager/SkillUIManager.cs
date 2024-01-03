@@ -20,7 +20,6 @@ public class SkillUIManager : MonoBehaviour
 
     private void Start()
     {
-        //UpdateUILayout();
         SetSkill(currentSkill);
     }
 
@@ -46,8 +45,13 @@ public class SkillUIManager : MonoBehaviour
                 UpdateMeteorUI(meteor);
                 break;
         }
+    }
 
-        //UpdateUILayout();
+    public void UpgradeSkill()
+    {
+        currentSkill.Upgrade();
+        SetSkill(currentSkill);
+        
     }
 
     private void UpdateProjectileUI(Projectile projectile)
@@ -55,7 +59,6 @@ public class SkillUIManager : MonoBehaviour
         cooldownPanel.SetActive(true);
         scalePanel.SetActive(false);
         cooldownText.text = "Cooldown: " + projectile.cooldownDuration.ToString() + "s";
-        
     }
 
     private void UpdateMeleeUI(Melee melee)
@@ -71,11 +74,5 @@ public class SkillUIManager : MonoBehaviour
         scalePanel.SetActive(true);
         cooldownText.text = "Cooldown: " + meteor.cooldownDuration.ToString() + "s";
         scaleText.text = "Scale: " + meteor.maxScale.x.ToString();
-
-    }
-
-    public void UpdateUILayout()
-    {
-        LayoutRebuilder.ForceRebuildLayoutImmediate(skillInfoPanel.GetComponent<RectTransform>());
     }
 }

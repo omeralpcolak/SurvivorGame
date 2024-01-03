@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         enemySpawner = GetComponent<EnemySpawner>();
         Application.targetFrameRate = 60;
-        //SelectingRandomSkills();
     }
 
     public void GameStart()

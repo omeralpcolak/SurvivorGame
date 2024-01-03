@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: LaserMeteor
   m_EditorClassIdentifier: 
   skillType: 2
+  skillIcon: {fileID: 21300000, guid: fccc7156f5a20d847b6f18880c73d76d, type: 3}
   skillName: Laser Meteor
   damage: 25
   increaseAmount: 1
