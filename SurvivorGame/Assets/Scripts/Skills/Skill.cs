@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName ="New Skill", menuName ="Skill")]
 public class Skill : ScriptableObject
 {
     public enum SkillType {Projectile,Melee,Meteor }
     public SkillType skillType;
+    public Sprite skillIcon;
     public string skillName;
     public int damage;
     public int increaseAmount;

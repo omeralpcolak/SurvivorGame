@@ -18,7 +18,6 @@ public class Projectile : Skill
     public override void Upgrade()
     {
         damage += this.increaseAmount;
-        projectileSpeed += this.increaseAmount;
         this.cooldownDuration /= 2;
     }
 }
