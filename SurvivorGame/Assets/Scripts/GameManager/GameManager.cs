@@ -9,30 +9,29 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public List<Skill> allSkills;
-    public List<Skill> selectedSkills;
     public int randomSkillCount;
     public GameObject mainMenuUI;
     public GameObject selectedSkillsUI;
+
     PlayerController playerController;
     EnemySpawner enemySpawner;
+    ScreenManager screenManager;
 
     public List<TMP_Text> skillTexts;
     public bool gameStart;
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
         instance = this;
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         enemySpawner = GetComponent<EnemySpawner>();
-        Application.targetFrameRate = 60;
+        screenManager = GetComponent<ScreenManager>();
     }
 
     public void GameStart()
     {
-        selectedSkillsUI.GetComponent<CanvasGroup>().DOFade(0, 0.5f).OnComplete(delegate
-        {
-            selectedSkillsUI.SetActive(false);
-        });
+        screenManager.ChangeScreen(ScreenManager.Screen.NOMENU);
         gameStart = true;
         playerController.joystick.gameObject.SetActive(true);
         StartCoroutine(enemySpawner.SpawnEnemy(enemySpawner.cooldown));
@@ -41,13 +40,8 @@ public class GameManager : MonoBehaviour
 
     public void SelectingRandomSkills()
     {
-        mainMenuUI.GetComponent<CanvasGroup>().DOFade(0f, 0.5f).OnComplete(delegate
-        {
-            mainMenuUI.SetActive(false);
-        });
-
+        screenManager.ChangeScreen(ScreenManager.Screen.RANDOMSKILLMENU);
         playerController.skills = SelectRandomSkill(allSkills, randomSkillCount);
-        selectedSkillsUI.GetComponent<CanvasGroup>().DOFade(1f, 0.5f);
 
         for(int i = 0; i < randomSkillCount; i++)
         {

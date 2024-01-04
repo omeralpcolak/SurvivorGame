@@ -17,7 +17,7 @@ public class Skill : ScriptableObject
 
     public virtual void Activate(Transform spawnPos)
     {
-
+        
     }
 
     public virtual void Upgrade()
