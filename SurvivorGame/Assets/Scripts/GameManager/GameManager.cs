@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
     EnemySpawner enemySpawner;
     ScreenManager screenManager;
 
-    public List<TMP_Text> skillTexts;
+    public List<TMP_Text> textsOfRandomSkills;
+    public List<Image> iconsOfRandomSkills;
     public bool gameStart;
 
     private void Start()
@@ -45,7 +46,8 @@ public class GameManager : MonoBehaviour
 
         for(int i = 0; i < randomSkillCount; i++)
         {
-            skillTexts[i].text = playerController.skills[i].skillName;
+            textsOfRandomSkills[i].text = playerController.skills[i].skillName;
+            iconsOfRandomSkills[i].sprite = playerController.skills[i].skillIcon;
         }
        
     }

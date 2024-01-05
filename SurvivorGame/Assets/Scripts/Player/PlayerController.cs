@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 moveVector;
     private float movementSpeed;
-    private float attackSpeed;
     private float rotationSpeed = 25f;
     private bool canAttack;
 
@@ -24,7 +23,6 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
         movementSpeed = playerConfig.movementSpeed;
-        attackSpeed = playerConfig.attackSpeed; // Ensure this is updated elsewhere in your code as well
     }
 
     private void FixedUpdate()
@@ -91,32 +89,5 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
-        /*foreach (Skill skill in skills)
-        {
-            switch (skill.skillType)
-            {
-                case Skill.SkillType.Projectile:
-                    if (currentTime - skill.lastActivationTime >= attackSpeed * 0.1)
-                    {
-                        skill.Activate(projectileSpawnPos);
-                        skill.lastActivationTime = currentTime;
-                    }
-                    break;
-
-                case Skill.SkillType.Melee:
-                    skill.Activate(meleeSpawnPos);
-                    break;
-
-                case Skill.SkillType.Meteor:
-                    if (currentTime - skill.lastActivationTime >= 4 / attackSpeed)
-                    {
-                        Debug.Log("Meteor activated at time: " + currentTime + " with attack speed: " + attackSpeed);
-                        skill.Activate(transform);
-                        skill.lastActivationTime = currentTime;
-                    }
-                    break;
-            }
-        }*/
     }
 }

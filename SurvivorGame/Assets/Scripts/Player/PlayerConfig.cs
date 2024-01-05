@@ -7,6 +7,5 @@ public class PlayerConfig : ScriptableObject
 {
     public string playerName;
     public int maxHealth;
-    public float attackSpeed;
     public float movementSpeed;
 }
