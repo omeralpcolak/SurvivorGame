@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public List<TMP_Text> textsOfRandomSkills;
     public List<Image> iconsOfRandomSkills;
     public bool gameStart;
+    [SerializeField] private bool canChangeScreenToSkillUpgrade = true;
 
     private void Start()
     {
@@ -38,6 +39,14 @@ public class GameManager : MonoBehaviour
         StartCoroutine(enemySpawner.SpawnEnemy(enemySpawner.cooldown));
     }
 
+
+    public void ChangeScreenToUpgradeSkill()
+    {
+        var targetScreen = canChangeScreenToSkillUpgrade ? ScreenManager.Screen.SKILLUPGRADEMENU : ScreenManager.Screen.MAINMENU;
+        screenManager.ChangeScreen(targetScreen);
+        canChangeScreenToSkillUpgrade = !canChangeScreenToSkillUpgrade;
+
+    }
 
     public void SelectingRandomSkills()
     {
