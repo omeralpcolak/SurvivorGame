@@ -2,21 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
-[CreateAssetMenu(fileName ="New Skill", menuName ="Skill")]
+[Serializable]
+public class SkillProperty
+{
+    public string name;
+    public Sprite icon;
+    public float defaultAmount;
+    public int damage;
+    public float levelMultiplier;
+    public float cooldownDuration;
+
+    public float GetAmount(int level)
+    {
+        return defaultAmount + (levelMultiplier * levelMultiplier);
+    }
+}
+
+[CreateAssetMenu(fileName ="New Skill", menuName ="Skill/BaseSkill")]
 public class Skill : ScriptableObject
 {
-    public enum SkillType {Projectile,Melee,Meteor }
-    public SkillType skillType;
-    public Sprite skillIcon;
-    public string skillName;
-    public int damage;
-    public int increaseAmount;
-    public float cooldownDuration;
-    [HideInInspector] public float cooldownTime;
+    public SkillProperty skillProperty;
+    public SkillBehaviour skillPrefab;
 
     public virtual void Activate(Transform spawnPos)
     {
+        Instantiate(skillPrefab, spawnPos.position, Quaternion.identity, spawnPos).Init(this,skillProperty);
         
     }
 
@@ -24,31 +36,4 @@ public class Skill : ScriptableObject
     {
 
     }
-
-    private void OnEnable()
-    {
-        ResetCooldownTime();
-    }
-
-    private void ResetCooldownTime()
-    {
-        cooldownTime = 0f;
-    }
-
-    public void AddController(SkillType skillType,GameObject instance)
-    {
-        switch (skillType)
-        {
-            case SkillType.Projectile:
-                instance.AddComponent<ProjectileController>();
-                break;
-            case SkillType.Melee:
-                instance.AddComponent<MeleeController>();
-                break;
-            case SkillType.Meteor:
-                instance.AddComponent<MeteorController>();
-                break;
-        }
-    }
-
 }

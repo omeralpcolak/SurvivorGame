@@ -27,10 +27,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.instance.gameStart)
-        {
-            Move();
-        }
+        Move();
         
     }
 
@@ -67,27 +64,6 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerAttack()
     {
-        float currentTime = Time.time;
-
-        foreach(Skill skill in skills)
-        {
-            if(currentTime >= skill.cooldownTime)
-            {
-                switch (skill.skillType)
-                {
-                    case Skill.SkillType.Projectile:
-                        skill.Activate(projectileSpawnPos);
-                        skill.cooldownTime = currentTime + skill.cooldownDuration;
-                        break;
-                    case Skill.SkillType.Meteor:
-                        skill.Activate(transform);
-                        skill.cooldownTime = currentTime + skill.cooldownDuration;
-                        break;
-                    case Skill.SkillType.Melee:
-                        skill.Activate(meleeSpawnPos);
-                        break;
-                }
-            }
-        }
+        
     }
 }
