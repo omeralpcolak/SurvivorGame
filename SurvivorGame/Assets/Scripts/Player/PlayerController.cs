@@ -33,10 +33,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (canAttack)
+        if (!canAttack)
         {
-            PlayerAttack();
+            return;
         }
+
+        PlayerAttack();
     }
 
     private void Move()
@@ -64,6 +66,15 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerAttack()
     {
-        
+        float currenTime = Time.time;
+
+        foreach(Skill skill in skills)
+        {
+            if(currenTime >= skill.cooldownTime)
+            {
+                skill.Activate(projectileSpawnPos);
+                skill.cooldownTime = currenTime + skill.skillProperty.cooldownDuration;
+            }
+        }
     }
 }

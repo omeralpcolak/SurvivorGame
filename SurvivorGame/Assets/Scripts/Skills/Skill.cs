@@ -25,15 +25,26 @@ public class Skill : ScriptableObject
 {
     public SkillProperty skillProperty;
     public SkillBehaviour skillPrefab;
+    [HideInInspector]public float cooldownTime;
 
     public virtual void Activate(Transform spawnPos)
     {
-        Instantiate(skillPrefab, spawnPos.position, Quaternion.identity, spawnPos).Init(this,skillProperty);
+        Instantiate(skillPrefab, spawnPos.position, Quaternion.identity).Init(this,skillProperty);
         
     }
 
     public virtual void Upgrade()
     {
 
+    }
+
+    private void OnEnable()
+    {
+        ResetCooldownTime();
+    }
+
+    private void ResetCooldownTime()
+    {
+        cooldownTime = 0;
     }
 }
