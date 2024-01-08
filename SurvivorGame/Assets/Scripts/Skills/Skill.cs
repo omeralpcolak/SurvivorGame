@@ -26,11 +26,11 @@ public class Skill : ScriptableObject
     public SkillProperty skillProperty;
     public SkillBehaviour skillPrefab;
     [HideInInspector]public float cooldownTime;
+    public bool isSingleUse;
 
     public virtual void Activate(Transform spawnPos)
     {
-        Instantiate(skillPrefab, spawnPos.position, Quaternion.identity).Init(this,skillProperty);
-        
+        Instantiate(skillPrefab, spawnPos.position, Quaternion.identity, spawnPos).Init(this, skillProperty);
     }
 
     public virtual void Upgrade()

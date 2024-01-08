@@ -66,14 +66,19 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerAttack()
     {
-        float currenTime = Time.time;
+        float currentTime = Time.time;
 
-        foreach(Skill skill in skills)
+        foreach (Skill skill in skills)
         {
-            if(currenTime >= skill.cooldownTime)
+            if ((!skill.isSingleUse || (skill.isSingleUse && skill.cooldownTime == 0)) && currentTime >= skill.cooldownTime)
             {
-                skill.Activate(projectileSpawnPos);
-                skill.cooldownTime = currenTime + skill.skillProperty.cooldownDuration;
+                skill.Activate(meleeSpawnPos);
+                skill.cooldownTime = currentTime + skill.skillProperty.cooldownDuration;
+
+                if (skill.isSingleUse)
+                {
+                    skill.cooldownTime = float.MaxValue;
+                }
             }
         }
     }

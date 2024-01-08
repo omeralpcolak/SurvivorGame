@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9a2c7685f43e4bf980fd0330ff5308a, type: 3}
-  m_Name: ElectricBall
+  m_Name: SpinningSwords
   m_EditorClassIdentifier: 
   skillProperty:
-    name: Electric Ball
-    icon: {fileID: 21300000, guid: df5153fca31c9bf47b2d36359b5dd373, type: 3}
+    name: SpinningSwords
+    icon: {fileID: 0}
     defaultAmount: 0
     damage: 10
     levelMultiplier: 0
-    cooldownDuration: 0.2
-  skillPrefab: {fileID: 7741050617422940778, guid: a03b2dffa986e4b12859489327e8656f, type: 3}
-  cooldownTime: 17.127218
+    cooldownDuration: 0
+  skillPrefab: {fileID: -2732064604972763379, guid: 920450428586e4ceebec1c13ead91c1a, type: 3}
+  cooldownTime: 3.4028235e+38
+  isSingleUse: 1

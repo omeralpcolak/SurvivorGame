@@ -2985,7 +2985,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerConfig: {fileID: 11400000, guid: 0481801ded6a44a0e838962ca0f0b55c, type: 2}
   joystick: {fileID: 326822504}
-  skills: []
+  skills:
+  - {fileID: 11400000, guid: b7491a98213024801aa36903237de0e3, type: 2}
+  - {fileID: 11400000, guid: fc71a5faf3f2043b384c9efaee0177e1, type: 2}
   projectileSpawnPos: {fileID: 8371567385080908740}
   meleeSpawnPos: {fileID: 1559581373}
 --- !u!54 &7643415169471140841

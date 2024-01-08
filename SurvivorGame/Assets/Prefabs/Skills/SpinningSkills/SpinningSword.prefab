@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 412729155556664675}
   - component: {fileID: 237831719421766889}
+  - component: {fileID: -2732064604972763379}
   m_Layer: 0
   m_Name: SpinningSword
   m_TagString: Untagged
@@ -55,6 +56,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.36, y: 0.28, z: 4.51}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-2732064604972763379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8529188879578338004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2c21f434f7840d48550c8d656eb142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
 --- !u!1001 &2939301975571655400
 PrefabInstance:
   m_ObjectHideFlags: 0

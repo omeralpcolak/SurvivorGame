@@ -19,6 +19,7 @@ public class ProjectileBehaviour : SkillBehaviour
 
     private void Start()
     {
+        transform.parent = null;
         transform.localScale = Vector3.zero;
         transform.DOScale(new Vector3(0.25f, 0.25f, 0.25f), 0.2f).OnComplete(delegate
         {
