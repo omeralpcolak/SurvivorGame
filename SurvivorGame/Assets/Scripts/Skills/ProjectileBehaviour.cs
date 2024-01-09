@@ -10,6 +10,7 @@ public class ProjectileBehaviour : SkillBehaviour
     private float searchRadius = 15f;
     private float projectileSpeed = 10f;
     private GameObject targetEnemy = null;
+    private Tween scaleTween;
 
     public override void Init(Skill _skill, SkillProperty _skillProperty)
     {
@@ -21,7 +22,8 @@ public class ProjectileBehaviour : SkillBehaviour
     {
         transform.parent = null;
         transform.localScale = Vector3.zero;
-        transform.DOScale(new Vector3(0.25f, 0.25f, 0.25f), 0.2f).OnComplete(delegate
+
+        scaleTween = transform.DOScale(new Vector3(0.25f, 0.25f, 0.25f), 0.2f).OnComplete(delegate
         {
             canMove = true;
             FindNearestEnemy();
@@ -46,7 +48,16 @@ public class ProjectileBehaviour : SkillBehaviour
         }
         else
         {
+            KillTween();
             Destroy(gameObject);
+        }
+    }
+
+    private void KillTween()
+    {
+        if(scaleTween != null)
+        {
+            scaleTween.Kill();
         }
     }
 
@@ -73,6 +84,7 @@ public class ProjectileBehaviour : SkillBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             other.GetComponent<Health>().TakeDamage(damage);
+            KillTween();
             Destroy(gameObject);
         }
     }

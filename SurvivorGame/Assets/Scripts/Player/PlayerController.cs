@@ -28,17 +28,14 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        
+        PlayerAttack();
     }
 
     private void Update()
     {
-        if (!canAttack)
-        {
-            return;
-        }
+        
 
-        PlayerAttack();
+        
     }
 
     private void Move()
@@ -52,12 +49,10 @@ public class PlayerController : MonoBehaviour
             Vector3 direction = Vector3.RotateTowards(transform.forward, moveVector, rotationSpeed * Time.deltaTime, 0);
             transform.rotation = Quaternion.LookRotation(direction);
 
-            canAttack = true;
             playerAnim.SetBool("running", true);
         }
         else if (joystick.Horizontal == 0 && joystick.Vertical == 0)
         {
-            canAttack = false;
             playerAnim.SetBool("running", false);
         }
 

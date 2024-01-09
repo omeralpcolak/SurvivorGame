@@ -14,10 +14,7 @@ public class Health : MonoBehaviour
         CameraShake.instance.Shake(0.4f, 2f);
         if (health<= 0)
         {
-            transform.DOScale(Vector3.zero, 0.2f).OnComplete(delegate
-            {
-                Destroy(gameObject);
-            });
+            Destroy(gameObject);
             
         }
     }
