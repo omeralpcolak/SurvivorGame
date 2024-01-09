@@ -7,8 +7,7 @@ public class PlayerController : MonoBehaviour
     public PlayerConfig playerConfig;
     public FloatingJoystick joystick;
     public List<Skill> skills;
-    public Transform projectileSpawnPos;
-    public Transform meleeSpawnPos;
+    public Transform spawnPos;
 
     private Vector3 moveVector;
     private float movementSpeed;
@@ -65,16 +64,7 @@ public class PlayerController : MonoBehaviour
 
         foreach (Skill skill in skills)
         {
-            if ((!skill.isSingleUse || (skill.isSingleUse && skill.cooldownTime == 0)) && currentTime >= skill.cooldownTime)
-            {
-                skill.Activate(meleeSpawnPos);
-                skill.cooldownTime = currentTime + skill.skillProperty.cooldownDuration;
-
-                if (skill.isSingleUse)
-                {
-                    skill.cooldownTime = float.MaxValue;
-                }
-            }
+            skill.Activate(spawnPos, this);
         }
     }
 }

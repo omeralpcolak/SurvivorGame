@@ -640,7 +640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1559581373}
   m_Layer: 0
-  m_Name: MeleeTransform
+  m_Name: SpawnTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -654,12 +654,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559581372}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12053333, y: -0.05744169, z: 0.020538677}
+  m_LocalRotation: {x: 0.10429516, y: 0.20147571, z: 0.026622226, w: 0.97356117}
+  m_LocalPosition: {x: -0.011, y: 0.835, z: 0.04153354}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2756923517758255987}
+  m_Father: {fileID: 7643415169471140839}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1851080893
 GameObject:
@@ -1654,7 +1654,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1559581373}
   - {fileID: 5628386886173166095}
   - {fileID: 2073659737664455756}
   - {fileID: 2461910448059760864}
@@ -2968,6 +2967,7 @@ Transform:
   m_Children:
   - {fileID: 8328293060376313088}
   - {fileID: 930139926}
+  - {fileID: 1559581373}
   - {fileID: 2756923517758255987}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2986,10 +2986,9 @@ MonoBehaviour:
   playerConfig: {fileID: 11400000, guid: 0481801ded6a44a0e838962ca0f0b55c, type: 2}
   joystick: {fileID: 326822504}
   skills:
-  - {fileID: 11400000, guid: b7491a98213024801aa36903237de0e3, type: 2}
   - {fileID: 11400000, guid: fc71a5faf3f2043b384c9efaee0177e1, type: 2}
-  projectileSpawnPos: {fileID: 8371567385080908740}
-  meleeSpawnPos: {fileID: 1559581373}
+  - {fileID: 11400000, guid: b7491a98213024801aa36903237de0e3, type: 2}
+  spawnPos: {fileID: 1559581373}
 --- !u!54 &7643415169471140841
 Rigidbody:
   m_ObjectHideFlags: 0

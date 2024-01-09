@@ -25,26 +25,55 @@ public class Skill : ScriptableObject
 {
     public SkillProperty skillProperty;
     public SkillBehaviour skillPrefab;
-    [HideInInspector]public float cooldownTime;
     public bool isSingleUse;
+    [HideInInspector] public bool isUsed = false;
+    [HideInInspector] public bool isCooldown = false;
 
-    public virtual void Activate(Transform spawnPos)
+    public void Activate(Transform spawnPos, MonoBehaviour monoBehaviour)
+    {
+        if (!isEligibleForActivation()) return;
+
+        ExecuteSkill(spawnPos);
+        HandleCooldown(monoBehaviour);
+    }
+
+    private bool isEligibleForActivation()
+    {
+        if (isSingleUse && isUsed) return false;
+        if (isCooldown) return false;
+        return true;
+    }
+
+    private void ExecuteSkill(Transform spawnPos)
     {
         Instantiate(skillPrefab, spawnPos.position, Quaternion.identity, spawnPos).Init(this, skillProperty);
+        if (isSingleUse) isUsed = true;
     }
 
-    public virtual void Upgrade()
+    private void HandleCooldown(MonoBehaviour monoBehaviour)
     {
-
+        if (!isSingleUse)
+        {
+            isCooldown = true;
+            monoBehaviour.StartCoroutine(CooldownCoroutine(skillProperty.cooldownDuration));
+        }
     }
+
+    private IEnumerator CooldownCoroutine(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isCooldown = false;
+    }
+
 
     private void OnEnable()
     {
-        ResetCooldownTime();
+        ResetState();
     }
 
-    private void ResetCooldownTime()
+    private void ResetState()
     {
-        cooldownTime = 0;
+        isUsed = false;
+        isCooldown = false;
     }
 }
