@@ -7,8 +7,9 @@ public class ProjectileBehaviour : SkillBehaviour
 {
     private int damage;
     private bool canMove = false;
+    private bool isBeingDestroyed = false;
     private float searchRadius = 15f;
-    private float projectileSpeed = 10f;
+    [SerializeField]private float projectileSpeed;
     private GameObject targetEnemy = null;
     private Tween scaleTween;
 
@@ -38,6 +39,11 @@ public class ProjectileBehaviour : SkillBehaviour
             return;
         }
 
+        if (isBeingDestroyed)
+        {
+            return;
+        }
+
         if (targetEnemy != null && targetEnemy.activeInHierarchy)
         {
             
@@ -48,8 +54,13 @@ public class ProjectileBehaviour : SkillBehaviour
         }
         else
         {
-            KillTween();
-            Destroy(gameObject);
+            isBeingDestroyed = true;
+            scaleTween = transform.DOScale(Vector3.zero, 0.2f).OnComplete(delegate
+            {
+                scaleTween.Kill(true);
+                Destroy(gameObject);
+            });
+            
         }
     }
 

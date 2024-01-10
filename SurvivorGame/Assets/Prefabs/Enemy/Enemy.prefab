@@ -178,3 +178,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   hitEffect: {fileID: 926394929370186789, guid: a0c71401af8c040d4a3d8248e2580b87, type: 3}
+  deathEffect: {fileID: 7830442014952612354, guid: 03287ab9558a0429abe45166aeb82526, type: 3}

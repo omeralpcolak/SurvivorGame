@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9a2c7685f43e4bf980fd0330ff5308a, type: 3}
-  m_Name: SpinningSwords
+  m_Name: SpinningMagicCircle
   m_EditorClassIdentifier: 
   skillProperty:
-    name: SpinningSwords
+    name: SpinningMagicCircle
     icon: {fileID: 0}
     damage: 15
     cooldownDuration: 0
-  skillPrefab: {fileID: -2732064604972763379, guid: 920450428586e4ceebec1c13ead91c1a, type: 3}
+  skillPrefab: {fileID: 8283095236367546763, guid: 80d42c7af514645e78d15d7f1a1608bf, type: 3}
   isSingleUse: 1
   isUsed: 1
   isCooldown: 0

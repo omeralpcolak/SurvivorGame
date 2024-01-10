@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  projectileSpeed: 12
 --- !u!1001 &6682835480395018453
 PrefabInstance:
   m_ObjectHideFlags: 0

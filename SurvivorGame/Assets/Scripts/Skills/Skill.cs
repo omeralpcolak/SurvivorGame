@@ -9,15 +9,8 @@ public class SkillProperty
 {
     public string name;
     public Sprite icon;
-    public float defaultAmount;
     public int damage;
-    public float levelMultiplier;
     public float cooldownDuration;
-
-    public float GetAmount(int level)
-    {
-        return defaultAmount + (levelMultiplier * levelMultiplier);
-    }
 }
 
 [CreateAssetMenu(fileName ="New Skill", menuName ="Skill/BaseSkill")]

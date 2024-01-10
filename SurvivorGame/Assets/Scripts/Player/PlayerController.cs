@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!GameSessionManager.instance.gameStart)
+        {
+            return;
+        }
         Move();
         PlayerAttack();
     }
@@ -60,8 +64,6 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerAttack()
     {
-        float currentTime = Time.time;
-
         foreach (Skill skill in skills)
         {
             skill.Activate(spawnPos, this);

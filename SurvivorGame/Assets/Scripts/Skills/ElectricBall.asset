@@ -15,9 +15,9 @@ MonoBehaviour:
   skillProperty:
     name: Electric Ball
     icon: {fileID: 21300000, guid: df5153fca31c9bf47b2d36359b5dd373, type: 3}
-    defaultAmount: 0
-    damage: 10
-    levelMultiplier: 0
+    damage: 8
     cooldownDuration: 0.2
   skillPrefab: {fileID: 7741050617422940778, guid: a03b2dffa986e4b12859489327e8656f, type: 3}
-  cooldownTime: 17.127218
+  isSingleUse: 0
+  isUsed: 0
+  isCooldown: 1
