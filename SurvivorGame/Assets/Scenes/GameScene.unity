@@ -511,8 +511,9 @@ GameObject:
   - component: {fileID: 999661508}
   - component: {fileID: 999661509}
   - component: {fileID: 999661510}
+  - component: {fileID: 999661511}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GameSessionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -545,7 +546,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad3d462ab17542b1902118979d79ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 7643415169471140839}
   enemy: {fileID: 3376406295376646220, guid: c49411306df3f4ce9afa6832464fb5a3, type: 3}
   cooldown: 0.8
   radius: 15
@@ -562,6 +562,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cinemachineVirtualCamera: {fileID: 2059975919}
+--- !u!114 &999661511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999661506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bbde385b04324532866df11f2a6f3e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allSkills:
+  - {fileID: 11400000, guid: b7491a98213024801aa36903237de0e3, type: 2}
+  - {fileID: 11400000, guid: b960f42edfc6e4a7b9d0acc1d9d3ee38, type: 2}
+  - {fileID: 11400000, guid: 3d9c0c5d3f32d485b9e5ff3f73c8e993, type: 2}
+  - {fileID: 11400000, guid: fc71a5faf3f2043b384c9efaee0177e1, type: 2}
+  joystick: {fileID: 0}
+  randomSkillUI: {fileID: 0}
+  gameStart: 0
 --- !u!1 &1067681606
 GameObject:
   m_ObjectHideFlags: 0
@@ -2985,11 +3005,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerConfig: {fileID: 11400000, guid: 0481801ded6a44a0e838962ca0f0b55c, type: 2}
   joystick: {fileID: 326822504}
-  skills:
-  - {fileID: 11400000, guid: fc71a5faf3f2043b384c9efaee0177e1, type: 2}
-  - {fileID: 11400000, guid: b7491a98213024801aa36903237de0e3, type: 2}
-  - {fileID: 11400000, guid: b960f42edfc6e4a7b9d0acc1d9d3ee38, type: 2}
-  - {fileID: 11400000, guid: 3d9c0c5d3f32d485b9e5ff3f73c8e993, type: 2}
+  skills: []
   spawnPos: {fileID: 1559581373}
 --- !u!54 &7643415169471140841
 Rigidbody:

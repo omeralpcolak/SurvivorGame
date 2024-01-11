@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerConfig playerConfig;
     public FloatingJoystick joystick;
-    public List<Skill> skills;
     public Transform spawnPos;
+    public List<Skill> skills;
 
     private Vector3 moveVector;
     private float movementSpeed;

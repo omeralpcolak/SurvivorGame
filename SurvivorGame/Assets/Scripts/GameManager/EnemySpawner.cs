@@ -4,29 +4,19 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public Transform player;
     public GameObject enemy;
     public float cooldown;
     public float radius;
 
 
-    void Start()
+    public IEnumerator SpawnEnemy(float cooldown, bool gameStart,Transform center)
     {
-        StartCoroutine(SpawnEnemy(cooldown));
-    }
-
-    private void Update()
-    {
-        
-    }
-
-
-    public IEnumerator SpawnEnemy(float cooldown)
-    {
-        Vector3 spawnPos = RandomCircle(player.transform.position, radius);
-        Instantiate(enemy, spawnPos, Quaternion.identity);
-        yield return new WaitForSeconds(cooldown);
-        StartCoroutine(SpawnEnemy(cooldown));
+        while (gameStart)
+        {
+            Vector3 spawnPos = RandomCircle(center.position, radius);
+            Instantiate(enemy, spawnPos, Quaternion.identity);
+            yield return new WaitForSeconds(cooldown);
+        }
     }
 
     private Vector3 RandomCircle(Vector3 center, float radius)
