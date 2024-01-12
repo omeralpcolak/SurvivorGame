@@ -14,8 +14,9 @@ public class GameSessionManager : MonoBehaviour
     public Image randomSkillIcon;
     public TMP_Text randomSkillNameTxt;
     public bool gameStart;
+    public int coin;
+    public GameSelections gameSelections;
     
-
     private PlayerController playerController;
     private EnemySpawner enemySpawner;
   
@@ -26,6 +27,14 @@ public class GameSessionManager : MonoBehaviour
         enemySpawner = GetComponent<EnemySpawner>();
         SelectRandomSkill();
     }
+
+    private void OnDisable()
+    {
+        playerController.skills.Clear();
+        gameSelections.UpdateCoinValue(coin);
+    }
+
+   
 
     private void SelectRandomSkill()
     {
@@ -49,10 +58,7 @@ public class GameSessionManager : MonoBehaviour
         randomSkillPanel.GetComponent<CanvasGroup>().DOFade(1f, 1f);
     }
 
-    private void OnDisable()
-    {
-        playerController.skills.Clear();
-    }
+    
 
     public void StartTheGameSession()
     {

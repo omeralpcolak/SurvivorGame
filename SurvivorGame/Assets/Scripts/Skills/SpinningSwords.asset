@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillProperty:
     name: SpinningSwords
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 53085f18b2c38eb4e8539c23811c3347, type: 3}
     damage: 15
     cooldownDuration: 0
   skillPrefab: {fileID: -2732064604972763379, guid: 920450428586e4ceebec1c13ead91c1a, type: 3}
   isSingleUse: 1
-  isUsed: 1
+  isUsed: 0
   isCooldown: 0

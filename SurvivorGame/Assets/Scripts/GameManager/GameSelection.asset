@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44b86dbaee9f74608880a9ba9f1636fe, type: 3}
-  m_Name: WizardConfig
+  m_Script: {fileID: 11500000, guid: 4e98d869055f844a4b6363b702a602d3, type: 3}
+  m_Name: GameSelection
   m_EditorClassIdentifier: 
-  playerName: Wizard
-  maxHealth: 40
-  movementSpeed: 10
+  selectedMap: {fileID: 0}
+  selectedPlayer: {fileID: 0}
+  coin: 0

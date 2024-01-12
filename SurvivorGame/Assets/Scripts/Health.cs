@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     public GameObject deathEffect;
     public bool isObjectEnemy;
     public GameObject xp;
+    
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -20,6 +21,7 @@ public class Health : MonoBehaviour
             if (isObjectEnemy)
             {
                 Instantiate(xp, transform.position, Quaternion.identity);
+                GameSessionManager.instance.coin++;
             }
             Instantiate(deathEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
