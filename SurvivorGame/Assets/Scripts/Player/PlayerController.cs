@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
         movementSpeed = playerConfig.movementSpeed;
+        joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FloatingJoystick>();
     }
 
     private void FixedUpdate()
@@ -32,13 +33,6 @@ public class PlayerController : MonoBehaviour
         }
         Move();
         PlayerAttack();
-    }
-
-    private void Update()
-    {
-        
-
-        
     }
 
     private void Move()
