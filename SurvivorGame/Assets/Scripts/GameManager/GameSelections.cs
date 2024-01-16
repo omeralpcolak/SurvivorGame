@@ -23,6 +23,6 @@ public class GameSelections : ScriptableObject
 
     public void UpdateCoinValue(int coinAmount)
     {
-        coin = coinAmount;
+        coin += coinAmount;
     }
 }
