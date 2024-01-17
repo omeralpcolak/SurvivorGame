@@ -181,3 +181,4 @@ MonoBehaviour:
   deathEffect: {fileID: 7830442014952612354, guid: 03287ab9558a0429abe45166aeb82526, type: 3}
   isObjectEnemy: 1
   xp: {fileID: 692324157455337678, guid: 10feddbc241d04f7badc9c13564f874e, type: 3}
+  coin: {fileID: 3291674225638611877, guid: 6375677d4ef124b6bbf5586221249a86, type: 3}

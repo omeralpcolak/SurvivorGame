@@ -880,7 +880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 3376406295376646220, guid: c49411306df3f4ce9afa6832464fb5a3, type: 3}
-  cooldown: 0.8
+  cooldown: 1.5
   radius: 15
 --- !u!114 &999661510
 MonoBehaviour:
@@ -910,8 +910,6 @@ MonoBehaviour:
   allSkills:
   - {fileID: 11400000, guid: b7491a98213024801aa36903237de0e3, type: 2}
   - {fileID: 11400000, guid: b960f42edfc6e4a7b9d0acc1d9d3ee38, type: 2}
-  - {fileID: 11400000, guid: 3d9c0c5d3f32d485b9e5ff3f73c8e993, type: 2}
-  - {fileID: 11400000, guid: fc71a5faf3f2043b384c9efaee0177e1, type: 2}
   joystick: {fileID: 1228867159}
   randomSkillPanel: {fileID: 272277545}
   randomSkillIcon: {fileID: 573005406}
