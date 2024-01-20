@@ -24,5 +24,7 @@ public class GameSelections : ScriptableObject
     public void UpdateCoinValue(int coinAmount)
     {
         coin += coinAmount;
+        PlayerPrefs.SetInt("Coin", coin);
+        PlayerPrefs.Save();
     }
 }

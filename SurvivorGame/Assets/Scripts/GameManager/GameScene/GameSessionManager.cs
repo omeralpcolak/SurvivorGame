@@ -32,7 +32,7 @@ public class GameSessionManager : MonoBehaviour
     private void OnDisable()
     {
         playerController.skills.Clear();
-        gameSelections.UpdateCoinValue(coin);
+        //gameSelections.UpdateCoinValue(coin);
     }
 
    

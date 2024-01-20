@@ -11,13 +11,23 @@ public class Health : MonoBehaviour
     public bool isObjectEnemy;
     public GameObject xp;
     public GameObject coin;
-    
+
+    private int currentHealth;
+    [SerializeField] private Healthbar healthbar;
+
+    private void Start()
+    {
+        currentHealth = health;
+        healthbar.UpdateHealthBar(health, currentHealth);
+    }
+
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        currentHealth -= damage;
+        healthbar.UpdateHealthBar(health, currentHealth);
         Instantiate(hitEffect, transform.position, Quaternion.identity,transform);
         CameraShake.instance.Shake(0.4f, 2f);
-        if (health<= 0)
+        if (currentHealth<= 0)
         {
             if (isObjectEnemy)
             {
