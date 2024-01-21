@@ -9,6 +9,7 @@ public class GameSelections : ScriptableObject
     public GameObject selectedPlayer;
     public int coin;
 
+
     public void InstantiateSelectedObjects()
     {
         Instantiate(selectedMap, Vector3.zero, Quaternion.identity);
@@ -19,6 +20,16 @@ public class GameSelections : ScriptableObject
     {
         selectedMap = null;
         selectedPlayer = null;
+    }
+
+    public void OnEnable()
+    {
+        LoadCoinValue();
+    }
+
+    public void LoadCoinValue()
+    {
+        coin = PlayerPrefs.GetInt("Coin", 0);
     }
 
     public void UpdateCoinValue(int coinAmount)

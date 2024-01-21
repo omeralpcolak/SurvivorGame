@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isItXP: 1
+  xpValue: 20
   coinPickUpEffect: {fileID: 0}
   xpPickUpEffect: {fileID: 5703114827577484912, guid: fc1d59351e84f4e28877576dcbb85e06, type: 3}
 --- !u!1001 &4660465434918318415

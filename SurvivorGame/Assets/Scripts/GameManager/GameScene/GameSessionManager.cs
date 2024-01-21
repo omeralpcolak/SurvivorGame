@@ -9,12 +9,13 @@ public class GameSessionManager : MonoBehaviour
 {
     public static GameSessionManager instance;
     public List<Skill> allSkills;
-    public GameObject joystick;
+    public GameObject gameUI;
     public GameObject randomSkillPanel;
     public Image randomSkillIcon;
     public TMP_Text randomSkillNameTxt;
     public bool gameStart;
     public int coin;
+
     public GameSelections gameSelections;
     
     private PlayerController playerController;
@@ -32,10 +33,9 @@ public class GameSessionManager : MonoBehaviour
     private void OnDisable()
     {
         playerController.skills.Clear();
-        //gameSelections.UpdateCoinValue(coin);
+        gameSelections.UpdateCoinValue(coin);
     }
 
-   
 
     private void SelectRandomSkill()
     {
@@ -68,8 +68,8 @@ public class GameSessionManager : MonoBehaviour
             CameraShake.instance.SetThePlayer();
             randomSkillPanel.SetActive(false);
             gameStart = true;
-            joystick.GetComponent<CanvasGroup>().interactable = enabled;
-            joystick.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
+            gameUI.GetComponent<CanvasGroup>().interactable = enabled;
+            gameUI.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
             StartCoroutine(enemySpawner.SpawnEnemy(enemySpawner.cooldown,gameStart,playerController.transform));
         });
         

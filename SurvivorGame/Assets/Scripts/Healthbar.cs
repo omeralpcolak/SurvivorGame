@@ -7,6 +7,8 @@ public class Healthbar : MonoBehaviour
 {
     [SerializeField] Image healthbarSprite;
     private Camera cam;
+    private float target = 1f;
+    private float reduceSpeed = .8f;
 
     private void Start()
     {
@@ -16,10 +18,11 @@ public class Healthbar : MonoBehaviour
     private void Update()
     {
         transform.rotation = Quaternion.LookRotation(transform.position - cam.transform.position);
+        healthbarSprite.fillAmount = Mathf.MoveTowards(healthbarSprite.fillAmount, target, reduceSpeed * Time.deltaTime);
     }
 
     public void UpdateHealthBar(float maxHealth, float currentHealth)
     {
-        healthbarSprite.fillAmount = currentHealth / maxHealth;
+        target = currentHealth / maxHealth;
     }
 }

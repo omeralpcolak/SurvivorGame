@@ -5,24 +5,29 @@ using DG.Tweening;
 
 public class DropItemMovement : MonoBehaviour
 {
-    private GameObject player;
+    
     private float xpMovementSpeed = 30f;
     private float upwardsForce = 5f;
-    private Rigidbody rb;
     private bool moveToThePlayer = false;
 
     private Tween rotateTween;
+    private GameObject player;
+    private LevelXpManager levelXpManager;
+    private Rigidbody rb;
 
     public bool isItXP;
+    public float xpValue;
     public GameObject coinPickUpEffect;
     public GameObject xpPickUpEffect;
 
     private void Start()
-    {
+    {   
+        
         player = GameObject.FindGameObjectWithTag("Player");
 
         if (isItXP)
         {
+            levelXpManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<LevelXpManager>();
             rb = GetComponent<Rigidbody>();
             StartCoroutine(MoveUpwards());
         }
@@ -70,6 +75,12 @@ public class DropItemMovement : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             InstantiateEffect();
+
+            if (isItXP)
+            {
+                GameSessionManager.instance.GetComponent<LevelXpManager>().AddXp(xpValue);
+            }
+
             if (!isItXP)
             {
                 rotateTween.Kill();
