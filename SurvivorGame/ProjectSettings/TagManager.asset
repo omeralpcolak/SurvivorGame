@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Joystick
+  - Manager
   layers:
   - Default
   - TransparentFX
