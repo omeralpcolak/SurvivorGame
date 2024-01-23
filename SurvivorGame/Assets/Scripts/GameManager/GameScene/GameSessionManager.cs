@@ -10,6 +10,8 @@ public class GameSessionManager : MonoBehaviour
 {
     public static GameSessionManager instance;
     public List<Skill> allSkills;
+    public List<Skill> allSkillUpgrades;
+    public List<Button> selectionButtons;
     public GameObject gameUI;
     public GameObject randomSkillPanel;
     public Image randomSkillIcon;
@@ -37,6 +39,29 @@ public class GameSessionManager : MonoBehaviour
         gameSelections.UpdateCoinValue(coin);
     }
 
+    private void RandomSkills()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            Skill selectedSkill = null;
+            bool isSkillAlreadyOwned = true;
+
+            while (isSkillAlreadyOwned)
+            {
+                int randomIndex = Random.Range(0, allSkills.Count);
+                selectedSkill = allSkills[randomIndex];
+
+                if (!playerController.skills.Contains(selectedSkill))
+                {
+                    isSkillAlreadyOwned = false;
+                }
+            }
+
+            selectionButtons[i].GetComponent<Image>().sprite = selectedSkill.skillProperty.icon;
+            selectionButtons[i].onClick.AddListener(() => playerController.skills.Add(selectedSkill));
+
+        }
+    }
 
     private void SelectRandomSkill()
     {
@@ -71,7 +96,7 @@ public class GameSessionManager : MonoBehaviour
             gameStart = true;
             gameUI.GetComponent<CanvasGroup>().interactable = enabled;
             gameUI.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
-            StartCoroutine(enemySpawner.SpawnEnemy(enemySpawner.cooldown,gameStart,playerController.transform));
+            StartCoroutine(enemySpawner.SpawnEnemy(gameStart,playerController.transform));
         });
         
     }

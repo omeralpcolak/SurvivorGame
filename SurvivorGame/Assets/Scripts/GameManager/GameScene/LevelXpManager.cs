@@ -26,7 +26,17 @@ public class LevelXpManager : MonoBehaviour
     public void AddXp(float value)
     {
         currentXp += value;
+        if(currentXp >= maxXp)
+        {
+            LevelUp();
+        }
         UpdateXpBar();
+    }
+
+    private void LevelUp()
+    {
+        currentXp = 0;
+        maxXp *= 1.5f;
     }
 
     private void UpdateXpBar()
