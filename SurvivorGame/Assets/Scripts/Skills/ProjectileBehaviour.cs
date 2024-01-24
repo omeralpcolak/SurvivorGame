@@ -19,6 +19,11 @@ public class ProjectileBehaviour : SkillBehaviour
         damage = skillProperty.damage;
     }
 
+    public override void Upgrade(int _level)
+    {
+        base.Upgrade(_level);
+    }
+
     private void Start()
     {
         transform.parent = null;
@@ -60,7 +65,7 @@ public class ProjectileBehaviour : SkillBehaviour
                 scaleTween.Kill(true);
                 Destroy(gameObject);
             });
-            
+        
         }
     }
 

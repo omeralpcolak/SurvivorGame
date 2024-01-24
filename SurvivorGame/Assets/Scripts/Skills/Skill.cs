@@ -30,6 +30,11 @@ public class Skill : ScriptableObject
         HandleCooldown(monoBehaviour);
     }
 
+    public void Upgrade()
+    {
+        
+    }
+
     private bool isEligibleForActivation()
     {
         if (isSingleUse && isUsed) return false;
