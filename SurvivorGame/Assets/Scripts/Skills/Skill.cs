@@ -19,6 +19,7 @@ public class Skill : ScriptableObject
     public SkillProperty skillProperty;
     public SkillBehaviour skillPrefab;
     public bool isSingleUse;
+    public bool isOwned;
     [HideInInspector] public bool isUsed = false;
     [HideInInspector] public bool isCooldown = false;
 
@@ -32,7 +33,7 @@ public class Skill : ScriptableObject
 
     public void Upgrade()
     {
-        
+        skillPrefab.Upgrade();
     }
 
     private bool isEligibleForActivation()

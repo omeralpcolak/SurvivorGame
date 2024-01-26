@@ -5,7 +5,6 @@ using DG.Tweening;
 
 public class ProjectileBehaviour : SkillBehaviour
 {
-    private int damage;
     private bool canMove = false;
     private bool isBeingDestroyed = false;
     private float searchRadius = 15f;
@@ -19,9 +18,9 @@ public class ProjectileBehaviour : SkillBehaviour
         damage = skillProperty.damage;
     }
 
-    public override void Upgrade(int _level)
+    public override void Upgrade()
     {
-        base.Upgrade(_level);
+        
     }
 
     private void Start()

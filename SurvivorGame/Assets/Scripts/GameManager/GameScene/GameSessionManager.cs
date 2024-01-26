@@ -38,7 +38,7 @@ public class GameSessionManager : MonoBehaviour
         playerController.skills.Clear();
         gameSelections.UpdateCoinValue(coin);
     }
-
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -54,7 +54,7 @@ public class GameSessionManager : MonoBehaviour
 
     public List<Skill> RandomSkills()
     {
-        List<Skill> tempSkills = new(allSkills);
+        List<Skill> tempSkills = new(allSkills.FindAll(x => !x.isOwned));
         tempSkills.Shuffle();
         return tempSkills;
     }

@@ -4,7 +4,6 @@ using UnityEngine;
 using DG.Tweening;
 public class SpinningBehaviour : SkillBehaviour
 {
-    private int damage;
     private bool canSpin = false;
     private bool isSpinning = false;
     private float rotateTime = 2f;
@@ -15,6 +14,10 @@ public class SpinningBehaviour : SkillBehaviour
         damage = skill.skillProperty.damage;
     }
 
+    public override void Upgrade()
+    {
+        
+    }
     private void Start()
     {
         transform.localScale = Vector3.zero;
@@ -23,6 +26,8 @@ public class SpinningBehaviour : SkillBehaviour
             canSpin = true;
         });
     }
+
+    
 
     private void FixedUpdate()
     {

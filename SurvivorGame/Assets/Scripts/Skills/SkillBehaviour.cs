@@ -6,7 +6,9 @@ public class SkillBehaviour : MonoBehaviour
 {
     protected Skill skill;
     protected SkillProperty skillProperty;
-    public int level;
+    protected int damage;
+
+
 
     public virtual void Init(Skill _skill, SkillProperty _skillProperty)
     {
@@ -14,8 +16,8 @@ public class SkillBehaviour : MonoBehaviour
         skillProperty = _skillProperty;
     }
 
-    public virtual void Upgrade(int _level)
+    public virtual void Upgrade()
     {
-        level = _level;
+        Debug.Log("skill is upgraded");
     }
 }

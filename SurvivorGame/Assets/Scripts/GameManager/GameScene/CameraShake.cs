@@ -13,7 +13,7 @@ public class CameraShake : MonoBehaviour
     {
         instance = this;
     }
-
+    
     public void SetThePlayer()
     {
         cinemachineVirtualCamera.Follow = GameObject.FindGameObjectWithTag("Player").transform;

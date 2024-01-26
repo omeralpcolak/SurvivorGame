@@ -24,6 +24,7 @@ public class RandomSkillItem : MonoBehaviour
         owner.Hide();
         if (!isItUpgrade)
         {
+            skill.isOwned = true;
             GameSessionManager.instance.AddSkill(skill);
             Debug.Log("skill is added");
         }
