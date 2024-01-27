@@ -21,6 +21,7 @@ public class GameSessionManager : MonoBehaviour
     public int coin;
 
     public bool isItUpgrade;
+    public bool isItFirstTime = true;
 
     public RandomSkillPanel randomSkillPanel;
     public GameSelections gameSelections;
@@ -34,6 +35,7 @@ public class GameSessionManager : MonoBehaviour
         gameSelections.InstantiateSelectedObjects();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         enemySpawner = GetComponent<EnemySpawner>();
+        StartTheGameSession();
     }
 
     private void OnDisable()
@@ -55,16 +57,24 @@ public class GameSessionManager : MonoBehaviour
         playerController.skills.Add(skill);
     }
 
-    public void RandomSkillorUpgradeMainFunction()
+    public void RandomSkillOrUpgradeMainFunction()
     {
         bool FlipCoin()
         {
             int randomNumber = Random.Range(0, 2);
-            return randomNumber == 0;
+            return randomNumber == 1;
         }
 
-        isItUpgrade = FlipCoin();
-
+        if (isItFirstTime)
+        {
+            isItUpgrade = false;
+            isItFirstTime = false;
+        }
+        else
+        {
+            isItUpgrade = FlipCoin();
+        }
+        
         randomSkillPanel.Show(RandomSkillOrUpgrade(isItUpgrade), isItUpgrade);
     }
 
@@ -84,14 +94,11 @@ public class GameSessionManager : MonoBehaviour
 
     public void StartTheGameSession()
     {
-        randomSkillPanel.GetComponent<CanvasGroup>().DOFade(0f, 1f).OnComplete(delegate
-        {
-            CameraShake.instance.SetThePlayer();
-            gameStart = true;
-            gameUI.GetComponent<CanvasGroup>().interactable = enabled;
-            gameUI.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
-            StartCoroutine(enemySpawner.SpawnEnemy(gameStart,playerController.transform));
-        });
-        
+        CameraShake.instance.SetThePlayer();
+        gameStart = true;
+        gameUI.GetComponent<CanvasGroup>().interactable = enabled;
+        gameUI.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
+        StartCoroutine(enemySpawner.SpawnEnemy(gameStart,playerController.transform));
+        RandomSkillOrUpgradeMainFunction();
     }
 }

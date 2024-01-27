@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class LevelXpManager : MonoBehaviour
 {
@@ -23,30 +24,37 @@ public class LevelXpManager : MonoBehaviour
 
     private void Update()
     {
-        xpBarSprite.fillAmount = Mathf.MoveTowards(xpBarSprite.fillAmount, target, addSpeed * Time.deltaTime);
+        //xpBarSprite.fillAmount = Mathf.MoveTowards(xpBarSprite.fillAmount, target, addSpeed * Time.deltaTime);
     }
 
     public void AddXp(float value)
     {
         currentXp += value;
-        if(currentXp >= maxXp)
+        UpdateXpBar();
+        if (currentXp >= maxXp)
         {
             LevelUp();
         }
-        UpdateXpBar();
+        
     }
 
     private void LevelUp()
     {
         currentXp = 0;
         maxXp *= 1.5f;
-        gameSessionManager.RandomSkillorUpgradeMainFunction();
-        
+        xpBarSprite.DOFillAmount(target, addSpeed).OnComplete(delegate
+        {
+            gameSessionManager.RandomSkillOrUpgradeMainFunction();
+        });
 
+        // I think there are some issues here ...
+        
+        
     }
 
     private void UpdateXpBar()
     {
         target = currentXp / maxXp;
+        xpBarSprite.DOFillAmount(target, addSpeed);
     }
 }
