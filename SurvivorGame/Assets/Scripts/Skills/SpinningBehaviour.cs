@@ -16,7 +16,9 @@ public class SpinningBehaviour : SkillBehaviour
 
     public override void Upgrade()
     {
-        
+        base.Upgrade();
+        rotateTime /= 1.1f;
+        transform.localScale *= 1.5f;
     }
     private void Start()
     {

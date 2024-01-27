@@ -13,11 +13,14 @@ public class GameSessionManager : MonoBehaviour
     public List<Skill> allSkills;
   
     public GameObject gameUI;
+    public GameObject pauseScreen;
   
     public Image randomSkillIcon;
     public TMP_Text randomSkillNameTxt;
     public bool gameStart;
     public int coin;
+
+    public bool isItUpgrade;
 
     public RandomSkillPanel randomSkillPanel;
     public GameSelections gameSelections;
@@ -41,10 +44,10 @@ public class GameSessionManager : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
-            randomSkillPanel.Show(RandomSkills(),false);
-        }
+            randomSkillPanel.Show(RandomSkillOrUpgrade(isItUpgrade),isItUpgrade);
+        }*/
     }
 
     public void AddSkill(Skill skill)
@@ -52,18 +55,31 @@ public class GameSessionManager : MonoBehaviour
         playerController.skills.Add(skill);
     }
 
-    public List<Skill> RandomSkills()
+    public void RandomSkillorUpgradeMainFunction()
     {
-        List<Skill> tempSkills = new(allSkills.FindAll(x => !x.isOwned));
+        bool FlipCoin()
+        {
+            int randomNumber = Random.Range(0, 2);
+            return randomNumber == 0;
+        }
+
+        isItUpgrade = FlipCoin();
+
+        randomSkillPanel.Show(RandomSkillOrUpgrade(isItUpgrade), isItUpgrade);
+    }
+
+    public List<Skill> RandomSkillOrUpgrade(bool isItUpgrade)
+    {
+        List<Skill> tempSkills = isItUpgrade ? new List<Skill>(playerController.skills) : allSkills.FindAll(x => !x.isOwned);
         tempSkills.Shuffle();
         return tempSkills;
     }
-    
-    private List<Skill> RandomSkillUpgrades()
+
+
+    public void ResumeAndPause()
     {
-        List<Skill> tempSkills = new(playerController.skills);
-        tempSkills.Shuffle();
-        return tempSkills;
+        Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
+        pauseScreen.SetActive(Time.timeScale == 0);
     }
 
     public void StartTheGameSession()

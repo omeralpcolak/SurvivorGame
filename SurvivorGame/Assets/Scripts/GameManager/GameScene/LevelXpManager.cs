@@ -12,8 +12,11 @@ public class LevelXpManager : MonoBehaviour
     private float target = 1;
     private float addSpeed = .8f; //xp adding speed (visual)
 
+    GameSessionManager gameSessionManager;
+
     private void Start()
     {
+        gameSessionManager = GetComponent<GameSessionManager>();
         currentXp = 0;
         UpdateXpBar();
     }
@@ -37,6 +40,9 @@ public class LevelXpManager : MonoBehaviour
     {
         currentXp = 0;
         maxXp *= 1.5f;
+        gameSessionManager.RandomSkillorUpgradeMainFunction();
+        
+
     }
 
     private void UpdateXpBar()

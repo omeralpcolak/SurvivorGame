@@ -9,6 +9,7 @@ public class RandomSkillPanel : MonoBehaviour
 
     public void Show(List<Skill> tempList, bool boolean)
     {
+        Time.timeScale = 0;
         gameObject.SetActive(true);
 
         skillContents.DestroyAllChildren();
@@ -22,6 +23,7 @@ public class RandomSkillPanel : MonoBehaviour
 
     public void Hide()
     {
+        Time.timeScale = 1;
         gameObject.SetActive(false);
     }
 }

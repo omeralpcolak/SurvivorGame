@@ -74,5 +74,6 @@ public class Skill : ScriptableObject
     {
         isUsed = false;
         isCooldown = false;
+        isOwned = false;
     }
 }
