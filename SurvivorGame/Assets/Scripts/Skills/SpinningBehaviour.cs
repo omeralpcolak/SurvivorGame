@@ -7,6 +7,8 @@ public class SpinningBehaviour : SkillBehaviour
     private bool canSpin = false;
     private bool isSpinning = false;
     private float rotateTime = 2f;
+    private Vector3 skillScale = new Vector3 (2, 2, 2);
+    
 
     public override void Init(Skill _skill, SkillProperty _skillProperty)
     {
@@ -15,20 +17,21 @@ public class SpinningBehaviour : SkillBehaviour
 
     public override void Upgrade()
     {
-        base.Upgrade();
-        rotateTime /= 1.1f;
-        transform.localScale *= 1.5f;
+        Debug.Log(name + ": upgrade is working");
+        skill.damage *= 2;
+        Debug.Log(skill.damage);
+        // having problems !!!
     }
+
     private void Start()
     {
         transform.localScale = Vector3.zero;
-        transform.DOScale(new Vector3(1, 1, 1), 0.5f).OnComplete(delegate
+        transform.DOScale(skillScale, 0.5f).OnComplete(delegate
         {
+            Debug.Log(transform.localScale);
             canSpin = true;
         });
     }
-
-    
 
     private void FixedUpdate()
     {

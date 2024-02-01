@@ -24,7 +24,6 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        Debug.Log("health amount is reduced : " + damage);
         healthbar.UpdateHealthBar(health, currentHealth);
         Instantiate(hitEffect, transform.position, Quaternion.identity,transform);
         CameraShake.instance.Shake(0.4f, 2f);

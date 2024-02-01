@@ -35,7 +35,7 @@ public class Skill : ScriptableObject
 
     public void Upgrade()
     {
-        damage *= 2;
+        skillPrefab.Upgrade();
     }
 
     private bool isEligibleForActivation()

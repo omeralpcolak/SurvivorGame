@@ -775,6 +775,8 @@ MonoBehaviour:
   allSkills:
   - {fileID: 11400000, guid: b7491a98213024801aa36903237de0e3, type: 2}
   - {fileID: 11400000, guid: b960f42edfc6e4a7b9d0acc1d9d3ee38, type: 2}
+  - {fileID: 11400000, guid: 3d9c0c5d3f32d485b9e5ff3f73c8e993, type: 2}
+  - {fileID: 11400000, guid: fc71a5faf3f2043b384c9efaee0177e1, type: 2}
   gameUI: {fileID: 1991517095}
   pauseScreen: {fileID: 0}
   randomSkillIcon: {fileID: 0}
