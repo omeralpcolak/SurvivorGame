@@ -44,7 +44,7 @@ public class LevelXpManager : MonoBehaviour
         maxXp *= 1.5f;
         xpBarSprite.DOFillAmount(target, addSpeed).OnComplete(delegate
         {
-            gameSessionManager.RandomSkillOrUpgradeMainFunction();
+            gameSessionManager.RandomSkillOrUpgradeFunction();
         });
 
         // I think there are some issues here ...

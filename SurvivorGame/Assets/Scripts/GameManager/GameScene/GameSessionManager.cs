@@ -19,6 +19,7 @@ public class GameSessionManager : MonoBehaviour
     public TMP_Text randomSkillNameTxt;
     public bool gameStart;
     public int coin;
+    [SerializeField] private int maxSkillCount;
 
     public bool isItUpgrade;
     public bool isItFirstTime = true;
@@ -38,31 +39,32 @@ public class GameSessionManager : MonoBehaviour
         StartTheGameSession();
     }
 
+
     private void OnDisable()
     {
         playerController.skills.Clear();
         gameSelections.UpdateCoinValue(coin);
     }
     
-    private void Update()
-    {
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            randomSkillPanel.Show(RandomSkillOrUpgrade(isItUpgrade),isItUpgrade);
-        }*/
-    }
 
     public void AddSkill(Skill skill)
     {
         playerController.skills.Add(skill);
     }
 
-    public void RandomSkillOrUpgradeMainFunction()
+    public void RandomSkillOrUpgradeFunction()
     {
         bool FlipCoin()
         {
             int randomNumber = Random.Range(0, 2);
             return randomNumber == 1;
+        }
+
+        List<Skill> RandomSkillOrUpgrade(bool isItUpgrade)
+        {
+            List<Skill> tempSkills = isItUpgrade ? new List<Skill>(playerController.skills) : allSkills.FindAll(x => !x.isOwned);
+            tempSkills.Shuffle();
+            return tempSkills;
         }
 
         if (isItFirstTime)
@@ -72,18 +74,13 @@ public class GameSessionManager : MonoBehaviour
         }
         else
         {
-            isItUpgrade = FlipCoin();
+            isItUpgrade = playerController.skills.Count >= maxSkillCount ? true : FlipCoin();
         }
         
         randomSkillPanel.Show(RandomSkillOrUpgrade(isItUpgrade), isItUpgrade);
     }
 
-    public List<Skill> RandomSkillOrUpgrade(bool isItUpgrade)
-    {
-        List<Skill> tempSkills = isItUpgrade ? new List<Skill>(playerController.skills) : allSkills.FindAll(x => !x.isOwned);
-        tempSkills.Shuffle();
-        return tempSkills;
-    }
+    
 
 
     public void ResumeAndPause()
@@ -92,13 +89,13 @@ public class GameSessionManager : MonoBehaviour
         pauseScreen.SetActive(Time.timeScale == 0);
     }
 
-    public void StartTheGameSession()
+    private void StartTheGameSession()
     {
+        RandomSkillOrUpgradeFunction();
         CameraShake.instance.SetThePlayer();
         gameStart = true;
         gameUI.GetComponent<CanvasGroup>().interactable = enabled;
         gameUI.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
-        StartCoroutine(enemySpawner.SpawnEnemy(gameStart,playerController.transform));
-        RandomSkillOrUpgradeMainFunction();
+        StartCoroutine(enemySpawner.SpawnEnemy(gameStart,playerController.transform));        
     }
 }

@@ -23,6 +23,8 @@ public class Skill : ScriptableObject
     [HideInInspector] public bool isUsed = false;
     [HideInInspector] public bool isCooldown = false;
 
+    public int damage;
+
     public void Activate(Transform spawnPos, MonoBehaviour monoBehaviour)
     {
         if (!isEligibleForActivation()) return;
@@ -33,7 +35,7 @@ public class Skill : ScriptableObject
 
     public void Upgrade()
     {
-        skillPrefab.Upgrade();
+        damage *= 2;
     }
 
     private bool isEligibleForActivation()
@@ -45,7 +47,7 @@ public class Skill : ScriptableObject
 
     private void ExecuteSkill(Transform spawnPos)
     {
-        Instantiate(skillPrefab, spawnPos.position, Quaternion.identity, spawnPos).Init(this, skillProperty);
+        Instantiate(skillPrefab, spawnPos.position, Quaternion.identity, spawnPos).Init(this,skillProperty);
         if (isSingleUse) isUsed = true;
     }
 
@@ -68,6 +70,7 @@ public class Skill : ScriptableObject
     private void OnEnable()
     {
         ResetState();
+        damage = skillProperty.damage;
     }
 
     private void ResetState()

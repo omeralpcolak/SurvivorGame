@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Healthbar : MonoBehaviour
 {
@@ -24,5 +25,6 @@ public class Healthbar : MonoBehaviour
     public void UpdateHealthBar(float maxHealth, float currentHealth)
     {
         target = currentHealth / maxHealth;
+        //healthbarSprite.DOFillAmount(target, reduceSpeed);
     }
 }

@@ -15,7 +15,6 @@ public class ProjectileBehaviour : SkillBehaviour
     public override void Init(Skill _skill, SkillProperty _skillProperty)
     {
         base.Init(_skill, _skillProperty);
-        damage = skillProperty.damage;
     }
 
     public override void Upgrade()
@@ -27,11 +26,10 @@ public class ProjectileBehaviour : SkillBehaviour
     {
         transform.parent = null;
         transform.localScale = Vector3.zero;
-
+        FindNearestEnemy();
         scaleTween = transform.DOScale(new Vector3(0.25f, 0.25f, 0.25f), 0.2f).OnComplete(delegate
         {
             canMove = true;
-            FindNearestEnemy();
         });
         
     }
@@ -89,6 +87,9 @@ public class ProjectileBehaviour : SkillBehaviour
             if (distToEnemy < minDistance && distToEnemy <= searchRadius)
             {
                 targetEnemy = enemy;
+                Vector3 directionToTarget = targetEnemy.transform.position - transform.position;
+                Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+                transform.rotation = targetRotation;
                 minDistance = distToEnemy;
             }
         }
@@ -98,7 +99,7 @@ public class ProjectileBehaviour : SkillBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<Health>().TakeDamage(damage);
+            other.GetComponent<Health>().TakeDamage(skill.damage);
             KillTween();
             Destroy(gameObject);
         }

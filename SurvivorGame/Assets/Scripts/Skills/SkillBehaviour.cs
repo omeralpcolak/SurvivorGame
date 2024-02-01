@@ -6,7 +6,6 @@ public class SkillBehaviour : MonoBehaviour
 {
     protected Skill skill;
     protected SkillProperty skillProperty;
-    protected int damage;
 
 
 
@@ -18,6 +17,6 @@ public class SkillBehaviour : MonoBehaviour
 
     public virtual void Upgrade()
     {
-        Debug.Log("skill is upgraded");
+        
     }
 }

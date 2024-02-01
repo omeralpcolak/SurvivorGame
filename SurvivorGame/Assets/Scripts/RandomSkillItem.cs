@@ -21,7 +21,6 @@ public class RandomSkillItem : MonoBehaviour
 
     public void OnClick()
     {
-        owner.Hide();
         if (!isItUpgrade)
         {
             skill.isOwned = true;
@@ -33,5 +32,6 @@ public class RandomSkillItem : MonoBehaviour
             skill.Upgrade();
             Debug.Log("skill is upgraded!");
         }
+        owner.Hide();
     }
 }

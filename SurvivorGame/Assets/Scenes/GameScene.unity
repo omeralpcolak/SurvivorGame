@@ -745,7 +745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 3376406295376646220, guid: c49411306df3f4ce9afa6832464fb5a3, type: 3}
   cooldown: 5
-  radius: 40
+  radius: 15
   numberOfEnemy: 10
 --- !u!114 &999661510
 MonoBehaviour:
@@ -775,14 +775,15 @@ MonoBehaviour:
   allSkills:
   - {fileID: 11400000, guid: b7491a98213024801aa36903237de0e3, type: 2}
   - {fileID: 11400000, guid: b960f42edfc6e4a7b9d0acc1d9d3ee38, type: 2}
-  allSkillUpgrades: []
-  randomPlayerSkills: []
-  selectionButtons: []
   gameUI: {fileID: 1991517095}
+  pauseScreen: {fileID: 0}
   randomSkillIcon: {fileID: 0}
   randomSkillNameTxt: {fileID: 0}
   gameStart: 0
   coin: 0
+  maxSkillCount: 2
+  isItUpgrade: 0
+  isItFirstTime: 1
   randomSkillPanel: {fileID: 272277550}
   gameSelections: {fileID: 11400000, guid: 5f7ad36d39edf472a9062082dc41c940, type: 2}
 --- !u!114 &999661512

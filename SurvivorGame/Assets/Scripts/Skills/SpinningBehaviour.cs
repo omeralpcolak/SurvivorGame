@@ -11,7 +11,6 @@ public class SpinningBehaviour : SkillBehaviour
     public override void Init(Skill _skill, SkillProperty _skillProperty)
     {
         base.Init(_skill, _skillProperty);
-        damage = skill.skillProperty.damage;
     }
 
     public override void Upgrade()
@@ -54,7 +53,7 @@ public class SpinningBehaviour : SkillBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<Health>().TakeDamage(damage);
+            other.GetComponent<Health>().TakeDamage(skill.damage);
         }
     }
 
