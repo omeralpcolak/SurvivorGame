@@ -18,6 +18,7 @@ public class Skill : ScriptableObject
 {
     public SkillProperty skillProperty;
     public SkillBehaviour skillPrefab;
+    public SkillBehaviour skillIns;
     public bool isSingleUse;
     public bool isOwned;
     [HideInInspector] public bool isUsed = false;
@@ -35,7 +36,7 @@ public class Skill : ScriptableObject
 
     public void Upgrade()
     {
-        skillPrefab.Upgrade();
+        skillIns.Upgrade();
     }
 
     private bool isEligibleForActivation()
@@ -47,7 +48,8 @@ public class Skill : ScriptableObject
 
     private void ExecuteSkill(Transform spawnPos)
     {
-        Instantiate(skillPrefab, spawnPos.position, Quaternion.identity, spawnPos).Init(this,skillProperty);
+        skillIns = Instantiate(skillPrefab, spawnPos.position, Quaternion.identity, spawnPos);
+        skillIns.Init(this, skillProperty);
         if (isSingleUse) isUsed = true;
     }
 

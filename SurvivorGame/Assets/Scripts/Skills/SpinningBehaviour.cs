@@ -17,9 +17,9 @@ public class SpinningBehaviour : SkillBehaviour
 
     public override void Upgrade()
     {
-        Debug.Log(name + ": upgrade is working");
+        skillScale *= 1.5f;
+        transform.DOScale(skillScale, 0.5f);
         skill.damage *= 2;
-        Debug.Log(skill.damage);
         // having problems !!!
     }
 
@@ -40,7 +40,7 @@ public class SpinningBehaviour : SkillBehaviour
             return;
         }
 
-        Spin();
+        //Spin();
     }
 
     private void Spin()

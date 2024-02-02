@@ -11,7 +11,7 @@ public class LevelXpManager : MonoBehaviour
     public float currentXp;
 
     private float target = 1;
-    private float addSpeed = .8f; //xp adding speed (visual)
+    private float addSpeed = .1f; //xp adding speed (visual)
 
     GameSessionManager gameSessionManager;
 
@@ -29,13 +29,15 @@ public class LevelXpManager : MonoBehaviour
 
     public void AddXp(float value)
     {
-        currentXp += value;
-        UpdateXpBar();
         if (currentXp >= maxXp)
         {
             LevelUp();
         }
-        
+        else
+        {
+            currentXp += value;
+            UpdateXpBar();
+        }
     }
 
     private void LevelUp()

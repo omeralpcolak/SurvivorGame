@@ -19,9 +19,9 @@ public class ProjectileBehaviour : SkillBehaviour
 
     public override void Upgrade()
     {
-        
-    }
+        skill.damage *= 2;
 
+    }
     private void Start()
     {
         transform.parent = null;
