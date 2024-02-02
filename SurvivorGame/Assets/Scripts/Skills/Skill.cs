@@ -11,6 +11,7 @@ public class SkillProperty
     public Sprite icon;
     public int damage;
     public float cooldownDuration;
+    public Vector3 skillScale;
 }
 
 [CreateAssetMenu(fileName ="New Skill", menuName ="Skill/BaseSkill")]
@@ -25,6 +26,7 @@ public class Skill : ScriptableObject
     [HideInInspector] public bool isCooldown = false;
 
     public int damage;
+    public Vector3 skillScale;
 
     public void Activate(Transform spawnPos, MonoBehaviour monoBehaviour)
     {
@@ -73,6 +75,7 @@ public class Skill : ScriptableObject
     {
         ResetState();
         damage = skillProperty.damage;
+        skillScale = skillProperty.skillScale;
     }
 
     private void ResetState()

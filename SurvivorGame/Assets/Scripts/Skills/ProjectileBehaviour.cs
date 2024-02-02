@@ -20,6 +20,7 @@ public class ProjectileBehaviour : SkillBehaviour
     public override void Upgrade()
     {
         skill.damage *= 2;
+        skill.skillScale *= 1.5f;
 
     }
     private void Start()
@@ -27,7 +28,7 @@ public class ProjectileBehaviour : SkillBehaviour
         transform.parent = null;
         transform.localScale = Vector3.zero;
         FindNearestEnemy();
-        scaleTween = transform.DOScale(new Vector3(0.25f, 0.25f, 0.25f), 0.2f).OnComplete(delegate
+        scaleTween = transform.DOScale(skill.skillScale, 0.2f).OnComplete(delegate
         {
             canMove = true;
         });

@@ -17,10 +17,9 @@ public class SpinningBehaviour : SkillBehaviour
 
     public override void Upgrade()
     {
-        skillScale *= 1.5f;
-        transform.DOScale(skillScale, 0.5f);
+        skill.skillScale *= 1.5f;
+        transform.DOScale(skill.skillScale, 0.5f);
         skill.damage *= 2;
-        // having problems !!!
     }
 
     private void Start()
