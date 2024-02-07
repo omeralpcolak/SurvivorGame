@@ -27,7 +27,6 @@ public class SpinningBehaviour : SkillBehaviour
         transform.localScale = Vector3.zero;
         transform.DOScale(skillScale, 0.5f).OnComplete(delegate
         {
-            Debug.Log(transform.localScale);
             canSpin = true;
         });
     }

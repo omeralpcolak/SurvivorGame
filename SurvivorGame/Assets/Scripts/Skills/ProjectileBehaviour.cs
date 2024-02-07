@@ -20,9 +20,6 @@ public class ProjectileBehaviour : SkillBehaviour
     public override void Upgrade()
     {
         skill.damage *= 2;
-        skill.skillScale *= 1.5f;
-        skill.skillProperty.level = 1;
-
     }
     private void Start()
     {
