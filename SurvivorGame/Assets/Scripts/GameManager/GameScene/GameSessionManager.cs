@@ -62,7 +62,7 @@ public class GameSessionManager : MonoBehaviour
 
         List<Skill> RandomSkillOrUpgrade(bool isItUpgrade)
         {
-            List<Skill> tempSkills = isItUpgrade ? new List<Skill>(playerController.skills) : allSkills.FindAll(x => !x.isOwned);
+            List<Skill> tempSkills = isItUpgrade ? new List<Skill>(playerController.skills.FindAll(x => x.canBeUpgraded)) : allSkills.FindAll(x => !x.isOwned);
             tempSkills.Shuffle();
             return tempSkills;
         }

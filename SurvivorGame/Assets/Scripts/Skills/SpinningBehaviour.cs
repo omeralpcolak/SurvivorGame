@@ -6,7 +6,7 @@ public class SpinningBehaviour : SkillBehaviour
 {
     private bool canSpin = false;
     private bool isSpinning = false;
-    private float rotateTime = 2f;
+    public float rotateSpeed = 50f;
     private Vector3 skillScale = new Vector3 (2, 2, 2);
     
 
@@ -17,9 +17,9 @@ public class SpinningBehaviour : SkillBehaviour
 
     public override void Upgrade()
     {
-        skill.skillScale *= 1.5f;
-        transform.DOScale(skill.skillScale, 0.5f);
         skill.damage *= 2;
+        skill.skillScale *= 1.5f;
+        transform.localScale = skill.skillScale;
     }
 
     private void Start()
@@ -39,16 +39,17 @@ public class SpinningBehaviour : SkillBehaviour
             return;
         }
 
-        //Spin();
+        Spin();
     }
 
     private void Spin()
     {
         isSpinning = true;
-        transform.DORotate(new Vector3(0f, 360f, 0f),rotateTime)
+        transform.DORotate(new Vector3(0f, 360f, 0f), skill.rotateTime)
             .SetLoops(-1, LoopType.Restart)
             .SetRelative()
             .SetEase(Ease.Linear);
+
     }
 
     private void OnTriggerEnter(Collider other)

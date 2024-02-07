@@ -12,6 +12,8 @@ public class SkillProperty
     public int damage;
     public float cooldownDuration;
     public Vector3 skillScale;
+    public float rotateTime;
+    public int level = 1;
 }
 
 [CreateAssetMenu(fileName ="New Skill", menuName ="Skill/BaseSkill")]
@@ -22,11 +24,15 @@ public class Skill : ScriptableObject
     public SkillBehaviour skillIns;
     public bool isSingleUse;
     public bool isOwned;
+    public bool canBeUpgraded;
+    public int level;
+
     [HideInInspector] public bool isUsed = false;
     [HideInInspector] public bool isCooldown = false;
 
-    public int damage;
-    public Vector3 skillScale;
+    [HideInInspector]public int damage;
+    [HideInInspector]public Vector3 skillScale;
+    [HideInInspector]public float rotateTime;
 
     public void Activate(Transform spawnPos, MonoBehaviour monoBehaviour)
     {
@@ -38,7 +44,16 @@ public class Skill : ScriptableObject
 
     public void Upgrade()
     {
-        skillIns.Upgrade();
+        if (level <= 5)
+        {
+            skillIns.Upgrade();
+            level++;
+        }
+        else
+        {
+            canBeUpgraded = false;
+        }
+        
     }
 
     private bool isEligibleForActivation()
@@ -76,6 +91,8 @@ public class Skill : ScriptableObject
         ResetState();
         damage = skillProperty.damage;
         skillScale = skillProperty.skillScale;
+        rotateTime = skillProperty.rotateTime;
+        level = skillProperty.level;
     }
 
     private void ResetState()
@@ -83,5 +100,6 @@ public class Skill : ScriptableObject
         isUsed = false;
         isCooldown = false;
         isOwned = false;
+        canBeUpgraded = true;
     }
 }

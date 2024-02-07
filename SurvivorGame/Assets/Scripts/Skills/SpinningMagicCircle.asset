@@ -17,7 +17,12 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 8cc7ca0e29ced7b4f84e8c4ef7deb28b, type: 3}
     damage: 15
     cooldownDuration: 0
+    skillScale: {x: 2, y: 2, z: 2}
   skillPrefab: {fileID: 8283095236367546763, guid: 80d42c7af514645e78d15d7f1a1608bf, type: 3}
+  skillIns: {fileID: 0}
   isSingleUse: 1
+  isOwned: 0
   isUsed: 0
   isCooldown: 0
+  damage: 15
+  skillScale: {x: 2, y: 2, z: 2}
