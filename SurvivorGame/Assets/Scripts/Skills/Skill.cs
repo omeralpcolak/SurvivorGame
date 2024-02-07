@@ -44,12 +44,16 @@ public class Skill : ScriptableObject
 
     public void Upgrade()
     {
-        if (level <= 5)
+        if (level < 5)
         {
             skillIns.Upgrade();
             level++;
+            
         }
-        else
+
+        int nextLevel = level++;
+
+        if(nextLevel >= 5)
         {
             canBeUpgraded = false;
         }
