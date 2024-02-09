@@ -50,8 +50,7 @@ public class Skill : ScriptableObject
             level++;
             
         }
-
-        int nextLevel = level++;
+        int nextLevel = level + 1;
 
         if(nextLevel >= 5)
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class RandomSkillItem : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class RandomSkillItem : MonoBehaviour
     private bool isItUpgrade;
     public Image star;
     public Transform levelStars;
+    public List<Image> allStars;
 
     public void Init(RandomSkillPanel _owner,Skill skill,bool isItUpgrade)
     {
@@ -22,14 +24,40 @@ public class RandomSkillItem : MonoBehaviour
 
         if (isItUpgrade == true)
         {
+            //List<Image> allStars = new List<Image>();
             Debug.Log(isItUpgrade);
             Debug.Log("func is working");
-            for(int i = 1; i<this.skill.level+1; i++)
+            for(int i = 0; i<this.skill.level+1; i++)
             {
-                Debug.Log(this.skill.level);
-                Debug.Log(i);
-                Instantiate(star, levelStars);
+                Image starIns = Instantiate(star, levelStars);
+                allStars.Add(starIns);
             }
+
+            foreach(Image star in allStars)
+            {
+                CanvasGroup canvasGroup = star.GetComponent<CanvasGroup>();
+                Debug.Log("foreach loop is working");
+                StartCoroutine(FadingStars(canvasGroup));
+            }
+
+        }
+    }
+
+    IEnumerator FadingStars(CanvasGroup canvasGroup)
+    {
+        while (true)
+        {
+            Debug.Log("fading begin");
+            canvasGroup.DOFade(0f, 1)
+                .WaitForCompletion(true);
+
+            yield return new WaitForSecondsRealtime(1);
+
+            canvasGroup.DOFade(1f, 1)
+                .WaitForCompletion(true);
+
+            yield return new WaitForSecondsRealtime(1);
+            Debug.Log("Fading finished");
         }
     }
 
