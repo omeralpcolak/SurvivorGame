@@ -17,7 +17,6 @@ public class EnemyController : MonoBehaviour
         transform.DOScale(new Vector3(1, 1, 1), 0.5f);
     }
 
-    
     void FixedUpdate()
     {
         if (gameObject)
@@ -25,5 +24,13 @@ public class EnemyController : MonoBehaviour
             navMeshAgent.destination = player.position;
         }
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.GetComponent<Health>().TakeDamage(10);
+        }
     }
 }

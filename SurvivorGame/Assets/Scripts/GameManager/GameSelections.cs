@@ -8,6 +8,7 @@ public class GameSelections : ScriptableObject
     public GameObject selectedMap;
     public GameObject selectedPlayer;
     public int coin;
+    public int inGameEarnedCoin;
 
 
     public void InstantiateSelectedObjects()
@@ -25,6 +26,7 @@ public class GameSelections : ScriptableObject
     public void OnEnable()
     {
         LoadCoinValue();
+        inGameEarnedCoin = 0;
     }
 
     public void LoadCoinValue()
@@ -34,6 +36,7 @@ public class GameSelections : ScriptableObject
 
     public void UpdateCoinValue(int coinAmount)
     {
+        inGameEarnedCoin += coinAmount;
         coin += coinAmount;
         PlayerPrefs.SetInt("Coin", coin);
         PlayerPrefs.Save();
