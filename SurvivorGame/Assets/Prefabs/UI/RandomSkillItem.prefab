@@ -93,6 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   star: {fileID: 795346425099080244, guid: b0f5f23a04d5f472c8cbc82ff76be41f, type: 3}
   levelStars: {fileID: 1051023208804298921}
+  allStars: []
 --- !u!114 &6315898839918768220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,8 +184,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.35428578}
   m_AnchorMax: {x: 1, y: 0.67142856}
-  m_AnchoredPosition: {x: 0, y: 8.892998}
-  m_SizeDelta: {x: 0, y: 19}
+  m_AnchoredPosition: {x: 0.0005340576, y: 8.892998}
+  m_SizeDelta: {x: 0.00097656, y: 19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3513057607526197078
 MonoBehaviour:
@@ -204,13 +205,13 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 2
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
 --- !u!114 &8838621261729839183
 MonoBehaviour:
@@ -224,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 1
+  m_HorizontalFit: 0
   m_VerticalFit: 0
 --- !u!1 &1586893652728237908
 GameObject:

@@ -858,7 +858,7 @@ MonoBehaviour:
   randomSkillNameTxt: {fileID: 0}
   gameStart: 0
   coin: 0
-  maxSkillCount: 2
+  maxSkillCount: 3
   isItUpgrade: 0
   isItFirstTime: 1
   randomSkillPanel: {fileID: 272277550}

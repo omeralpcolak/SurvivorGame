@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedMap: {fileID: 3646058925897982415, guid: fe132b13e23594142ab5b454d9c0e66f, type: 3}
   selectedPlayer: {fileID: 5038452772447407530, guid: 55d4c6e22bbd649629cca02edd1578ac, type: 3}
-  coin: 0
+  coin: 2235
