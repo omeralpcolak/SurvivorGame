@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private Transform player;
 
+    public GameObject xp, coin, deathEffect;
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -24,6 +26,14 @@ public class EnemyController : MonoBehaviour
             navMeshAgent.destination = player.position;
         }
         
+    }
+
+    public void EnemyDeath()
+    {
+        Instantiate(xp, transform.position, Quaternion.identity);
+        Instantiate(coin, transform.position, Quaternion.identity);
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

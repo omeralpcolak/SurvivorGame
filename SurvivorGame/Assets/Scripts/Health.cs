@@ -12,13 +12,11 @@ public enum EntityType
 public class Health : MonoBehaviour
 {
     public int health;
-    public GameObject hitEffect;
-    public GameObject deathEffect;
-    public bool isObjectEnemy;
-    public GameObject xp;
-    public GameObject coin;
-    public EntityType entityType;
     private int currentHealth;
+    public GameObject hitEffect;
+    public bool isObjectEnemy;
+    public EntityType entityType;
+    
     [SerializeField] private Healthbar healthbar;
 
    
@@ -42,16 +40,16 @@ public class Health : MonoBehaviour
             switch (entityType)
             {
                 case EntityType.Player:
-                    //player taking damage
+                    PlayerController playerController = GetComponent<PlayerController>();
+                    playerController.PlayerDeath();
                     break;
                 case EntityType.Enemy:
-                    Instantiate(xp, transform.position, Quaternion.identity);
-                    Instantiate(coin, transform.position, Quaternion.identity);
+                    EnemyController enemyController = GetComponent<EnemyController>();
+                    enemyController.EnemyDeath();
                     break;
             }
 
-            Instantiate(deathEffect, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            
         }
     }
 }

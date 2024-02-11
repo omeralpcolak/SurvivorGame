@@ -63,4 +63,9 @@ public class PlayerController : MonoBehaviour
             skill.Activate(spawnPos, this);
         }
     }
+
+    public void PlayerDeath()
+    {
+        playerAnim.SetTrigger("death");
+    }
 }
