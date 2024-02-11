@@ -183,6 +183,7 @@ MonoBehaviour:
   isObjectEnemy: 1
   xp: {fileID: 692324157455337678, guid: 10feddbc241d04f7badc9c13564f874e, type: 3}
   coin: {fileID: 3291674225638611877, guid: 6375677d4ef124b6bbf5586221249a86, type: 3}
+  entityType: 1
   healthbar: {fileID: 5698626356819524247}
 --- !u!1001 &9125614552099068218
 PrefabInstance:
