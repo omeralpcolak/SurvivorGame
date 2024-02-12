@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
     private Transform player;
-
+    [HideInInspector]public AttackWaveGroup ownerAttackWaveGroup;
     public GameObject xp, coin, deathEffect;
 
     void Start()
@@ -34,6 +34,7 @@ public class EnemyController : MonoBehaviour
         Instantiate(coin, transform.position, Quaternion.identity);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
+        ownerAttackWaveGroup.Killed();
     }
 
     private void OnTriggerEnter(Collider other)

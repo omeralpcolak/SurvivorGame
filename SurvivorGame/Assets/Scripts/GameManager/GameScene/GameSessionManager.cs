@@ -12,12 +12,11 @@ public class GameSessionManager : MonoBehaviour
     public static GameSessionManager instance;
 
     public List<Skill> allSkills;
-  
+
+    public TMP_Text inGameCoinTxt;
     public GameObject gameUI;
     public GameObject pauseScreen;
   
-    public Image randomSkillIcon;
-    public TMP_Text randomSkillNameTxt;
     public bool gameStart;
     public int coin;
     [SerializeField] private int maxSkillCount; // maximum number of skills that player can own.
@@ -40,6 +39,10 @@ public class GameSessionManager : MonoBehaviour
         StartTheGameSession();
     }
 
+    private void Update()
+    {
+        inGameCoinTxt.text = coin.ToString();
+    }
 
     private void OnDisable()
     {

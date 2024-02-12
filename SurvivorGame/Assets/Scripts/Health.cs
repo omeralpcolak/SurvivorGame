@@ -19,6 +19,7 @@ public class Health : MonoBehaviour
     
     [SerializeField] private Healthbar healthbar;
 
+    //Interface and event register and system actions.
    
 
     private void Start()

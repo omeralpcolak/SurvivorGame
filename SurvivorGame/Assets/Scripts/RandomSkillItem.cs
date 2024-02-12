@@ -34,12 +34,6 @@ public class RandomSkillItem : MonoBehaviour
             Image lastStar = allStars.Last();
             CanvasGroup lastIndCanvasGrp = lastStar.GetComponent<CanvasGroup>();
             StartCoroutine(FadingStars(lastIndCanvasGrp));
-
-            /*foreach(Image star in allStars)
-            {
-                CanvasGroup canvasGroup = star.GetComponent<CanvasGroup>();
-                StartCoroutine(FadingStars(canvasGroup));
-            }*/
         }
     }
 
@@ -47,9 +41,9 @@ public class RandomSkillItem : MonoBehaviour
     {
         while (true)
         {
-            yield return canvasGroup.DOFade(0f, 0.5f).SetUpdate(UpdateType.Normal, true).WaitForCompletion();
+            yield return canvasGroup.DOFade(0f, 0.5f).SetUpdate(UpdateType.Normal, true).WaitForKill();
 
-            yield return canvasGroup.DOFade(1f, 0.5f).SetUpdate(UpdateType.Normal, true).WaitForCompletion();
+            yield return canvasGroup.DOFade(1f, 0.5f).SetUpdate(UpdateType.Normal, true).WaitForKill();
         }
     }
 

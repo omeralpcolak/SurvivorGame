@@ -9,6 +9,8 @@ public class EnemySpawner : MonoBehaviour
     public float radius;
     public int numberOfEnemy;
 
+    public ParticleSystem.MinMaxCurve curve;
+
 
     /*public IEnumerator SpawnEnemy(float cooldown, bool gameStart,Transform center)
     {
