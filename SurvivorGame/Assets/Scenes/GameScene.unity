@@ -1206,44 +1206,6 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       spawnRadius: 15
-  - duration: 5
-    currentTime: 0
-    groups:
-    - enemyPrefab: {fileID: 5342348214165174498, guid: c49411306df3f4ce9afa6832464fb5a3, type: 3}
-      countCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 10.0917635
-          outSlope: 10.0917635
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.49545354
-          value: 5
-          inSlope: 0.09093666
-          outSlope: 0.09093666
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 1
-          value: 0
-          inSlope: -9.90989
-          outSlope: -9.90989
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      spawnRadius: 20
   waveIndex: 0
 --- !u!4 &1179230362
 Transform:

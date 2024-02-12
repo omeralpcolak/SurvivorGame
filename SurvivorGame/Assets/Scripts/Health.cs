@@ -3,15 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public enum EntityType
+public class Health
 {
-    Player,
-    Enemy
-}
 
-public class Health : MonoBehaviour
-{
-    public int health;
+    private int health;
+    private int healthMax;
+
+    public Health(int healthMax)
+    {
+        this.healthMax = healthMax;
+        health = healthMax;
+    }
+
+    public float GetHealthPercent()
+    {
+        return (float)health / healthMax;
+    }
+
+    public int GetHealth()
+    {
+        return health;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health < 0) health = 0;
+    }
+
+
+
+
+
+
+
+
+    /*public int health;
     private int currentHealth;
     public GameObject hitEffect;
     public Transform hitEffectPos;
@@ -52,5 +79,5 @@ public class Health : MonoBehaviour
 
             
         }
-    }
+    }*/
 }

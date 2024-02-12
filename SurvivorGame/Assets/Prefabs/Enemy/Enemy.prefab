@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1885122555657010972}
   - component: {fileID: 2433420247923758164}
   - component: {fileID: 5342348214165174498}
-  - component: {fileID: 6591704041080217449}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -165,26 +164,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251baf91338964149a8af394e9ac24c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectPos: {fileID: 0}
+  ownerAttackWaveGroup:
+    enemyPrefab: {fileID: 0}
+    countCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    totalEnemyCount: 0
+    spawnRadius: 0
   xp: {fileID: 692324157455337678, guid: 10feddbc241d04f7badc9c13564f874e, type: 3}
   coin: {fileID: 3291674225638611877, guid: 6375677d4ef124b6bbf5586221249a86, type: 3}
   deathEffect: {fileID: 7830442014952612354, guid: 03287ab9558a0429abe45166aeb82526, type: 3}
---- !u!114 &6591704041080217449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3376406295376646220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac2ff956c19fb48e487c965184c5f2aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 50
-  hitEffect: {fileID: 926394929370186789, guid: a0c71401af8c040d4a3d8248e2580b87, type: 3}
-  isObjectEnemy: 1
-  entityType: 1
-  healthbar: {fileID: 5698626356819524247}
 --- !u!1001 &9125614552099068218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -282,17 +275,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ae63a3616b541349537192d49fe3f4, type: 3}
---- !u!114 &5698626356819524247 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3580683240025351085, guid: 17ae63a3616b541349537192d49fe3f4, type: 3}
-  m_PrefabInstance: {fileID: 9125614552099068218}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f006f4581884145e2be7b2a510e7d759, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &5763915000184432910 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3555935170643750964, guid: 17ae63a3616b541349537192d49fe3f4, type: 3}

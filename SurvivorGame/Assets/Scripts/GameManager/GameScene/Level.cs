@@ -19,7 +19,7 @@ public class AttackWaveGroup
 {   
     public EnemyController enemyPrefab;
     public AnimationCurve countCurve;
-    private int totalEnemyCount;
+    [SerializeField]private int totalEnemyCount;
     public int spawnRadius;
     public void Spawn()
     {
@@ -47,6 +47,7 @@ public class AttackWaveGroup
     {
         while(totalEnemyCount < countCurve.Evaluate(ratio))
         {
+            Debug.Log(ratio);
             Spawn();
         }
     }

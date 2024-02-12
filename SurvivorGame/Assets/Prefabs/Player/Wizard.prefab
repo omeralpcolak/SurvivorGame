@@ -1367,7 +1367,6 @@ GameObject:
   - component: {fileID: 4298262693172283809}
   - component: {fileID: 6666307611403927854}
   - component: {fileID: 9070768596544409062}
-  - component: {fileID: 4069488782069794914}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Player
@@ -1505,22 +1504,6 @@ MonoBehaviour:
   joystick: {fileID: 0}
   spawnPos: {fileID: 8132726510627401110}
   skills: []
---- !u!114 &4069488782069794914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5038452772447407530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac2ff956c19fb48e487c965184c5f2aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 150
-  hitEffect: {fileID: 926394929370186789, guid: a0c71401af8c040d4a3d8248e2580b87, type: 3}
-  hitEffectPos: {fileID: 5681947082105512426}
-  entityType: 0
   healthbar: {fileID: 2570427875982426279}
 --- !u!1 &5124999272291575509
 GameObject:
@@ -2501,7 +2484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2520205573532669984, guid: 17ae63a3616b541349537192d49fe3f4, type: 3}
       propertyPath: m_Color.r
-      value: 0.09481192
+      value: 0.17174888
       objectReference: {fileID: 0}
     - target: {fileID: 3555935170643750964, guid: 17ae63a3616b541349537192d49fe3f4, type: 3}
       propertyPath: m_Pivot.x

@@ -2,10 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
+
 
 public class Healthbar : MonoBehaviour
 {
+    private HealthSystem healthSystem;
+    public Image healthImg;
+    public void Setup(HealthSystem healthSystem)
+    {
+        this.healthSystem = healthSystem;
+    }
+
+    private void Update()
+    {
+        healthImg.fillAmount = healthSystem.GetHealthPercent();
+    }
+    /*
     [SerializeField] Image healthbarSprite;
     private Camera cam;
     private float target = 1f;
@@ -26,5 +38,5 @@ public class Healthbar : MonoBehaviour
     {
         target = currentHealth / maxHealth;
         //healthbarSprite.DOFillAmount(target, reduceSpeed);
-    }
+    }*/
 }

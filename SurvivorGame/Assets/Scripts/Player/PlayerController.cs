@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public Transform spawnPos;
     public List<Skill> skills;
 
+    public Healthbar healthbar;
+
     private Vector3 moveVector;
     private float movementSpeed;
     private float rotationSpeed = 25f;
@@ -16,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody playerRb;
     private Animator playerAnim;
+    
 
     private void Start()
     {
@@ -23,6 +26,9 @@ public class PlayerController : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         movementSpeed = playerConfig.movementSpeed;
         joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FloatingJoystick>();
+
+        HealthSystem healthSystem = new HealthSystem(100);
+        healthbar.Setup(healthSystem);
     }
 
     private void FixedUpdate()

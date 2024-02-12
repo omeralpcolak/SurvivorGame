@@ -6,19 +6,26 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    private Animator enemyAnim;
     private NavMeshAgent navMeshAgent;
     private Transform player;
-    private Transform effectPos;
-    private Animator enemyAnim;
+    private Tween scaleTween;
+    [SerializeField]private Transform effectPos;
+    
     [HideInInspector]public AttackWaveGroup ownerAttackWaveGroup;
     public GameObject xp, coin, deathEffect;
-    Tween scaleTween;
+    public Healthbar healthbar;
+    private HealthSystem healthSystem;
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         enemyAnim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        healthSystem = new HealthSystem(100);
+        healthbar.Setup(healthSystem);
+
         transform.localScale = Vector3.zero;
         scaleTween = transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.5f);
     }
@@ -33,7 +40,7 @@ public class EnemyController : MonoBehaviour
         navMeshAgent.destination = player.position;
 
         float distance = Vector3.Distance(transform.position, player.position);
-        Debug.Log("Distance is " +distance);
+
         if(distance <= 3)
         {
             enemyAnim.SetBool("Attack", true);
@@ -47,7 +54,6 @@ public class EnemyController : MonoBehaviour
 
     public void EnemyDeath()
     {
-        //Vector3 pos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
         scaleTween.Kill();
         Instantiate(xp, effectPos.position, Quaternion.identity);
         Instantiate(coin, effectPos.position, Quaternion.identity);
@@ -58,9 +64,9 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Skill"))
         {
-            other.GetComponent<Health>().TakeDamage(10);
+
         }
     }
 }
