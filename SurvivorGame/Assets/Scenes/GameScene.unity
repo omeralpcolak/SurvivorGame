@@ -915,7 +915,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 999661508}
-  - component: {fileID: 999661509}
   - component: {fileID: 999661510}
   - component: {fileID: 999661511}
   - component: {fileID: 999661512}
@@ -941,102 +940,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &999661509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 999661506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cad3d462ab17542b1902118979d79ff7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 3376406295376646220, guid: c49411306df3f4ce9afa6832464fb5a3, type: 3}
-  cooldown: 5
-  radius: 15
-  numberOfEnemy: 10
-  curve:
-    m_Mode: 2
-    m_CurveMultiplier: 0
-    m_CurveMin:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_CurveMax:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: -2
-        outSlope: -2
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.13908857
-        value: 0.6599027
-        inSlope: -2.812831
-        outSlope: -2.812831
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.11907484
-      - serializedVersion: 3
-        time: 0.47566757
-        value: 0.57798874
-        inSlope: -0.034835
-        outSlope: -0.034835
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.5707786
-        outWeight: 0.3960575
-      - serializedVersion: 3
-        time: 0.6497254
-        value: 0.3702294
-        inSlope: 0.30633706
-        outSlope: 0.30633706
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.616905
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_ConstantMin: 0
-    m_ConstantMax: 0
 --- !u!114 &999661510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1265,7 +1168,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackWaves:
-  - duration: 10
+  - duration: 15
+    currentTime: 0
+    groups:
+    - enemyPrefab: {fileID: 3358929398916733999, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
+      countCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 9.924872
+          outSlope: 9.924872
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.50378484
+          value: 5
+          inSlope: -0.07570076
+          outSlope: -0.07570076
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 0
+          inSlope: -10.076274
+          outSlope: -10.076274
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      spawnRadius: 15
+  - duration: 5
     currentTime: 0
     groups:
     - enemyPrefab: {fileID: 5342348214165174498, guid: c49411306df3f4ce9afa6832464fb5a3, type: 3}
@@ -1274,27 +1215,27 @@ MonoBehaviour:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 10
-          inSlope: 20.183527
-          outSlope: 20.183527
+          value: 0
+          inSlope: 10.0917635
+          outSlope: 10.0917635
           tangentMode: 34
           weightedMode: 0
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 0.49545354
-          value: 20
-          inSlope: 0.18187332
-          outSlope: 0.18187332
+          value: 5
+          inSlope: 0.09093666
+          outSlope: 0.09093666
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 10
-          inSlope: -19.81978
-          outSlope: -19.81978
+          value: 0
+          inSlope: -9.90989
+          outSlope: -9.90989
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
@@ -1302,111 +1243,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    - enemyPrefab: {fileID: 5342348214165174498, guid: c49411306df3f4ce9afa6832464fb5a3, type: 3}
-      countCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 10
-          inSlope: 20.183527
-          outSlope: 20.183527
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.49545354
-          value: 20
-          inSlope: 0.18187332
-          outSlope: 0.18187332
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 1
-          value: 10
-          inSlope: -19.81978
-          outSlope: -19.81978
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-  - duration: 20
-    currentTime: 0
-    groups:
-    - enemyPrefab: {fileID: 5342348214165174498, guid: c49411306df3f4ce9afa6832464fb5a3, type: 3}
-      countCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 10
-          inSlope: 20.183527
-          outSlope: 20.183527
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.49545354
-          value: 20
-          inSlope: 0.18187332
-          outSlope: 0.18187332
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 1
-          value: 10
-          inSlope: -19.81978
-          outSlope: -19.81978
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-    - enemyPrefab: {fileID: 5342348214165174498, guid: c49411306df3f4ce9afa6832464fb5a3, type: 3}
-      countCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 10
-          inSlope: 20.183527
-          outSlope: 20.183527
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.49545354
-          value: 20
-          inSlope: 0.18187332
-          outSlope: 0.18187332
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 1
-          value: 10
-          inSlope: -19.81978
-          outSlope: -19.81978
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
+      spawnRadius: 20
   waveIndex: 0
 --- !u!4 &1179230362
 Transform:

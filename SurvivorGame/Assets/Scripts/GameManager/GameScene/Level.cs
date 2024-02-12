@@ -16,13 +16,26 @@ public class AttackWave
 
 [System.Serializable]
 public class AttackWaveGroup
-{
+{   
     public EnemyController enemyPrefab;
     public AnimationCurve countCurve;
     private int totalEnemyCount;
+    public int spawnRadius;
     public void Spawn()
     {
-        var enemy = GameObject.Instantiate(enemyPrefab);
+        Vector3 RandomCircle(Vector3 center, float radius)
+        {
+            float ang = Random.value * 360;
+            Vector3 pos;
+            pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
+            pos.y = center.y;
+            pos.z = center.z + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
+            return pos;
+        }
+
+        Vector3 spawnPos = RandomCircle(GameObject.FindGameObjectWithTag("Player").transform.position, spawnRadius);
+
+        var enemy = GameObject.Instantiate(enemyPrefab,spawnPos,Quaternion.identity);
         enemy.ownerAttackWaveGroup = this;
         totalEnemyCount++;
     }
@@ -30,9 +43,9 @@ public class AttackWaveGroup
     {
         totalEnemyCount--;
     }
-    public void Check(float percentage)
+    public void Check(float ratio)
     {
-        while(totalEnemyCount < countCurve.Evaluate(percentage))
+        while(totalEnemyCount < countCurve.Evaluate(ratio))
         {
             Spawn();
         }

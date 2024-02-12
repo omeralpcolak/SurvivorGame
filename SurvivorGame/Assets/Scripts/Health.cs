@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
     public int health;
     private int currentHealth;
     public GameObject hitEffect;
-    public bool isObjectEnemy;
+    public Transform hitEffectPos;
     public EntityType entityType;
     
     [SerializeField] private Healthbar healthbar;
@@ -32,7 +32,7 @@ public class Health : MonoBehaviour
     {
         currentHealth -= damage;
         healthbar.UpdateHealthBar(health, currentHealth);
-        Instantiate(hitEffect, transform.position, Quaternion.identity,transform);
+        Instantiate(hitEffect, hitEffectPos.position, Quaternion.identity,transform);
         CameraShake.instance.Shake(0.4f, 2f);
 
         if (currentHealth<= 0)

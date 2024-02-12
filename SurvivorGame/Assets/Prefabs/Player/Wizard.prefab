@@ -1519,10 +1519,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 150
   hitEffect: {fileID: 926394929370186789, guid: a0c71401af8c040d4a3d8248e2580b87, type: 3}
-  deathEffect: {fileID: 0}
-  isObjectEnemy: 0
-  xp: {fileID: 0}
-  coin: {fileID: 0}
+  hitEffectPos: {fileID: 5681947082105512426}
+  entityType: 0
   healthbar: {fileID: 2570427875982426279}
 --- !u!1 &5124999272291575509
 GameObject:

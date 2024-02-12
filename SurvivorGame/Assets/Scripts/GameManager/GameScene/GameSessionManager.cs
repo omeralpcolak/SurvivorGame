@@ -109,6 +109,6 @@ public class GameSessionManager : MonoBehaviour
         gameStart = true;
         gameUI.GetComponent<CanvasGroup>().interactable = enabled;
         gameUI.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
-        StartCoroutine(enemySpawner.SpawnEnemy(gameStart,playerController.transform));        
+        //StartCoroutine(enemySpawner.SpawnEnemy(gameStart,playerController.transform));        
     }
 }
