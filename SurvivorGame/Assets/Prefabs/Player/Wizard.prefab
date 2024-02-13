@@ -1367,6 +1367,7 @@ GameObject:
   - component: {fileID: 4298262693172283809}
   - component: {fileID: 6666307611403927854}
   - component: {fileID: 9070768596544409062}
+  - component: {fileID: 1333341418185233423}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Player
@@ -1504,7 +1505,18 @@ MonoBehaviour:
   joystick: {fileID: 0}
   spawnPos: {fileID: 8132726510627401110}
   skills: []
-  healthbar: {fileID: 2570427875982426279}
+--- !u!114 &1333341418185233423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5038452772447407530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac2ff956c19fb48e487c965184c5f2aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5124999272291575509
 GameObject:
   m_ObjectHideFlags: 0
@@ -2576,14 +2588,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3555935170643750964, guid: 17ae63a3616b541349537192d49fe3f4, type: 3}
   m_PrefabInstance: {fileID: 1304595730607252234}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2570427875982426279 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3580683240025351085, guid: 17ae63a3616b541349537192d49fe3f4, type: 3}
-  m_PrefabInstance: {fileID: 1304595730607252234}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f006f4581884145e2be7b2a510e7d759, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

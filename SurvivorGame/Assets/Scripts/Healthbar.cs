@@ -6,17 +6,6 @@ using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
 {
-    private HealthSystem healthSystem;
-    public Image healthImg;
-    public void Setup(HealthSystem healthSystem)
-    {
-        this.healthSystem = healthSystem;
-    }
-
-    private void Update()
-    {
-        healthImg.fillAmount = healthSystem.GetHealthPercent();
-    }
     /*
     [SerializeField] Image healthbarSprite;
     private Camera cam;

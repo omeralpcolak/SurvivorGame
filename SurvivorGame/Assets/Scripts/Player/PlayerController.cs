@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
     public PlayerConfig playerConfig;
-    public FloatingJoystick joystick;
+    [HideInInspector]public FloatingJoystick joystick;
     public Transform spawnPos;
     public List<Skill> skills;
-
-    public Healthbar healthbar;
+    public Action TakeDamage;
 
     private Vector3 moveVector;
     private float movementSpeed;
@@ -18,18 +18,23 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody playerRb;
     private Animator playerAnim;
+    private Health health;
     
 
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
+        health = GetComponent<Health>();
         movementSpeed = playerConfig.movementSpeed;
         joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FloatingJoystick>();
 
-        HealthSystem healthSystem = new HealthSystem(100);
-        healthbar.Setup(healthSystem);
+        health.OnHealthZero += PlayerDeath;
+        
+
     }
+
+    
 
     private void FixedUpdate()
     {

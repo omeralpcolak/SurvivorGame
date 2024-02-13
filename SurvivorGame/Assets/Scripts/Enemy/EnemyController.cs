@@ -14,17 +14,12 @@ public class EnemyController : MonoBehaviour
     
     [HideInInspector]public AttackWaveGroup ownerAttackWaveGroup;
     public GameObject xp, coin, deathEffect;
-    public Healthbar healthbar;
-    private HealthSystem healthSystem;
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         enemyAnim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        healthSystem = new HealthSystem(100);
-        healthbar.Setup(healthSystem);
 
         transform.localScale = Vector3.zero;
         scaleTween = transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.5f);
@@ -64,9 +59,9 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Skill"))
+        if (other.gameObject.CompareTag("Player"))
         {
-
+            
         }
     }
 }

@@ -2,39 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
-public class Health
+public class Health : MonoBehaviour, IHealth
 {
+    public int maxHealth;
+    private int currentHealth;
 
-    private int health;
-    private int healthMax;
+    public int MaxHealth => maxHealth;
+    public int CurrentHealth => currentHealth;
 
-    public Health(int healthMax)
+    public Action OnHealthZero;
+    public Action OnTakeDamage;
+
+    public void TakeDamage(int damageAmount)
     {
-        this.healthMax = healthMax;
-        health = healthMax;
+        currentHealth -= damageAmount;
+
+        if(currentHealth <= 0)
+        {
+            OnHealthZero();
+        }
+        else
+        {
+            OnTakeDamage();
+        }
+
     }
-
-    public float GetHealthPercent()
-    {
-        return (float)health / healthMax;
-    }
-
-    public int GetHealth()
-    {
-        return health;
-    }
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health < 0) health = 0;
-    }
-
-
-
-
-
 
 
 
@@ -80,4 +74,5 @@ public class Health
             
         }
     }*/
+    
 }

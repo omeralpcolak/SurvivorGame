@@ -1148,6 +1148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1179230362}
   - component: {fileID: 1179230361}
+  - component: {fileID: 1179230363}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -1205,6 +1206,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+      totalEnemyCount: 0
       spawnRadius: 15
   waveIndex: 0
 --- !u!4 &1179230362
@@ -1222,6 +1224,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1179230363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179230360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac2ff956c19fb48e487c965184c5f2aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1385786808
 GameObject:
   m_ObjectHideFlags: 0

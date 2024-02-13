@@ -98,7 +98,6 @@ public class ProjectileBehaviour : SkillBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<Health>().TakeDamage(skill.damage);
             KillTween();
             Destroy(gameObject);
         }
