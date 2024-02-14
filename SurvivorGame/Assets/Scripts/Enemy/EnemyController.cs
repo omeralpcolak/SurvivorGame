@@ -40,7 +40,7 @@ public class EnemyController : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, player.position);
 
-        if(distance <= 3)
+        if(distance <= 4)
         {
             enemyAnim.SetBool("Attack", true);
         }

@@ -7,23 +7,24 @@ using UnityEngine.UI;
 public class Healthbar : MonoBehaviour
 {
     public Image healthbarImg;
+    public Health health;
     private Camera cam;
-    private float target = 1f;
+    private float target;
 
     private void Start()
     {
         cam = Camera.main;
+        health.OnTakeDamage += UpdateHealthBar;
     }
 
     private void Update()
     {
         transform.rotation = Quaternion.LookRotation(transform.position - cam.transform.position);
-        healthbarImg.fillAmount = Mathf.MoveTowards(healthbarImg.fillAmount, target,0.8f*Time.deltaTime);
     }
 
-    public void UpdateHealthBar(int maxHealth, int currentHealth)
+    public void UpdateHealthBar()
     {
-        target = currentHealth / maxHealth;
-        
+        target = health.GetHealthPercent();
+        healthbarImg.fillAmount = target;
     }
 }
