@@ -10,19 +10,23 @@ public class EnemyController : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private Transform player;
     private Tween scaleTween;
+    private Health enemyHealth;
     [SerializeField]private Transform effectPos;
     
     [HideInInspector]public AttackWaveGroup ownerAttackWaveGroup;
-    public GameObject xp, coin, deathEffect;
+    public GameObject xp, coin, hitEffect,deathEffect;
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         enemyAnim = GetComponent<Animator>();
+        enemyHealth = GetComponent<Health>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         transform.localScale = Vector3.zero;
         scaleTween = transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.5f);
+        enemyHealth.OnHealthZero += EnemyDeath;
+        enemyHealth.OnTakeDamage += EnemyTakingDamage;
     }
 
     void FixedUpdate()
@@ -47,7 +51,15 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    public void EnemyDeath()
+
+    private void EnemyTakingDamage()
+    {
+        Instantiate(hitEffect, transform);
+        Debug.Log("enemy take damage");
+    }
+    
+
+    private void EnemyDeath()
     {
         scaleTween.Kill();
         Instantiate(xp, effectPos.position, Quaternion.identity);
@@ -61,7 +73,7 @@ public class EnemyController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            
+            other.gameObject.GetComponent<Health>().TakeDamage(10);
         }
     }
 }

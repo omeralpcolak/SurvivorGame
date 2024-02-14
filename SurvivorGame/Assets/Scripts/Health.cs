@@ -4,22 +4,26 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 
-public class Health : MonoBehaviour, IHealth
+public class Health : MonoBehaviour
 {
     public int maxHealth;
-    private int currentHealth;
-
-    public int MaxHealth => maxHealth;
-    public int CurrentHealth => currentHealth;
+    public int currentHealth;
 
     public Action OnHealthZero;
     public Action OnTakeDamage;
+    public Healthbar healthbar;
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+        healthbar.UpdateHealthBar(maxHealth, currentHealth);
+    }
 
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
-
-        if(currentHealth <= 0)
+        healthbar.UpdateHealthBar(maxHealth, currentHealth);
+        if (currentHealth <= 0)
         {
             OnHealthZero();
         }
@@ -27,7 +31,6 @@ public class Health : MonoBehaviour, IHealth
         {
             OnTakeDamage();
         }
-
     }
 
 

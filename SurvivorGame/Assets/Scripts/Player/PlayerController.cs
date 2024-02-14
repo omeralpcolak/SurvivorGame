@@ -30,11 +30,8 @@ public class PlayerController : MonoBehaviour
         joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FloatingJoystick>();
 
         health.OnHealthZero += PlayerDeath;
-        
-
+        health.OnTakeDamage += PlayerTakingDamage;
     }
-
-    
 
     private void FixedUpdate()
     {
@@ -73,6 +70,11 @@ public class PlayerController : MonoBehaviour
         {
             skill.Activate(spawnPos, this);
         }
+    }
+
+    private void PlayerTakingDamage()
+    {
+        Debug.Log("player take damage");
     }
 
     public void PlayerDeath()

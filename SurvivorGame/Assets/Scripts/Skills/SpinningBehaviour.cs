@@ -55,7 +55,7 @@ public class SpinningBehaviour : SkillBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-
+            other.gameObject.GetComponent<Health>().TakeDamage(skill.damage);
         }
     }
 
