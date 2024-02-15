@@ -55,7 +55,6 @@ public class EnemyController : MonoBehaviour
     private void EnemyTakingDamage()
     {
         Instantiate(hitEffect, transform);
-        Debug.Log("enemy take damage");
     }
     
 

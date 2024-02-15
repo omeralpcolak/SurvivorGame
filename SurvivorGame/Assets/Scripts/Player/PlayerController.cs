@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerTakingDamage()
     {
-        Debug.Log("player take damage");
+        
     }
 
     public void PlayerDeath()

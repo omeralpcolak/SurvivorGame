@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7497943075059913837}
-  - component: {fileID: -2246248419663180077}
   - component: {fileID: 8968302369536073156}
+  - component: {fileID: -7180905740244236804}
   m_Layer: 0
   m_Name: GoldCoin
   m_TagString: Untagged
@@ -34,21 +34,6 @@ Transform:
   - {fileID: 2470924141407202546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2246248419663180077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3291674225638611877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13d1b425beaf48399b620b3e0a58c9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isItXP: 0
-  coinPickUpEffect: {fileID: 1737061189263334677, guid: a01b1f82ab8864d30aeda5376570e6f0, type: 3}
-  xpPickUpEffect: {fileID: 0}
 --- !u!135 &8968302369536073156
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -70,6 +55,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.005
   m_Center: {x: 0, y: 0, z: 0.001}
+--- !u!114 &-7180905740244236804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3291674225638611877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c134e93ccc6bd461b86ab5f6d6d32245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemEffect: {fileID: 1737061189263334677, guid: a01b1f82ab8864d30aeda5376570e6f0, type: 3}
 --- !u!1 &7023714950338065073
 GameObject:
   m_ObjectHideFlags: 0

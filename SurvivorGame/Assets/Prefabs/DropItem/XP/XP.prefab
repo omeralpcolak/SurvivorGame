@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4837455763408916748}
   - component: {fileID: 6800888324668596892}
   - component: {fileID: 4523252805903042546}
-  - component: {fileID: 6866795776196089716}
+  - component: {fileID: 8897157398154557659}
   m_Layer: 0
   m_Name: XP
   m_TagString: Untagged
@@ -83,7 +83,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6866795776196089716
+--- !u!114 &8897157398154557659
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,13 +92,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 692324157455337678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13d1b425beaf48399b620b3e0a58c9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 73360131122ec4a6ba8c6b2c29d653c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isItXP: 1
-  xpValue: 20
-  coinPickUpEffect: {fileID: 0}
-  xpPickUpEffect: {fileID: 5703114827577484912, guid: fc1d59351e84f4e28877576dcbb85e06, type: 3}
+  itemEffect: {fileID: 5703114827577484912, guid: fc1d59351e84f4e28877576dcbb85e06, type: 3}
+  xpAmount: 20
 --- !u!1001 &4660465434918318415
 PrefabInstance:
   m_ObjectHideFlags: 0

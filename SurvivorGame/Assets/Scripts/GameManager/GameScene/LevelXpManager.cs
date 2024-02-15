@@ -10,8 +10,7 @@ public class LevelXpManager : MonoBehaviour
     public float maxXp;
     public float currentXp;
 
-    private float target = 1;
-    private float addSpeed = 10; //xp adding speed (visual)
+    private float target;
     private bool canLevelUp;
 
     GameSessionManager gameSessionManager;
@@ -25,9 +24,6 @@ public class LevelXpManager : MonoBehaviour
 
     private void Update()
     {
-        
-        xpBarSprite.fillAmount = Mathf.MoveTowards(xpBarSprite.fillAmount, target, addSpeed * Time.deltaTime);
-
         if(currentXp < maxXp)
         {
             canLevelUp = true;
@@ -52,20 +48,13 @@ public class LevelXpManager : MonoBehaviour
         gameSessionManager.RandomSkillOrUpgradeFunction();
         currentXp = 0;
         maxXp *= 1.5f;
-
-        /*xpBarSprite.DOFillAmount(target, addSpeed).OnComplete(delegate
-        {
-            gameSessionManager.RandomSkillOrUpgradeFunction();
-        });*/
-
-        // I think there are some issues here ...
-        
-        
+        UpdateXpBar();
     }
 
     private void UpdateXpBar()
     {
         target = currentXp / maxXp;
-        //xpBarSprite.DOFillAmount(target, addSpeed);
+        Debug.Log(currentXp);
+        xpBarSprite.fillAmount = target;
     }
 }

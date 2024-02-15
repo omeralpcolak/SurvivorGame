@@ -47,7 +47,6 @@ public class AttackWaveGroup
     {
         while(totalEnemyCount < countCurve.Evaluate(ratio))
         {
-            Debug.Log(ratio);
             Spawn();
         }
     }
