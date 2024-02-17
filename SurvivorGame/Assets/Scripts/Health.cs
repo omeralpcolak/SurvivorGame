@@ -19,6 +19,11 @@ public class Health : MonoBehaviour
         healthbar.UpdateHealthBar();
     }
 
+    public void SetUpHealth(int maxHealth)
+    {
+        this.maxHealth = maxHealth; 
+    }
+
 
     public float GetHealthPercent()
     {

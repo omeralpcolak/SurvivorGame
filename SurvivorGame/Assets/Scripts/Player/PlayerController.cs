@@ -3,34 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : CharacterBase
 {
-    public PlayerConfig playerConfig;
     [HideInInspector]public FloatingJoystick joystick;
     public Transform spawnPos;
     public List<Skill> skills;
-    public Action TakeDamage;
 
     private Vector3 moveVector;
-    private float movementSpeed;
     private float rotationSpeed = 25f;
     private bool canAttack;
-
-    private Rigidbody playerRb;
-    private Animator playerAnim;
-    private Health health;
     
 
     private void Start()
     {
-        playerRb = GetComponent<Rigidbody>();
-        playerAnim = GetComponent<Animator>();
-        health = GetComponent<Health>();
-        movementSpeed = playerConfig.movementSpeed;
+        SetUpComponents(this);
         joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FloatingJoystick>();
-
-        health.OnHealthZero += PlayerDeath;
-        health.OnTakeDamage += PlayerTakingDamage;
     }
 
     private void FixedUpdate()
@@ -39,11 +26,11 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        Move();
-        PlayerAttack();
+        CharacterMovement();
+        CharacterAttack();
     }
 
-    private void Move()
+    public override void CharacterMovement()
     {
         moveVector = Vector3.zero;
         moveVector.x = joystick.Horizontal * movementSpeed * Time.deltaTime;
@@ -54,17 +41,17 @@ public class PlayerController : MonoBehaviour
             Vector3 direction = Vector3.RotateTowards(transform.forward, moveVector, rotationSpeed * Time.deltaTime, 0);
             transform.rotation = Quaternion.LookRotation(direction);
 
-            playerAnim.SetBool("running", true);
+            anim.SetBool("running", true);
         }
         else if (joystick.Horizontal == 0 && joystick.Vertical == 0)
         {
-            playerAnim.SetBool("running", false);
+            anim.SetBool("running", false);
         }
 
-        playerRb.MovePosition(playerRb.position + moveVector);
+        rb.MovePosition(rb.position + moveVector);
     }
 
-    private void PlayerAttack()
+    public override void CharacterAttack()
     {
         foreach (Skill skill in skills)
         {
@@ -72,13 +59,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void PlayerTakingDamage()
+    public override void CharacterTakingDamage()
     {
         
     }
 
-    public void PlayerDeath()
+    public override void CharacterDeath()
     {
-        playerAnim.SetTrigger("death");
+        anim.SetTrigger("death");
     }
 }

@@ -4,13 +4,11 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : CharacterBase
 {
-    private Animator enemyAnim;
     private NavMeshAgent navMeshAgent;
     private Transform player;
     private Tween scaleTween;
-    private Health enemyHealth;
     [SerializeField]private Transform effectPos;
     
     [HideInInspector]public AttackWaveGroup ownerAttackWaveGroup;
@@ -18,15 +16,12 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        SetUpComponents(this);
         navMeshAgent = GetComponent<NavMeshAgent>();
-        enemyAnim = GetComponent<Animator>();
-        enemyHealth = GetComponent<Health>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         transform.localScale = Vector3.zero;
         scaleTween = transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.5f);
-        enemyHealth.OnHealthZero += EnemyDeath;
-        enemyHealth.OnTakeDamage += EnemyTakingDamage;
     }
 
     void FixedUpdate()
@@ -42,23 +37,23 @@ public class EnemyController : MonoBehaviour
 
         if(distance <= 4)
         {
-            enemyAnim.SetBool("Attack", true);
+            anim.SetBool("Attack", true);
         }
         else
         {
-            enemyAnim.SetBool("Attack", false);
+            anim.SetBool("Attack", false);
         }
 
     }
 
 
-    private void EnemyTakingDamage()
+    public override void CharacterTakingDamage()
     {
         Instantiate(hitEffect, transform);
     }
     
 
-    private void EnemyDeath()
+    public override void CharacterDeath()
     {
         scaleTween.Kill();
         Instantiate(xp, effectPos.position, Quaternion.identity);

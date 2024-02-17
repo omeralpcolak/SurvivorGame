@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4cd022a818254c7789163c1c8a3ff0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerConfig: {fileID: 11400000, guid: 0481801ded6a44a0e838962ca0f0b55c, type: 2}
+  config: {fileID: 11400000, guid: ad3b11c496cb14f7e8291be5720d8520, type: 2}
   joystick: {fileID: 0}
   spawnPos: {fileID: 8132726510627401110}
   skills: []
@@ -1517,7 +1517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2ff956c19fb48e487c965184c5f2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 0
   currentHealth: 0
   healthbar: {fileID: 7226917454610425402}
 --- !u!1 &5124999272291575509
