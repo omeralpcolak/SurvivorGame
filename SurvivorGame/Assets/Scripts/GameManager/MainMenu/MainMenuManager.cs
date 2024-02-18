@@ -27,17 +27,20 @@ public class MainMenuManager : MonoBehaviour
     {
         instance = this;
         currentMenu = mainMenu;
-        
     }
     
     public void StartTheGameScene()
     {
-        SceneManager.LoadScene("GameScene");
+        currentMenu.GetComponent<CanvasGroup>().DOFade(0, 1f).OnComplete(delegate
+        {
+            SceneManager.LoadScene("GameScene");
+        });
+        
     }
 
     public void ActivatePlayerSelectionMenu()
     {
-        ActivateMenu(MenuType.PLAYERSELECTIONMENU);
+        ActivateMenu(MenuType.MAPMENU);
     }
     public void BackToMainMenu()
     {

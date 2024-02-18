@@ -533,6 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251baf91338964149a8af394e9ac24c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 0bbc263f7a1a04c13a6f580c5ba6b274, type: 2}
   effectPos: {fileID: 4795350722333334}
   ownerAttackWaveGroup:
     enemyPrefab: {fileID: 0}
