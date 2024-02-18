@@ -7,10 +7,12 @@ using TMPro;
 public class ButtonItem : MonoBehaviour
 {   
     public GameSelections gameSelections;
-    public ButtonPanel buttonPanel;
+    public ButtonPanel ownerPanel;
 
     public GameObject holdingObject; //map or character.
     public GameObject cloneObject;
+
+    [HideInInspector]public GameObject cloneObjectInst;
 
     public bool isClickable;
 
@@ -27,10 +29,16 @@ public class ButtonItem : MonoBehaviour
         GetComponentInChildren<TMP_Text>().text = text;
     }
 
+    public void Init(ButtonPanel owner)
+    {
+        ownerPanel = owner;
+    }
+
     public void OnClick()
     {
-        buttonPanel.SetClickableOtherButton();
+        ownerPanel.SetClickableOtherButton();
         button.interactable = false;
+        cloneObjectInst = Instantiate(cloneObject);
 
     }
 }

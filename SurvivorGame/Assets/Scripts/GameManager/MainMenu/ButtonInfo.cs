@@ -14,6 +14,13 @@ public class ButtonInfo : MonoBehaviour
     private Button button;
     private TMP_Text textComponent;
 
+
+
+    //*******************************
+    // THIS SCRIPTT WILL BE DELETEDDD
+    // ******************************
+
+
     private void OnEnable()
     {
         button = GetComponent<Button>();

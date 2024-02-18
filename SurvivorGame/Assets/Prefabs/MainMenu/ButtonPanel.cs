@@ -8,10 +8,15 @@ public class ButtonPanel : MonoBehaviour
 {
     public List<ButtonItem> buttonItems;
 
+    private void Start()
+    {
+        buttonItems.ForEach(x => x.Init(this));
+    }
 
     public void SetClickableOtherButton()
     {
-        ButtonItem deClickableButton = buttonItems.Find(x => !x.isClickable);
-        deClickableButton.GetComponent<Button>().interactable = true;
+        ButtonItem notClickableButton = buttonItems.Find(x => !x.isClickable);
+        Destroy(notClickableButton.cloneObjectInst);
+        notClickableButton.GetComponent<Button>().interactable = true;
     }
 }
