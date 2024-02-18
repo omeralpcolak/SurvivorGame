@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2986915840681005547}
   - component: {fileID: 7383394481783641899}
   - component: {fileID: 4561465563851178696}
-  - component: {fileID: 7070190924436859912}
+  - component: {fileID: 5884356802261488214}
   m_Layer: 5
   m_Name: ObjectButton
   m_TagString: Untagged
@@ -122,9 +122,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7070190924436859912}
-        m_TargetAssemblyTypeName: ButtonInfo, Assembly-CSharp
-        m_MethodName: SelectGameobject
+      - m_Target: {fileID: 5884356802261488214}
+        m_TargetAssemblyTypeName: ButtonItem, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7070190924436859912
+--- !u!114 &5884356802261488214
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,14 +143,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 886167421363234988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e30d696c423c84abab3e9f5b23c4d02a, type: 3}
+  m_Script: {fileID: 11500000, guid: 62fa7a61bc7dd42428b5d288509dcaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSelections: {fileID: 11400000, guid: 5f7ad36d39edf472a9062082dc41c940, type: 2}
-  holdingObject: {fileID: 3646058925897982415, guid: fe132b13e23594142ab5b454d9c0e66f, type: 3}
-  isItMap: 1
-  icon: {fileID: 21300000, guid: ff164af82be884950a08bfc448b9b013, type: 3}
-  text: Deadly Forest
+  gameSelections: {fileID: 0}
+  holdingObject: {fileID: 0}
+  cloneObject: {fileID: 0}
+  cloneObjectInst: {fileID: 0}
+  isClickable: 0
+  icon: {fileID: 0}
+  text: 
 --- !u!1 &5958353045280500016
 GameObject:
   m_ObjectHideFlags: 0

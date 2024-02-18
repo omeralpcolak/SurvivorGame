@@ -7,7 +7,7 @@ using TMPro;
 public class ButtonItem : MonoBehaviour
 {   
     public GameSelections gameSelections;
-    public ButtonPanel ownerPanel;
+    private ButtonPanel ownerPanel;
 
     public GameObject holdingObject; //map or character.
     public GameObject cloneObject;
@@ -37,8 +37,18 @@ public class ButtonItem : MonoBehaviour
     public void OnClick()
     {
         ownerPanel.SetClickableOtherButton();
+        isClickable = false;
         button.interactable = false;
         cloneObjectInst = Instantiate(cloneObject);
 
+        switch (ownerPanel.type)
+        {
+            case Type.Map:
+                gameSelections.selectedMap = holdingObject;
+                break;
+            case Type.Character:
+                gameSelections.selectedPlayer = holdingObject;
+                break;
+        }
     }
 }

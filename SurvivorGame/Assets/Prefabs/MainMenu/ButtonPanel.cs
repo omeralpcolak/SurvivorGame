@@ -4,8 +4,15 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 
+public enum Type
+{
+    Map,
+    Character
+}
+
 public class ButtonPanel : MonoBehaviour
 {
+    public Type type;
     public List<ButtonItem> buttonItems;
 
     private void Start()
@@ -16,7 +23,9 @@ public class ButtonPanel : MonoBehaviour
     public void SetClickableOtherButton()
     {
         ButtonItem notClickableButton = buttonItems.Find(x => !x.isClickable);
-        Destroy(notClickableButton.cloneObjectInst);
+        notClickableButton.isClickable = true;
         notClickableButton.GetComponent<Button>().interactable = true;
+        Destroy(notClickableButton.cloneObjectInst);
+        
     }
 }

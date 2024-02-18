@@ -561,6 +561,7 @@ GameObject:
   - component: {fileID: 290667368}
   - component: {fileID: 290667367}
   - component: {fileID: 290667370}
+  - component: {fileID: 290667371}
   m_Layer: 5
   m_Name: MapMenu
   m_TagString: Untagged
@@ -668,6 +669,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &290667371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290667365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e81479b1d8a74f51b7a2d8896b28cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  buttonItems:
+  - {fileID: 2146105704}
+  - {fileID: 7063787577951486832}
+  - {fileID: 1433682817}
 --- !u!1 &303017583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,6 +1546,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: a981800f0457b4c44ba80f40729e61fc, type: 3}
+    - target: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+      propertyPath: text
+      value: Toxic Swamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+      propertyPath: cloneObject
+      value: 
+      objectReference: {fileID: 3646058925897982415, guid: fe132b13e23594142ab5b454d9c0e66f, type: 3}
+    - target: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+      propertyPath: holdingObject
+      value: 
+      objectReference: {fileID: 3646058925897982415, guid: fe132b13e23594142ab5b454d9c0e66f, type: 3}
+    - target: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+      propertyPath: gameSelections
+      value: 
+      objectReference: {fileID: 11400000, guid: 5f7ad36d39edf472a9062082dc41c940, type: 2}
     - target: {fileID: 7070190924436859912, guid: 43821b86128884fc19461de936160e9b, type: 3}
       propertyPath: icon
       value: 
@@ -1630,6 +1668,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8310715013332814976, guid: 43821b86128884fc19461de936160e9b, type: 3}
   m_PrefabInstance: {fileID: 1433682811}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1433682817 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+  m_PrefabInstance: {fileID: 1433682811}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62fa7a61bc7dd42428b5d288509dcaa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1531674173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2314,6 +2363,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8310715013332814976, guid: 43821b86128884fc19461de936160e9b, type: 3}
   m_PrefabInstance: {fileID: 1193271622293610814}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2146105704 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+  m_PrefabInstance: {fileID: 1193271622293610814}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62fa7a61bc7dd42428b5d288509dcaa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1193271622293610814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2326,6 +2386,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObjectButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 349fc63f8be47479fbb0ba6f8922abdc, type: 3}
+    - target: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+      propertyPath: text
+      value: Deadly Forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+      propertyPath: cloneObject
+      value: 
+      objectReference: {fileID: 637020943546220324, guid: a66cacd7f0dbe4e0a9744b23d14dd6e1, type: 3}
+    - target: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+      propertyPath: holdingObject
+      value: 
+      objectReference: {fileID: 637020943546220324, guid: a66cacd7f0dbe4e0a9744b23d14dd6e1, type: 3}
+    - target: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+      propertyPath: gameSelections
+      value: 
+      objectReference: {fileID: 11400000, guid: 5f7ad36d39edf472a9062082dc41c940, type: 2}
     - target: {fileID: 7070190924436859912, guid: 43821b86128884fc19461de936160e9b, type: 3}
       propertyPath: icon
       value: 
@@ -2568,6 +2648,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: ce8fb44531b5540b2b88e801859c3690, type: 3}
+    - target: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+      propertyPath: text
+      value: Fire Land
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+      propertyPath: cloneObject
+      value: 
+      objectReference: {fileID: 3646058925897982415, guid: fe132b13e23594142ab5b454d9c0e66f, type: 3}
+    - target: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+      propertyPath: holdingObject
+      value: 
+      objectReference: {fileID: 3646058925897982415, guid: fe132b13e23594142ab5b454d9c0e66f, type: 3}
+    - target: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+      propertyPath: gameSelections
+      value: 
+      objectReference: {fileID: 11400000, guid: 5f7ad36d39edf472a9062082dc41c940, type: 2}
     - target: {fileID: 7070190924436859912, guid: 43821b86128884fc19461de936160e9b, type: 3}
       propertyPath: icon
       value: 
@@ -2670,6 +2770,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8310715013332814976, guid: 43821b86128884fc19461de936160e9b, type: 3}
   m_PrefabInstance: {fileID: 7063787577951486826}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7063787577951486832 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5884356802261488214, guid: 43821b86128884fc19461de936160e9b, type: 3}
+  m_PrefabInstance: {fileID: 7063787577951486826}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62fa7a61bc7dd42428b5d288509dcaa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
