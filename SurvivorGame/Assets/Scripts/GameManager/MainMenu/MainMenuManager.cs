@@ -40,6 +40,11 @@ public class MainMenuManager : MonoBehaviour
 
     public void ActivatePlayerSelectionMenu()
     {
+        ActivateMenu(MenuType.PLAYERSELECTIONMENU);
+    }
+
+    public void ActivateMapMenu()
+    {
         ActivateMenu(MenuType.MAPMENU);
     }
     public void BackToMainMenu()
