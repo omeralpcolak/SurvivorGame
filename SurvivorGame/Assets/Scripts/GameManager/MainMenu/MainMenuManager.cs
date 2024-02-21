@@ -20,6 +20,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject mainMenu;
     public GameObject mapMenu;
     public GameObject playerSelectionMenu;
+    public Transform camLookAtPos;
 
     
 
@@ -29,6 +30,8 @@ public class MainMenuManager : MonoBehaviour
     {
         instance = this;
         currentMenu = mainMenu;
+
+        
         
     }
     
@@ -49,12 +52,14 @@ public class MainMenuManager : MonoBehaviour
 
     public void ActivateMapMenu()
     {
+        camLookAtPos.transform.DOMoveY(5,1);
         CamMove(new Vector3(0,10,-15));
         ActivateMenu(MenuType.MAPMENU);
     }
     public void BackToMainMenu()
     {
         CamMove(new Vector3(0, 1, -15));
+        camLookAtPos.transform.DOMoveY(20, 1);
         ActivateMenu(MenuType.MAINMENU);
     }
 

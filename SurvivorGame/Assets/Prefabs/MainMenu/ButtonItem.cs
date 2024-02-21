@@ -14,7 +14,7 @@ public class ButtonItem : MonoBehaviour
 
     [HideInInspector]public GameObject cloneObjectInst;
 
-    public bool isClickable;
+    public bool isClickable = true;
 
     public Sprite icon;
     public string text;
@@ -34,8 +34,12 @@ public class ButtonItem : MonoBehaviour
         ownerPanel = owner;
     }
 
+
+
+
     public void OnClick()
     {
+        Debug.Log("Clicked");
         ownerPanel.SetClickableOtherButton();
         isClickable = false;
         button.interactable = false;
