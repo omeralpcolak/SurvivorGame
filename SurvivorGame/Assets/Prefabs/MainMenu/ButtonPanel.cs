@@ -38,9 +38,6 @@ public class ButtonPanel : MonoBehaviour
             notClickableButton.GetComponent<Button>().interactable = true;
             Destroy(notClickableButton.cloneObjectInst);
         }
-        else
-        {
-            Debug.Log("All buttons are clickable.");
-        }
+        
     }
 }

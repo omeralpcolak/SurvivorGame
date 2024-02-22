@@ -31,7 +31,7 @@ public class XpController : PickupItemController
     {
         base.OnTriggeringWithThePlayer();
         Instantiate(itemEffect, player.transform);
-        GameSessionManager.instance.GetComponent<LevelXpManager>().AddXp(xpAmount);
+        XPManager.instance.AddXp(xpAmount);
     }
 
 

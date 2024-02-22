@@ -1385,8 +1385,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.025, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7251700845668070819}
   - {fileID: 3675555095120439577}
@@ -2489,6 +2489,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthbarCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2009353671415131862, guid: 17ae63a3616b541349537192d49fe3f4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009353671415131862, guid: 17ae63a3616b541349537192d49fe3f4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009353671415131862, guid: 17ae63a3616b541349537192d49fe3f4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009353671415131862, guid: 17ae63a3616b541349537192d49fe3f4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009353671415131862, guid: 17ae63a3616b541349537192d49fe3f4, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2520205573532669984, guid: 17ae63a3616b541349537192d49fe3f4, type: 3}
       propertyPath: m_FillAmount
       value: 1
@@ -2577,6 +2597,10 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 1333341418185233423}
+    - target: {fileID: 7750795960195107488, guid: 17ae63a3616b541349537192d49fe3f4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
