@@ -42,15 +42,18 @@ public class XPManager : MonoBehaviour
     public void AddXp(float value)
     {
 
-        if(currentXp >= maxXp)
+        float totalXp = currentXp + value;
+
+        if (totalXp >= maxXp)
         {
+            float remainingXp = totalXp - maxXp;
             LevelUp();
             gameSessionManager.RandomSkillOrUpgradeFunction();
+            AddXp(remainingXp);
             return;
         }
 
-        Debug.Log("amount of xp adding : " + value);
-        currentXp += value;
+        currentXp = totalXp;
         SetXP();
     }
 
