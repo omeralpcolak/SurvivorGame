@@ -39,9 +39,10 @@ public class GameSessionManager : MonoBehaviour
         StartTheGameSession();
     }
 
-    private void Update()
+    public void AddAndUpdateInGameCoinValue()
     {
-        inGameCoinTxt.text = coin.ToString();
+        coin++;
+        inGameCoinTxt.text = "Coin: " + coin.ToString();
     }
 
     private void OnDisable()

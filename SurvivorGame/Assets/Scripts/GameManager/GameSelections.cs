@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 [CreateAssetMenu(fileName ="New Game Selection", menuName ="Game Selection")]
 public class GameSelections : ScriptableObject
 {

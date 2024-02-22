@@ -19,7 +19,7 @@ public class CoinController : PickupItemController
     {
         rotateTween.Kill();
         Instantiate(itemEffect, transform.position,Quaternion.identity);
-        GameSessionManager.instance.coin++;
+        GameSessionManager.instance.AddAndUpdateInGameCoinValue();
         base.OnTriggeringWithThePlayer();
     }
 
