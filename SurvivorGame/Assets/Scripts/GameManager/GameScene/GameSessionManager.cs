@@ -57,6 +57,12 @@ public class GameSessionManager : MonoBehaviour
         playerController.skills.Add(skill);
     }
 
+    public void GameOver()
+    {
+        Debug.Log("GAME IS OVER");
+        gameStart = false;
+    }
+
     public void RandomSkillOrUpgradeFunction()
     {
         bool FlipCoin()

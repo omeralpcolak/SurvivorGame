@@ -26,8 +26,9 @@ public class EnemyController : CharacterBase
 
     void FixedUpdate()
     {
-        if (!gameObject)
+        if (!gameObject || !GameSessionManager.instance.gameStart)
         {
+            Destroy(gameObject);
             return;
         }
 

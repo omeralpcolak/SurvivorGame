@@ -60,7 +60,7 @@ public class Level : MonoBehaviour
 
     IEnumerator Start()
     {
-        while (true)
+        while (GameSessionManager.instance.gameStart)
         {
             yield return new WaitForSeconds(1f);
             CurrentWave.currentTime++;

@@ -67,5 +67,7 @@ public class PlayerController : CharacterBase
     public override void CharacterDeath()
     {
         anim.SetTrigger("death");
+        skills.Clear();
+        GameSessionManager.instance.GameOver();
     }
 }

@@ -39,7 +39,6 @@ public class ButtonItem : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("Clicked");
         ownerPanel.SetClickableOtherButton();
         isClickable = false;
         button.interactable = false;
