@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 850eb9e98f07e43059f97286952d2f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
   projectileSpeed: 12
 --- !u!1001 &6682835480395018453
 PrefabInstance:
@@ -157,6 +156,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7435323392431686024}
     m_Modifications:
+    - target: {fileID: 1418860875989360552, guid: 685c4da1f5bbd4ddea878034a31c94ee, type: 3}
+      propertyPath: scalingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912308512104207408, guid: 685c4da1f5bbd4ddea878034a31c94ee, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912308512104207408, guid: 685c4da1f5bbd4ddea878034a31c94ee, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912308512104207408, guid: 685c4da1f5bbd4ddea878034a31c94ee, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2912308512104207408, guid: 685c4da1f5bbd4ddea878034a31c94ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

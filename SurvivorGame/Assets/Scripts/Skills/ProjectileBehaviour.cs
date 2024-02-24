@@ -6,7 +6,6 @@ using DG.Tweening;
 public class ProjectileBehaviour : SkillBehaviour
 {
     private bool canMove = false;
-    private bool isBeingDestroyed = false;
     private float searchRadius = 15f;
     [SerializeField]private float projectileSpeed;
     private GameObject targetEnemy = null;
@@ -26,21 +25,11 @@ public class ProjectileBehaviour : SkillBehaviour
         transform.parent = null;
         transform.localScale = Vector3.zero;
         FindNearestEnemy();
-        scaleTween = transform.DOScale(skill.skillScale, 0.2f).OnComplete(delegate
-        {
-            canMove = true;
-        });
-        
     }
 
     private void FixedUpdate()
     {
         if (!canMove)
-        {
-            return;
-        }
-
-        if (isBeingDestroyed)
         {
             return;
         }
@@ -55,13 +44,7 @@ public class ProjectileBehaviour : SkillBehaviour
         }
         else
         {
-            isBeingDestroyed = true;
-            scaleTween = transform.DOScale(Vector3.zero, 0.2f).OnComplete(delegate
-            {
-                scaleTween.Kill(true);
-                Destroy(gameObject);
-            });
-        
+            KillTween();
         }
     }
 
@@ -70,6 +53,7 @@ public class ProjectileBehaviour : SkillBehaviour
         if(scaleTween != null)
         {
             scaleTween.Kill();
+            Destroy(gameObject);
         }
     }
 
@@ -85,12 +69,21 @@ public class ProjectileBehaviour : SkillBehaviour
             float distToEnemy = Vector3.Distance(enemy.transform.position, currentPos);
             if (distToEnemy < minDistance && distToEnemy <= searchRadius)
             {
+                scaleTween = transform.DOScale(skill.skillScale, 0.2f).OnComplete(delegate
+                {
+                    canMove = true;
+                });
                 targetEnemy = enemy;
                 Vector3 directionToTarget = targetEnemy.transform.position - transform.position;
                 Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
                 transform.rotation = targetRotation;
                 minDistance = distToEnemy;
             }
+        }
+
+        if(targetEnemy == null)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -100,7 +93,6 @@ public class ProjectileBehaviour : SkillBehaviour
         {
             other.gameObject.GetComponent<Health>().TakeDamage(skill.damage);
             KillTween();
-            Destroy(gameObject);
         }
     }
 }
