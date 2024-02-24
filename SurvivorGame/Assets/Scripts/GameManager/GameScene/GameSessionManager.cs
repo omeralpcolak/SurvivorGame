@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 using TMPro;
 using System.Linq;
@@ -28,14 +29,12 @@ public class GameSessionManager : MonoBehaviour
     public GameSelections gameSelections;
     
     private PlayerController playerController;
-    private EnemySpawner enemySpawner;
   
     private void Start()
     {
         instance = this;
         gameSelections.InstantiateSelectedObjects();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        enemySpawner = GetComponent<EnemySpawner>();
         StartTheGameSession();
     }
 
@@ -100,7 +99,11 @@ public class GameSessionManager : MonoBehaviour
         randomSkillPanel.Show(RandomSkillOrUpgrade(isItUpgrade), isItUpgrade);
     }
 
-    
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
+        Time.timeScale = 1;
+    }
 
 
     public void ResumeAndPause()
@@ -115,7 +118,6 @@ public class GameSessionManager : MonoBehaviour
         CameraShake.instance.SetThePlayer();
         gameStart = true;
         gameUI.GetComponent<CanvasGroup>().interactable = enabled;
-        gameUI.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
-        //StartCoroutine(enemySpawner.SpawnEnemy(gameStart,playerController.transform));        
+        gameUI.GetComponent<CanvasGroup>().DOFade(1, 0.5f);    
     }
 }

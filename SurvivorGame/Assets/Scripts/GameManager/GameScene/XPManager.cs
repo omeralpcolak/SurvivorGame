@@ -41,7 +41,6 @@ public class XPManager : MonoBehaviour
 
     public void AddXp(float value)
     {
-
         float totalXp = currentXp + value;
 
         if (totalXp >= maxXp)
