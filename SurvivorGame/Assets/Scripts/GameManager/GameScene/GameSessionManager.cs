@@ -14,9 +14,13 @@ public class GameSessionManager : MonoBehaviour
 
     public List<Skill> allSkills;
 
-    public TMP_Text inGameCoinTxt;
+    public TMP_Text inGameCoinTxt; //during game session
+    public TMP_Text totalCoinText;
+    public TMP_Text earnedCoinText; // game over screen
+
     public GameObject gameUI;
     public GameObject pauseScreen;
+    public GameObject gameOverScreen;
   
     public bool gameStart;
     public int coin;
@@ -44,12 +48,6 @@ public class GameSessionManager : MonoBehaviour
         inGameCoinTxt.text = "Coin: " + coin.ToString();
     }
 
-    private void OnDisable()
-    {
-        playerController.skills.Clear();
-        gameSelections.UpdateCoinValue(coin);
-    }
-    
 
     public void AddSkill(Skill skill)
     {
@@ -60,6 +58,12 @@ public class GameSessionManager : MonoBehaviour
     {
         Debug.Log("GAME IS OVER");
         gameStart = false;
+        gameUI.SetActive(false);
+        gameOverScreen.SetActive(true);
+
+  
+        StartCoroutine(CoinAnim(1,1f));
+
     }
 
     public void RandomSkillOrUpgradeFunction()
@@ -93,7 +97,7 @@ public class GameSessionManager : MonoBehaviour
         {
             List<Skill> tempSkills = isItUpgrade ? new List<Skill>(playerController.skills.FindAll(x => x.canBeUpgraded)) : allSkills.FindAll(x => !x.isOwned);
             tempSkills.Shuffle();
-            return tempSkills.GetRange(0,3);
+            return tempSkills.GetRange(0,maxSkillCount);
         }
 
         randomSkillPanel.Show(RandomSkillOrUpgrade(isItUpgrade), isItUpgrade);
@@ -105,6 +109,35 @@ public class GameSessionManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+
+    IEnumerator CoinAnim(int addingCoinAmount, float addingSpeed)
+    {
+        int targetCoinValue = coin + gameSelections.coin;
+
+        while(gameSelections.coin < targetCoinValue)
+        {
+            Debug.Log("routine is working");
+            gameSelections.coin += addingCoinAmount;
+            coin -= addingCoinAmount;
+            
+            if(gameSelections.coin > targetCoinValue)
+            {
+                gameSelections.coin = targetCoinValue;
+            }
+
+            if(coin < 0)
+            {
+                coin = 0;
+            }
+
+            totalCoinText.text = gameSelections.coin.ToString();
+            earnedCoinText.text = coin.ToString();
+            yield return new WaitForSeconds(addingSpeed);
+            addingSpeed -= 0.01f;
+        }
+
+        gameSelections.UpdateCoinValue(targetCoinValue);
+    }
 
     public void ResumeAndPause()
     {

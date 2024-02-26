@@ -21,10 +21,12 @@ public class Skill : ScriptableObject
 {
     public SkillProperty skillProperty;
     public SkillBehaviour skillPrefab;
-    [HideInInspector]public SkillBehaviour skillIns;
+    
     public bool isSingleUse;
     
     public int level;
+
+    [HideInInspector] public SkillBehaviour skillIns;
 
     [HideInInspector] public bool isOwned;
     [HideInInspector] public bool canBeUpgraded;
