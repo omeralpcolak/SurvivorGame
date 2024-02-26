@@ -21,7 +21,7 @@ public class Skill : ScriptableObject
 {
     public SkillProperty skillProperty;
     public SkillBehaviour skillPrefab;
-    public SkillBehaviour skillIns;
+    [HideInInspector]public SkillBehaviour skillIns;
     public bool isSingleUse;
     public bool isOwned;
     public bool canBeUpgraded;
@@ -96,6 +96,11 @@ public class Skill : ScriptableObject
         skillScale = skillProperty.skillScale;
         rotateTime = skillProperty.rotateTime;
         level = skillProperty.level;
+    }
+
+    public void DestroyInsPrefab()
+    {
+        Destroy(skillIns.gameObject);
     }
 
     private void ResetState()

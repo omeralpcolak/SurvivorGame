@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterBase : MonoBehaviour
 {
     public CharacterConfig config;
+    public GameObject hitEffect;
 
     protected Rigidbody rb;
     protected Health health;
@@ -27,7 +28,7 @@ public class CharacterBase : MonoBehaviour
 
     public virtual void CharacterAttack()
     {
-
+        
     }
 
     public virtual void CharacterMovement()
@@ -37,11 +38,11 @@ public class CharacterBase : MonoBehaviour
 
     public virtual void CharacterDeath()
     {
-
+        
     }
 
     public virtual void CharacterTakingDamage()
     {
-
+        Instantiate(hitEffect, transform);
     }
 }

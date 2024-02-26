@@ -61,13 +61,13 @@ public class PlayerController : CharacterBase
 
     public override void CharacterTakingDamage()
     {
-        
+        base.CharacterTakingDamage();
     }
 
     public override void CharacterDeath()
     {
         anim.SetTrigger("death");
-        skills.Clear();
+        skills.ForEach(x => x.DestroyInsPrefab());
         GameSessionManager.instance.GameOver();
     }
 }

@@ -12,7 +12,7 @@ public class EnemyController : CharacterBase
     [SerializeField]private Transform effectPos;
     
     [HideInInspector]public AttackWaveGroup ownerAttackWaveGroup;
-    public GameObject xp, coin, hitEffect,deathEffect;
+    public GameObject xp, coin,deathEffect;
 
     void Start()
     {
@@ -50,9 +50,9 @@ public class EnemyController : CharacterBase
 
     public override void CharacterTakingDamage()
     {
-        Instantiate(hitEffect, transform);
+        base.CharacterTakingDamage();
     }
-    
+
 
     public override void CharacterDeath()
     {

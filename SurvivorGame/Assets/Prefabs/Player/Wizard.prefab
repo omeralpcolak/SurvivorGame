@@ -1502,6 +1502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: ad3b11c496cb14f7e8291be5720d8520, type: 2}
+  hitEffect: {fileID: 8563519917426836436, guid: 7962e2e1665ff4054a8a92c73c588d16, type: 3}
   joystick: {fileID: 0}
   spawnPos: {fileID: 8132726510627401110}
   skills: []
