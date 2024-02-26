@@ -1571,6 +1571,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fc71a5faf3f2043b384c9efaee0177e1, type: 2}
   - {fileID: 11400000, guid: b960f42edfc6e4a7b9d0acc1d9d3ee38, type: 2}
   - {fileID: 11400000, guid: b7491a98213024801aa36903237de0e3, type: 2}
+  - {fileID: 11400000, guid: e57c219f56ffe49deab7a58611043aca, type: 2}
   inGameCoinTxt: {fileID: 323528304}
   gameUI: {fileID: 1991517095}
   pauseScreen: {fileID: 1823887906}
