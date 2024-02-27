@@ -103,7 +103,15 @@ public class Skill : ScriptableObject
 
     public void DestroyInsPrefab()
     {
-        Destroy(skillIns.gameObject);
+        if (skillIns)
+        {
+            Destroy(skillIns.gameObject);
+        }
+        else
+        {
+            return;
+        }
+        
     }
 
     private void ResetState()

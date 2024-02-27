@@ -23,7 +23,7 @@ public class GameSessionManager : MonoBehaviour
     public GameObject gameOverScreen;
   
     public bool gameStart;
-    public int coin;
+    public int coin = 0;
     [SerializeField] private int maxSkillCount; // maximum number of skills that player can own.
 
     public bool isItUpgrade;
@@ -44,7 +44,7 @@ public class GameSessionManager : MonoBehaviour
 
     public void AddAndUpdateInGameCoinValue()
     {
-        coin++;
+        coin += 10;
         inGameCoinTxt.text = "Coin: " + coin.ToString();
     }
 
@@ -61,8 +61,17 @@ public class GameSessionManager : MonoBehaviour
         gameUI.SetActive(false);
         gameOverScreen.SetActive(true);
 
-  
-        StartCoroutine(CoinAnim(1,1f));
+        if(coin == 0)
+        {
+            earnedCoinText.text = 0.ToString();
+            totalCoinText.text = "Total Coin: " + gameSelections.coin.ToString();
+        }
+        else
+        {
+            StartCoroutine(CoinAnim(1, 0.2f));
+        }
+
+        
 
     }
 
@@ -97,7 +106,7 @@ public class GameSessionManager : MonoBehaviour
         {
             List<Skill> tempSkills = isItUpgrade ? new List<Skill>(playerController.skills.FindAll(x => x.canBeUpgraded)) : allSkills.FindAll(x => !x.isOwned);
             tempSkills.Shuffle();
-            return tempSkills.GetRange(0,maxSkillCount);
+            return tempSkills.GetRange(0,3);
         }
 
         randomSkillPanel.Show(RandomSkillOrUpgrade(isItUpgrade), isItUpgrade);
@@ -112,6 +121,7 @@ public class GameSessionManager : MonoBehaviour
 
     IEnumerator CoinAnim(int addingCoinAmount, float addingSpeed)
     {
+       
         int targetCoinValue = coin + gameSelections.coin;
 
         while(gameSelections.coin < targetCoinValue)
@@ -130,7 +140,7 @@ public class GameSessionManager : MonoBehaviour
                 coin = 0;
             }
 
-            totalCoinText.text = gameSelections.coin.ToString();
+            totalCoinText.text = "Total coin: " + gameSelections.coin.ToString();
             earnedCoinText.text = coin.ToString();
             yield return new WaitForSeconds(addingSpeed);
             addingSpeed -= 0.01f;
