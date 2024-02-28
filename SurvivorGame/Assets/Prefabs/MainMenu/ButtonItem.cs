@@ -14,28 +14,37 @@ public class ButtonItem : MonoBehaviour
 
     [HideInInspector]public GameObject cloneObjectInst;
 
-    public bool isClickable = true;
+    public bool isClickable;
+    public bool isPurchased;
 
     public Sprite icon;
     public string text;
 
-    private TMP_Text textComponent;
+    public int price;
+    //public TMP_Text priceText;
+
     private Button button;
+    public Button buyButton;
+
+
+    //***********************************//
+    //********TRYING MY BEST :((*********//
+    //***********************************//
 
     private void Start()
     {
         button = GetComponent<Button>();
         button.image.sprite = icon;
         GetComponentInChildren<TMP_Text>().text = text;
+        buyButton.GetComponentInChildren<TMP_Text>().text = price.ToString();
+
+        CheckTheStatus();
     }
 
     public void Init(ButtonPanel owner)
     {
         ownerPanel = owner;
     }
-
-
-
 
     public void OnClick()
     {
@@ -54,4 +63,39 @@ public class ButtonItem : MonoBehaviour
                 break;
         }
     }
+
+    private void CheckTheStatus()
+    {
+        isPurchased = MainMenuManager.instance.isItemPurchased(text);
+
+        if(gameSelections.coin < price)
+        {
+            buyButton.GetComponent<Button>().interactable = false;
+        }
+
+        if (!isPurchased)
+        {
+            isClickable = false;
+            button.interactable = false;
+        }
+
+        if (isPurchased)
+        {
+            isClickable = true;
+            button.interactable = true;
+            buyButton.gameObject.SetActive(false);
+        }
+
+        
+    }
+
+    public void BuyButtonOnClick()
+    {
+        if (!isPurchased)
+        {
+            MainMenuManager.instance.PurchaseTheItem(price,text);
+            CheckTheStatus();
+        }
+    }
+
 }

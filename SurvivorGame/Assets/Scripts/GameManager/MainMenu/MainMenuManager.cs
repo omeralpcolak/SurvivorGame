@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using TMPro;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject playerSelectionMenu;
     public Transform camLookAtPos;
 
-    
+    public TMP_Text coinText;
 
     public GameSelections gameSelections;
     
@@ -30,11 +31,16 @@ public class MainMenuManager : MonoBehaviour
     {
         instance = this;
         currentMenu = mainMenu;
-
-        
+        UpdateCoinText();
+        //PlayerPrefs.DeleteAll();
         
     }
-    
+
+    public void UpdateCoinText()
+    {
+        coinText.text = gameSelections.coin.ToString();
+    }
+
     public void StartTheGameScene()
     {
         currentMenu.GetComponent<CanvasGroup>().DOFade(0, 1f).OnComplete(delegate
@@ -91,4 +97,23 @@ public class MainMenuManager : MonoBehaviour
     {
         cam.transform.DOMove(pos, 1f);
     }
+
+    public void PurchaseTheItem(int price, string itemName)
+    {
+        if (gameSelections.coin >= price)
+        {
+            gameSelections.coin -= price;
+            gameSelections.SaveCoin();
+            UpdateCoinText();
+        }
+
+        PlayerPrefs.SetInt(itemName + "_Purchased", 1);
+        PlayerPrefs.Save();
+    }
+
+    public bool isItemPurchased(string itemName)
+    {
+        return PlayerPrefs.GetInt(itemName + "_Purchased", 0) == 1;
+    }
+
 }

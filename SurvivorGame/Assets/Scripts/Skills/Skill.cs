@@ -101,8 +101,13 @@ public class Skill : ScriptableObject
         level = skillProperty.level;
     }
 
-    public void DestroyInsPrefab()
+    public void ResetState()
     {
+        isUsed = false;
+        isCooldown = false;
+        isOwned = false;
+        canBeUpgraded = true;
+
         if (skillIns)
         {
             Destroy(skillIns.gameObject);
@@ -111,14 +116,5 @@ public class Skill : ScriptableObject
         {
             return;
         }
-        
-    }
-
-    private void ResetState()
-    {
-        isUsed = false;
-        isCooldown = false;
-        isOwned = false;
-        canBeUpgraded = true;
     }
 }

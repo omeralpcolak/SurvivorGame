@@ -21,6 +21,8 @@ public class GameSessionManager : MonoBehaviour
     public GameObject gameUI;
     public GameObject pauseScreen;
     public GameObject gameOverScreen;
+
+    public Button backToMenuBtn;
   
     public bool gameStart;
     public int coin = 0;
@@ -65,14 +67,12 @@ public class GameSessionManager : MonoBehaviour
         {
             earnedCoinText.text = 0.ToString();
             totalCoinText.text = "Total Coin: " + gameSelections.coin.ToString();
+            backToMenuBtn.interactable = true;
         }
         else
         {
             StartCoroutine(CoinAnim(1, 0.2f));
         }
-
-        
-
     }
 
     public void RandomSkillOrUpgradeFunction()
@@ -106,7 +106,7 @@ public class GameSessionManager : MonoBehaviour
         {
             List<Skill> tempSkills = isItUpgrade ? new List<Skill>(playerController.skills.FindAll(x => x.canBeUpgraded)) : allSkills.FindAll(x => !x.isOwned);
             tempSkills.Shuffle();
-            return tempSkills.GetRange(0,3);
+            return tempSkills.Take(3).ToList();
         }
 
         randomSkillPanel.Show(RandomSkillOrUpgrade(isItUpgrade), isItUpgrade);
@@ -145,8 +145,9 @@ public class GameSessionManager : MonoBehaviour
             yield return new WaitForSeconds(addingSpeed);
             addingSpeed -= 0.01f;
         }
-
+        Debug.Log("coin is saved");
         gameSelections.UpdateCoinValue(targetCoinValue);
+        backToMenuBtn.interactable = true;
     }
 
     public void ResumeAndPause()

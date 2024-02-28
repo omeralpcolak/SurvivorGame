@@ -14,7 +14,9 @@ public class ButtonPanel : MonoBehaviour
 {
     public Type type;
     public List<ButtonItem> buttonItems;
-    private bool anyButtonClicked = false;
+    private bool anyButtonClicked;
+    private ButtonItem currentClickedButton;
+
 
     private void Start()
     {
@@ -25,19 +27,43 @@ public class ButtonPanel : MonoBehaviour
     public void SetClickableOtherButton()
     {
 
-        if (!anyButtonClicked)
+        bool anyButtonClickable = false;
+
+        foreach (ButtonItem buttonItem in buttonItems)
         {
-            anyButtonClicked = true;
+            if (buttonItem.isClickable && buttonItem != currentClickedButton)
+            {
+                anyButtonClickable = true;
+                break;
+            }
+        }
+
+        if (!anyButtonClickable && currentClickedButton != null)
+        {
+            currentClickedButton = null;
+            anyButtonClicked = false;
             return;
         }
 
-        ButtonItem notClickableButton = buttonItems.Find(x => !x.isClickable);
-        if (notClickableButton != null)
+        foreach (ButtonItem buttonItem in buttonItems)
         {
-            notClickableButton.isClickable = true;
-            notClickableButton.GetComponent<Button>().interactable = true;
-            Destroy(notClickableButton.cloneObjectInst);
+            if (!buttonItem.isPurchased)
+            {
+                buttonItem.isClickable = false;
+                buttonItem.GetComponent<Button>().interactable = false;
+                continue;
+            }
+
+            if (!buttonItem.isClickable && buttonItem != currentClickedButton)
+            {
+                buttonItem.isClickable = true;
+                buttonItem.GetComponent<Button>().interactable = true;
+                Destroy(buttonItem.cloneObjectInst);
+                break;
+            }
         }
-        
+
+
+
     }
 }

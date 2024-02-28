@@ -26,7 +26,6 @@ public class GameSelections : ScriptableObject
     public void OnEnable()
     {
         LoadCoinValue();
-        //inGameEarnedCoin = 0;
     }
 
     public void LoadCoinValue()
@@ -36,8 +35,13 @@ public class GameSelections : ScriptableObject
 
     public void UpdateCoinValue(int coinAmount)
     {
-        //inGameEarnedCoin += coinAmount;
         coin = coinAmount;
+        PlayerPrefs.SetInt("Coin", coin);
+        PlayerPrefs.Save();
+    }
+
+    public void SaveCoin()
+    {
         PlayerPrefs.SetInt("Coin", coin);
         PlayerPrefs.Save();
     }
