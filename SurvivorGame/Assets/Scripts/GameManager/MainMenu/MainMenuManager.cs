@@ -24,6 +24,7 @@ public class MainMenuManager : MonoBehaviour
     public Transform camLookAtPos;
 
     public TMP_Text coinText;
+    public GameObject popUpBubble;
 
     public GameSelections gameSelections;
     
@@ -43,12 +44,47 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartTheGameScene()
     {
-        currentMenu.GetComponent<CanvasGroup>().DOFade(0, 1f).OnComplete(delegate
+        GameObject insMap = gameSelections.selectedMap;
+        GameObject insChar = gameSelections.selectedPlayer;
+
+        if(insMap == null)
         {
-            SceneManager.LoadScene("GameScene");
-        });
+            PopUpBubble("Please select a map for starting the game.");
+            return;
+        }
+
+        if(insChar == null)
+        {
+            PopUpBubble("Please choose a character for starting the game.");
+            return;
+        }
+
+
+        if(insMap !=null && insChar != null)
+        {
+            currentMenu.GetComponent<CanvasGroup>().DOFade(0, 1f).OnComplete(delegate
+            {
+                SceneManager.LoadScene("GameScene");
+            });
+        }
+        
         
     }
+
+    private void PopUpBubble(string text)
+    {
+        popUpBubble.GetComponentInChildren<TMP_Text>().text = text;
+        StartCoroutine(PopUpBubbleRtn());
+
+        IEnumerator PopUpBubbleRtn()
+        {
+            popUpBubble.transform.DOScale(5, 0.5f);
+            yield return new WaitForSeconds(1f);
+            popUpBubble.transform.DOScale(0f, 0.5f);
+        }
+        
+    }
+
 
     public void ActivatePlayerSelectionMenu()
     {

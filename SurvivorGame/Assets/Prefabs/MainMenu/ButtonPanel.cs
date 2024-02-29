@@ -14,7 +14,6 @@ public class ButtonPanel : MonoBehaviour
 {
     public Type type;
     public List<ButtonItem> buttonItems;
-    private bool anyButtonClicked;
     private ButtonItem currentClickedButton;
 
 
@@ -41,7 +40,6 @@ public class ButtonPanel : MonoBehaviour
         if (!anyButtonClickable && currentClickedButton != null)
         {
             currentClickedButton = null;
-            anyButtonClicked = false;
             return;
         }
 

@@ -115,6 +115,7 @@ public class GameSessionManager : MonoBehaviour
     public void BackToMainMenu()
     {
         SceneManager.LoadScene("MainMenuScene");
+        gameSelections.ResetSelectedObjects();
         Time.timeScale = 1;
     }
 
