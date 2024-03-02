@@ -66,7 +66,7 @@ public class ButtonItem : MonoBehaviour
 
     private void CheckTheStatus()
     {
-        isPurchased = MainMenuManager.instance.isItemPurchased(text);
+        isPurchased = gameSelections.isItemPurchased(text);
 
         if(gameSelections.coin < price)
         {
@@ -93,7 +93,7 @@ public class ButtonItem : MonoBehaviour
     {
         if (!isPurchased)
         {
-            MainMenuManager.instance.PurchaseTheItem(price,text);
+            gameSelections.PurchaseTheItem(price,text);
             CheckTheStatus();
         }
     }

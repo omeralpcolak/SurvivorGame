@@ -84,8 +84,6 @@ public class MainMenuManager : MonoBehaviour
         }
         
     }
-
-
     public void ActivatePlayerSelectionMenu()
     {
         CamMove(new Vector3(0,1,-7));
@@ -134,22 +132,6 @@ public class MainMenuManager : MonoBehaviour
         cam.transform.DOMove(pos, 1f);
     }
 
-    public void PurchaseTheItem(int price, string itemName)
-    {
-        if (gameSelections.coin >= price)
-        {
-            gameSelections.coin -= price;
-            gameSelections.SaveCoin();
-            UpdateCoinText();
-        }
-
-        PlayerPrefs.SetInt(itemName + "_Purchased", 1);
-        PlayerPrefs.Save();
-    }
-
-    public bool isItemPurchased(string itemName)
-    {
-        return PlayerPrefs.GetInt(itemName + "_Purchased", 0) == 1;
-    }
+   
 
 }

@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
 
     public void SetUpHealth(int maxHealth)
     {
-        this.maxHealth = maxHealth; 
+        this.maxHealth = maxHealth;
     }
 
 
@@ -41,5 +41,5 @@ public class Health : MonoBehaviour
             OnHealthZero();
         }
     }
-    
+
 }

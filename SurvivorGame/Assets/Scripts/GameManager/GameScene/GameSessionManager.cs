@@ -28,8 +28,8 @@ public class GameSessionManager : MonoBehaviour
     public int coin = 0;
     [SerializeField] private int maxSkillCount; // maximum number of skills that player can own.
 
-    public bool isItUpgrade;
-    public bool isItFirstTime = true;
+    private bool isItUpgrade;
+    private bool isItFirstTime = true;
 
     public RandomSkillPanel randomSkillPanel;
     public GameSelections gameSelections;

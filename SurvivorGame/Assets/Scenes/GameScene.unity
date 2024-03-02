@@ -1888,8 +1888,6 @@ MonoBehaviour:
   gameStart: 0
   coin: 0
   maxSkillCount: 3
-  isItUpgrade: 0
-  isItFirstTime: 1
   randomSkillPanel: {fileID: 272277550}
   gameSelections: {fileID: 11400000, guid: 5f7ad36d39edf472a9062082dc41c940, type: 2}
 --- !u!114 &999661512
@@ -2139,6 +2137,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackWaves:
+  - duration: 10
+    currentTime: 0
+    groups:
+    - enemyPrefab: {fileID: 3358929398916733999, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
+      countCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 9.924872
+          outSlope: 9.924872
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.50378484
+          value: 5
+          inSlope: -0.07570076
+          outSlope: -0.07570076
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 0
+          inSlope: -10.076274
+          outSlope: -10.076274
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      totalEnemyCount: 0
+      spawnRadius: 15
   - duration: 10
     currentTime: 0
     groups:

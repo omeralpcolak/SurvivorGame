@@ -1,0 +1,30 @@
+{
+    "attackWaves": [
+      {
+        "duration": 10.0,
+        "groups": [
+          {
+            "countCurve": [
+              {"time": 0.0, "count": 5},
+              {"time": 0.5, "count": 10},
+              {"time": 1.0, "count": 15}
+            ],
+            "spawnRadius": 5
+          }
+        ]
+      },
+      {
+        "duration": 15.0,
+        "groups": [
+          {
+            "countCurve": [
+              {"time": 0.0, "count": 3},
+              {"time": 0.3, "count": 8},
+              {"time": 0.7, "count": 12}
+            ],
+            "spawnRadius": 7
+          }
+        ]
+      }
+    ]
+  }

@@ -8,6 +8,7 @@ public class GameSelections : ScriptableObject
     public GameObject selectedMap;
     public GameObject selectedPlayer;
     public int coin;
+    public TextAsset levelJSONFile;
     //public int inGameEarnedCoin;
 
 
@@ -45,5 +46,23 @@ public class GameSelections : ScriptableObject
     {
         PlayerPrefs.SetInt("Coin", coin);
         PlayerPrefs.Save();
+    }
+
+    public void PurchaseTheItem(int price, string itemName)
+    {
+        if (coin >= price)
+        {
+            coin -= price;
+            SaveCoin();
+            MainMenuManager.instance.UpdateCoinText();
+        }
+
+        PlayerPrefs.SetInt(itemName + "_Purchased", 1);
+        PlayerPrefs.Save();
+    }
+
+    public bool isItemPurchased(string itemName)
+    {
+        return PlayerPrefs.GetInt(itemName + "_Purchased", 0) == 1;
     }
 }

@@ -52,22 +52,34 @@ public class AttackWaveGroup
     }
 }
 
+[System.Serializable]
+public class AttackWaveList
+{
+    public AttackWave[] attackWaves;
+}
+
 public class Level : MonoBehaviour
 {
     public List<AttackWave> attackWaves;
     public int waveIndex;
     public AttackWave CurrentWave => attackWaves[waveIndex];
 
+    public TextAsset levelJSONFile;
+
+    public AttackWaveList attackWaveList = new AttackWaveList();
+
     IEnumerator Start()
     {
+        levelJSONFile = GameSessionManager.instance.gameSelections.levelJSONFile;
+        attackWaveList = JsonUtility.FromJson<AttackWaveList>(levelJSONFile.text);
         while (GameSessionManager.instance.gameStart)
         {
             yield return new WaitForSeconds(1f);
             CurrentWave.currentTime++;
-            if(CurrentWave.currentTime >= CurrentWave.duration)
+            if (CurrentWave.currentTime >= CurrentWave.duration)
             {
                 waveIndex++;
-                if(waveIndex >= attackWaves.Count)
+                if (waveIndex >= attackWaves.Count)
                 {
                     yield break;
                 }
@@ -75,4 +87,5 @@ public class Level : MonoBehaviour
             CurrentWave.Check();
         }
     }
+
 }
