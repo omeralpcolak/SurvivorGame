@@ -52,26 +52,22 @@ public class AttackWaveGroup
     }
 }
 
-[System.Serializable]
-public class AttackWaveList
-{
-    public AttackWave[] attackWaves;
-}
+
 
 public class Level : MonoBehaviour
 {
+    /*public static int Current
+    {
+        get => PlayerPrefs.GetInt("CurrentLevel", 0);
+        set => PlayerPrefs.SetInt("CurrentLevel", value);
+    }*/
     public List<AttackWave> attackWaves;
     public int waveIndex;
     public AttackWave CurrentWave => attackWaves[waveIndex];
 
-    public TextAsset levelJSONFile;
-
-    public AttackWaveList attackWaveList = new AttackWaveList();
 
     IEnumerator Start()
     {
-        levelJSONFile = GameSessionManager.instance.gameSelections.levelJSONFile;
-        attackWaveList = JsonUtility.FromJson<AttackWaveList>(levelJSONFile.text);
         while (GameSessionManager.instance.gameStart)
         {
             yield return new WaitForSeconds(1f);

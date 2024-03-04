@@ -5,11 +5,14 @@ using TMPro;
 [CreateAssetMenu(fileName ="New Game Selection", menuName ="Game Selection")]
 public class GameSelections : ScriptableObject
 {
-    public GameObject selectedMap;
+    public static int Diamond
+    {
+        get => PlayerPrefs.GetInt("Diamond", 10);
+        set => PlayerPrefs.SetInt("Diamond", value);
+    }
     public GameObject selectedPlayer;
+    public GameObject selectedMap;
     public int coin;
-    public TextAsset levelJSONFile;
-    //public int inGameEarnedCoin;
 
 
     public void InstantiateSelectedObjects()

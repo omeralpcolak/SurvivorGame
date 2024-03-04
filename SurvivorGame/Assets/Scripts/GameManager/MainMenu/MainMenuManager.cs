@@ -13,14 +13,18 @@ public class MainMenuManager : MonoBehaviour
     {
         MAINMENU,
         MAPMENU,
-        PLAYERSELECTIONMENU
+        PLAYERSELECTIONMENU,
+        LEVELMENU
     }
     public static MainMenuManager instance;
-    private GameObject currentMenu;
     public  CinemachineVirtualCamera cam;
+
+    private GameObject currentMenu;
     public GameObject mainMenu;
     public GameObject mapMenu;
     public GameObject playerSelectionMenu;
+    public GameObject levelMenu;
+
     public Transform camLookAtPos;
 
     public TMP_Text coinText;
@@ -71,7 +75,7 @@ public class MainMenuManager : MonoBehaviour
         
     }
 
-    private void PopUpBubble(string text)
+    public void PopUpBubble(string text)
     {
         popUpBubble.GetComponentInChildren<TMP_Text>().text = text;
         StartCoroutine(PopUpBubbleRtn());
@@ -88,6 +92,11 @@ public class MainMenuManager : MonoBehaviour
     {
         CamMove(new Vector3(0,1,-7));
         ActivateMenu(MenuType.PLAYERSELECTIONMENU);
+    }
+
+    public void ActivateLevelMenu()
+    {
+        ActivateMenu(MenuType.LEVELMENU);
     }
 
     public void ActivateMapMenu()
@@ -116,6 +125,9 @@ public class MainMenuManager : MonoBehaviour
                 break;
             case MenuType.MAPMENU:
                 currentMenu = mapMenu;
+                break;
+            case MenuType.LEVELMENU:
+                currentMenu = levelMenu;
                 break;
             case MenuType.PLAYERSELECTIONMENU:
                 currentMenu = playerSelectionMenu;

@@ -25,6 +25,11 @@ public class Skill : ScriptableObject
     public bool isSingleUse;
     
     public int level;
+    public int SkillLevel
+    {
+        get => PlayerPrefs.GetInt(name + "_SkillLevel", 0);
+        set => PlayerPrefs.SetInt(name + "_SkillLevel", value);
+    }
 
     [HideInInspector] public SkillBehaviour skillIns;
 

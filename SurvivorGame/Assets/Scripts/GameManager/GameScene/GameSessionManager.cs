@@ -11,6 +11,7 @@ using System.Linq;
 public class GameSessionManager : MonoBehaviour
 {
     public static GameSessionManager instance;
+    private PlayerController playerController;
 
     public List<Skill> allSkills;
 
@@ -33,13 +34,15 @@ public class GameSessionManager : MonoBehaviour
 
     public RandomSkillPanel randomSkillPanel;
     public GameSelections gameSelections;
+    public LevelConfig levelConfig;
     
-    private PlayerController playerController;
+   
   
     private void Start()
     {
         instance = this;
         gameSelections.InstantiateSelectedObjects();
+        levelConfig.InsTheLevel();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         StartTheGameSession();
     }
@@ -116,6 +119,7 @@ public class GameSessionManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenuScene");
         gameSelections.ResetSelectedObjects();
+        levelConfig.ClearTheLevelPrefab();
         Time.timeScale = 1;
     }
 
