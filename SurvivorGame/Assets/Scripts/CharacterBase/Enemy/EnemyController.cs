@@ -62,6 +62,8 @@ public class EnemyController : CharacterBase
         Instantiate(deathEffect, effectPos.position, Quaternion.identity);
         Destroy(gameObject);
         ownerAttackWaveGroup.Killed();
+        Level.instance.CheckLevelComplete();
+        
     }
 
     private void OnTriggerEnter(Collider other)

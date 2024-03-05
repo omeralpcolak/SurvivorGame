@@ -1881,6 +1881,7 @@ MonoBehaviour:
   inGameCoinTxt: {fileID: 323528304}
   totalCoinText: {fileID: 1428284424}
   earnedCoinText: {fileID: 1155295951}
+  gameCompleteText: {fileID: 1226259599}
   gameUI: {fileID: 1991517095}
   pauseScreen: {fileID: 1823887906}
   gameOverScreen: {fileID: 92273371}
@@ -2195,7 +2196,7 @@ GameObject:
   - component: {fileID: 1226259600}
   - component: {fileID: 1226259599}
   m_Layer: 5
-  m_Name: GameOverTxt
+  m_Name: GameCompleteTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -18,6 +18,7 @@ public class GameSessionManager : MonoBehaviour
     public TMP_Text inGameCoinTxt; //during game session
     public TMP_Text totalCoinText;
     public TMP_Text earnedCoinText; // game over screen
+    public TMP_Text gameCompleteText;
 
     public GameObject gameUI;
     public GameObject pauseScreen;
@@ -59,12 +60,21 @@ public class GameSessionManager : MonoBehaviour
         playerController.skills.Add(skill);
     }
 
-    public void GameOver()
+    public void GameComplete(bool _bool)
     {
-        Debug.Log("GAME IS OVER");
         gameStart = false;
         gameUI.SetActive(false);
         gameOverScreen.SetActive(true);
+
+        if (_bool)
+        {
+            gameCompleteText.text = "LEVEL COMPLETE";
+            playerController.CelebrateAnim();
+        }
+        else if (!_bool)
+        {
+            gameCompleteText.text = "GAME OVER";
+        }
 
         if(coin == 0)
         {

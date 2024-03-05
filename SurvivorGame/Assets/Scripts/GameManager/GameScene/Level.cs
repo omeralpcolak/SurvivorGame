@@ -19,7 +19,7 @@ public class AttackWaveGroup
 {   
     public EnemyController enemyPrefab;
     public AnimationCurve countCurve;
-    [SerializeField]private int totalEnemyCount;
+    [SerializeField]public int totalEnemyCount;
     public int spawnRadius;
     public void Spawn()
     {
@@ -53,23 +53,30 @@ public class AttackWaveGroup
 }
 
 
-
 public class Level : MonoBehaviour
 {
+
     /*public static int Current
     {
         get => PlayerPrefs.GetInt("CurrentLevel", 0);
         set => PlayerPrefs.SetInt("CurrentLevel", value);
     }*/
+    public static Level instance;
     public List<AttackWave> attackWaves;
     public int waveIndex;
     public AttackWave CurrentWave => attackWaves[waveIndex];
 
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     IEnumerator Start()
     {
         while (GameSessionManager.instance.gameStart)
         {
+            Debug.Log("in first while");
             yield return new WaitForSeconds(1f);
             CurrentWave.currentTime++;
             if (CurrentWave.currentTime >= CurrentWave.duration)
@@ -82,6 +89,42 @@ public class Level : MonoBehaviour
             }
             CurrentWave.Check();
         }
+
+        /*while (!AllEnemiesDead())
+        {
+            Debug.Log("Checking the all enemies dead");
+            if (AllEnemiesDead() == true)
+            {
+                GameSessionManager.instance.GameComplete(true);
+                yield break;
+            }
+            yield return new WaitForSeconds(1f);
+            
+        }*/
+
+    }
+
+    public void CheckLevelComplete()
+    {
+        if (!AllEnemiesDead())
+        {
+            return;
+        }
+
+        GameSessionManager.instance.GameComplete(true);
+    }
+
+    private bool AllEnemiesDead()
+    {
+        foreach (AttackWave wave in attackWaves)
+        {
+            foreach (AttackWaveGroup group in wave.groups)
+            {
+                if (group.totalEnemyCount > 0)
+                    return false;
+            }
+        }
+        return true;
     }
 
 }

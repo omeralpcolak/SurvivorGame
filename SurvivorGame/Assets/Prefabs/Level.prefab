@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackWaves:
-  - duration: 10
+  - duration: 5
     currentTime: 0
     groups:
     - enemyPrefab: {fileID: 3358929398916733999, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
@@ -84,7 +84,7 @@ MonoBehaviour:
         m_RotationOrder: 4
       totalEnemyCount: 0
       spawnRadius: 15
-  - duration: 10
+  - duration: 5
     currentTime: 0
     groups:
     - enemyPrefab: {fileID: 3358929398916733999, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}

@@ -68,6 +68,12 @@ public class PlayerController : CharacterBase
     {
         anim.SetTrigger("death");
         skills.ForEach(x => x.ResetState());
-        GameSessionManager.instance.GameOver();
+        GameSessionManager.instance.GameComplete(false);
+    }
+
+    public void CelebrateAnim()
+    {
+        Debug.Log("Player is celebrating");
+        //anim.SetTrigger("dance");
     }
 }

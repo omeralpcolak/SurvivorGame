@@ -21,4 +21,16 @@ public  class LevelConfig : ScriptableObject
     {
         levelPrefab = null;
     }
+
+    public void LevelCompleteSave(string levelName)
+    {
+        PlayerPrefs.SetInt(levelName + "_Completed", 1);
+    }
+
+    public bool isLevelCompleted(string levelName)
+    {
+        return PlayerPrefs.GetInt(levelName + "_Compeleted", 0) == 1;
+    }
+
+
 }
