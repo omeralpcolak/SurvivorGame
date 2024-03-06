@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8076692170552118190}
   - component: {fileID: 3099903284129496601}
   m_Layer: 0
-  m_Name: Level
+  m_Name: Level4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackWaves:
-  - duration: 5
+  - duration: 15
     currentTime: 0
     groups:
     - enemyPrefab: {fileID: 3358929398916733999, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
@@ -55,17 +55,17 @@ MonoBehaviour:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 9.924872
-          outSlope: 9.924872
+          inSlope: 30
+          outSlope: 30
           tangentMode: 34
           weightedMode: 0
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.50378484
-          value: 5
-          inSlope: -0.07570076
-          outSlope: -0.07570076
+          time: 0.5
+          value: 15
+          inSlope: 0
+          outSlope: 0
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
@@ -73,8 +73,8 @@ MonoBehaviour:
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: -10.076274
-          outSlope: -10.076274
+          inSlope: -30
+          outSlope: -30
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
@@ -122,5 +122,45 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       totalEnemyCount: 0
-      spawnRadius: 15
+      spawnRadius: 10
+  - duration: 5
+    currentTime: 0
+    groups:
+    - enemyPrefab: {fileID: 3358929398916733999, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
+      countCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 9.924872
+          outSlope: 9.924872
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.50378484
+          value: 5
+          inSlope: -0.07570076
+          outSlope: -0.07570076
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 0
+          inSlope: -10.076274
+          outSlope: -10.076274
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      totalEnemyCount: 0
+      spawnRadius: 10
   waveIndex: 0
+  levelName: level4

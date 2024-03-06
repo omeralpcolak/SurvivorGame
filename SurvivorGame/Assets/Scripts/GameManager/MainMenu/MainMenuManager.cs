@@ -24,6 +24,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject mapMenu;
     public GameObject playerSelectionMenu;
     public GameObject levelMenu;
+    public GameObject fadeImg;
 
     public Transform camLookAtPos;
 
@@ -38,12 +39,15 @@ public class MainMenuManager : MonoBehaviour
         currentMenu = mainMenu;
         UpdateCoinText();
         //PlayerPrefs.DeleteAll();
-        
+        fadeImg.GetComponent<CanvasGroup>().DOFade(0, 1f).OnComplete(delegate
+        {
+            fadeImg.SetActive(false);
+        });
     }
 
     public void UpdateCoinText()
     {
-        coinText.text = gameSelections.coin.ToString();
+        coinText.text = "Coin: " + gameSelections.coin.ToString();
     }
 
     public void StartTheGameScene()
@@ -53,13 +57,13 @@ public class MainMenuManager : MonoBehaviour
 
         if(insMap == null)
         {
-            PopUpBubble("Please select a map for starting the game.");
+            PopUpBubble("Please select a map for starting the game.",0.5f);
             return;
         }
 
         if(insChar == null)
         {
-            PopUpBubble("Please choose a character for starting the game.");
+            PopUpBubble("Please choose a character for starting the game.",0.5f);
             return;
         }
 
@@ -75,19 +79,20 @@ public class MainMenuManager : MonoBehaviour
         
     }
 
-    public void PopUpBubble(string text)
+    public void PopUpBubble(string text, float duration)
     {
         popUpBubble.GetComponentInChildren<TMP_Text>().text = text;
         StartCoroutine(PopUpBubbleRtn());
 
         IEnumerator PopUpBubbleRtn()
         {
-            popUpBubble.transform.DOScale(5, 0.5f);
-            yield return new WaitForSeconds(1f);
-            popUpBubble.transform.DOScale(0f, 0.5f);
+            popUpBubble.transform.DOScale(5, duration);
+            yield return new WaitForSeconds(duration+0.8f);
+            popUpBubble.transform.DOScale(0f, duration);
         }
         
     }
+
     public void ActivatePlayerSelectionMenu()
     {
         CamMove(new Vector3(0,1,-7));
@@ -97,6 +102,7 @@ public class MainMenuManager : MonoBehaviour
     public void ActivateLevelMenu()
     {
         ActivateMenu(MenuType.LEVELMENU);
+        coinText.gameObject.SetActive(true);
     }
 
     public void ActivateMapMenu()
@@ -110,6 +116,7 @@ public class MainMenuManager : MonoBehaviour
         CamMove(new Vector3(0, 1, -15));
         camLookAtPos.transform.DOMoveY(20, 1);
         ActivateMenu(MenuType.MAINMENU);
+        coinText.gameObject.SetActive(false);
     }
 
     public void ActivateMenu(MenuType menuType)

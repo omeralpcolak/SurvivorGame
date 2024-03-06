@@ -18,7 +18,7 @@ public class LevelButton : MonoBehaviour
     public void OnClick()
     {
         levelConfig.levelPrefab = levelPrefab;
-        button.interactable = false;
+        MainMenuManager.instance.PopUpBubble(levelPrefab.name + " is selected", 0.4f);
         
     }
 }

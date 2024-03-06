@@ -141,7 +141,6 @@ public class GameSessionManager : MonoBehaviour
 
         while(gameSelections.coin < targetCoinValue)
         {
-            Debug.Log("routine is working");
             gameSelections.coin += addingCoinAmount;
             coin -= addingCoinAmount;
             
@@ -160,7 +159,6 @@ public class GameSessionManager : MonoBehaviour
             yield return new WaitForSeconds(addingSpeed);
             addingSpeed -= 0.01f;
         }
-        Debug.Log("coin is saved");
         gameSelections.UpdateCoinValue(targetCoinValue);
         backToMenuBtn.interactable = true;
     }

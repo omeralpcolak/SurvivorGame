@@ -64,6 +64,7 @@ public class Level : MonoBehaviour
     public static Level instance;
     public List<AttackWave> attackWaves;
     public int waveIndex;
+    public string levelName;
     public AttackWave CurrentWave => attackWaves[waveIndex];
 
 
@@ -110,7 +111,8 @@ public class Level : MonoBehaviour
         {
             return;
         }
-
+        Debug.Log(levelName);
+        //GameSessionManager.instance.levelConfig.LevelCompleteSave(name);
         GameSessionManager.instance.GameComplete(true);
     }
 

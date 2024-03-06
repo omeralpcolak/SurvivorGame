@@ -74,6 +74,6 @@ public class PlayerController : CharacterBase
     public void CelebrateAnim()
     {
         Debug.Log("Player is celebrating");
-        //anim.SetTrigger("dance");
+        anim.SetTrigger("celebrating");
     }
 }
