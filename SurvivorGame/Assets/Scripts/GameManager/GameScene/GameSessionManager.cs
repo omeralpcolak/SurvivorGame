@@ -50,7 +50,7 @@ public class GameSessionManager : MonoBehaviour
 
     public void AddAndUpdateInGameCoinValue()
     {
-        coin += 10;
+        coin += 5;
         inGameCoinTxt.text = "Coin: " + coin.ToString();
     }
 
@@ -70,6 +70,9 @@ public class GameSessionManager : MonoBehaviour
         {
             gameCompleteText.text = "LEVEL COMPLETE";
             playerController.CelebrateAnim();
+            List<CoinController> leftCoins = FindObjectsOfType<CoinController>().ToList();
+            leftCoins.ForEach(x => x.OnTriggeringWithThePlayer());
+            
         }
         else if (!_bool)
         {
@@ -84,7 +87,7 @@ public class GameSessionManager : MonoBehaviour
         }
         else
         {
-            StartCoroutine(CoinAnim(1, 0.2f));
+            StartCoroutine(CoinAnim(1, 0.3f));
         }
     }
 
@@ -129,6 +132,7 @@ public class GameSessionManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenuScene");
         gameSelections.ResetSelectedObjects();
+        allSkills.ForEach(x => x.ResetState());
         levelConfig.ClearTheLevelPrefab();
         Time.timeScale = 1;
     }
@@ -157,7 +161,7 @@ public class GameSessionManager : MonoBehaviour
             totalCoinText.text = "Total coin: " + gameSelections.coin.ToString();
             earnedCoinText.text = coin.ToString();
             yield return new WaitForSeconds(addingSpeed);
-            addingSpeed -= 0.01f;
+            addingSpeed -= 0.02f;
         }
         gameSelections.UpdateCoinValue(targetCoinValue);
         backToMenuBtn.interactable = true;

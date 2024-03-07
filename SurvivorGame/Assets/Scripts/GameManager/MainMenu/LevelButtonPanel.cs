@@ -10,7 +10,7 @@ public class LevelButtonPanel : MonoBehaviour
 
     private void Start()
     {
-        levelButtons.ForEach(x => x.Init());
+        levelButtons.ForEach(x => x.Init(this));
         CheckLevelButtons();
     }
 

@@ -6,6 +6,7 @@ using DG.Tweening;
 public class CoinController : PickupItemController
 {
     private Tween rotateTween;
+    
 
     private void Start()
     {
@@ -18,8 +19,8 @@ public class CoinController : PickupItemController
     public override void OnTriggeringWithThePlayer()
     {
         rotateTween.Kill();
-        Instantiate(itemEffect, transform.position,Quaternion.identity);
         GameSessionManager.instance.AddAndUpdateInGameCoinValue();
+        Instantiate(itemEffect, transform.position,Quaternion.identity);
         base.OnTriggeringWithThePlayer();
     }
 

@@ -12,6 +12,8 @@ public class XPManager : MonoBehaviour
     public float maxXp;
     public float currentXp;
 
+    [HideInInspector]public int currentLvl = 1;
+
     GameSessionManager gameSessionManager;
 
     private void Awake()
@@ -41,6 +43,11 @@ public class XPManager : MonoBehaviour
 
     public void AddXp(float value)
     {
+        if (!GameSessionManager.instance.gameStart)
+        {
+            return;
+        }
+
         float totalXp = currentXp + value;
 
         if (totalXp >= maxXp)
@@ -58,6 +65,7 @@ public class XPManager : MonoBehaviour
 
     private void LevelUp()
     {
+        currentLvl++;
         currentXp = 0;
         maxXp += 50;
         SetXP();

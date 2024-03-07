@@ -9,9 +9,12 @@ public class LevelButton : MonoBehaviour
     public LevelConfig levelConfig;
     [HideInInspector] public Button button;
     public bool completed;
+    private LevelButtonPanel owner;
 
-    public void Init()
+    public bool clickable;
+    public void Init(LevelButtonPanel _owner)
     {
+        owner = _owner;
         button = GetComponent<Button>();
         button.onClick.AddListener(OnClick);
         completed = levelConfig.isLevelCompleted(levelPrefab.levelId);
