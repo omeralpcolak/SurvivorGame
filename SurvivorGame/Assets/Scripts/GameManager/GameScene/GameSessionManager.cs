@@ -171,10 +171,10 @@ public class GameSessionManager : MonoBehaviour
 
     private void StartTheGameSession()
     {
-        RandomSkillOrUpgradeFunction();
         CameraShake.instance.SetThePlayer();
         gameStart = true;
         gameUI.GetComponent<CanvasGroup>().interactable = enabled;
-        gameUI.GetComponent<CanvasGroup>().DOFade(1, 0.5f);    
+        gameUI.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
+        RandomSkillOrUpgradeFunction();
     }
 }

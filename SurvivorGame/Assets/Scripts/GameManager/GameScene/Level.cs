@@ -55,7 +55,6 @@ public class AttackWaveGroup
 
 public class Level : MonoBehaviour
 {
-
     /*public static int Current
     {
         get => PlayerPrefs.GetInt("CurrentLevel", 0);
@@ -64,7 +63,7 @@ public class Level : MonoBehaviour
     public static Level instance;
     public List<AttackWave> attackWaves;
     public int waveIndex;
-    public string levelName;
+    public int levelId;
     public AttackWave CurrentWave => attackWaves[waveIndex];
 
 
@@ -77,7 +76,6 @@ public class Level : MonoBehaviour
     {
         while (GameSessionManager.instance.gameStart)
         {
-            Debug.Log("in first while");
             yield return new WaitForSeconds(1f);
             CurrentWave.currentTime++;
             if (CurrentWave.currentTime >= CurrentWave.duration)
@@ -90,19 +88,6 @@ public class Level : MonoBehaviour
             }
             CurrentWave.Check();
         }
-
-        /*while (!AllEnemiesDead())
-        {
-            Debug.Log("Checking the all enemies dead");
-            if (AllEnemiesDead() == true)
-            {
-                GameSessionManager.instance.GameComplete(true);
-                yield break;
-            }
-            yield return new WaitForSeconds(1f);
-            
-        }*/
-
     }
 
     public void CheckLevelComplete()
@@ -111,8 +96,7 @@ public class Level : MonoBehaviour
         {
             return;
         }
-        Debug.Log(levelName);
-        //GameSessionManager.instance.levelConfig.LevelCompleteSave(name);
+        GameSessionManager.instance.levelConfig.LevelCompleteSave(levelId);
         GameSessionManager.instance.GameComplete(true);
     }
 

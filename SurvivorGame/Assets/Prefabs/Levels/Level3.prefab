@@ -124,4 +124,4 @@ MonoBehaviour:
       totalEnemyCount: 0
       spawnRadius: 15
   waveIndex: 0
-  levelName: level3
+  levelId: 3

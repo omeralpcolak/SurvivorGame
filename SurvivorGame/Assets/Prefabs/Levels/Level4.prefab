@@ -163,4 +163,4 @@ MonoBehaviour:
       totalEnemyCount: 0
       spawnRadius: 10
   waveIndex: 0
-  levelName: level4
+  levelId: 4
