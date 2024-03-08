@@ -21,8 +21,9 @@ public class Skill : ScriptableObject
 {
     public SkillProperty skillProperty;
     public SkillBehaviour skillPrefab;
-    
+
     public bool isSingleUse;
+    public bool spawnAtRandomPos;
     
     public int level;
     public int SkillLevel
@@ -31,16 +32,17 @@ public class Skill : ScriptableObject
         set => PlayerPrefs.SetInt(name + "_SkillLevel", value);
     }
 
-    [HideInInspector] public SkillBehaviour skillIns;
 
-    [HideInInspector] public bool isOwned;
-    [HideInInspector] public bool canBeUpgraded;
-    [HideInInspector] public bool isUsed = false;
-    [HideInInspector] public bool isCooldown = false;
-
+    [HideInInspector]public SkillBehaviour skillIns;
+    [HideInInspector] public Vector3 skillScale;
+    [HideInInspector]public bool isOwned;
+    [HideInInspector]public bool canBeUpgraded;
+    [HideInInspector]public bool isUsed = false;
+    [HideInInspector]public bool isCooldown = false;
     [HideInInspector]public int damage;
-    [HideInInspector]public Vector3 skillScale;
     [HideInInspector]public float rotateTime;
+
+
 
     public void Activate(Transform spawnPos, MonoBehaviour monoBehaviour)
     {
@@ -52,7 +54,7 @@ public class Skill : ScriptableObject
 
     public void Upgrade()
     {
-        if (level <= 5)
+        if (level <= 3)
         {
             skillIns.Upgrade();
             level++;
@@ -60,7 +62,7 @@ public class Skill : ScriptableObject
         }
         int nextLevel = level + 1;
 
-        if(nextLevel > 5)
+        if(nextLevel > 3)
         {
             canBeUpgraded = false;
         }
@@ -112,14 +114,6 @@ public class Skill : ScriptableObject
         isCooldown = false;
         isOwned = false;
         canBeUpgraded = true;
-
-        if (skillIns)
-        {
-            Destroy(skillIns.gameObject);
-        }
-        else
-        {
-            return;
-        }
     }
+
 }

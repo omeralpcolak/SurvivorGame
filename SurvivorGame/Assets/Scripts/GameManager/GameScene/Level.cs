@@ -55,11 +55,6 @@ public class AttackWaveGroup
 
 public class Level : MonoBehaviour
 {
-    /*public static int Current
-    {
-        get => PlayerPrefs.GetInt("CurrentLevel", 0);
-        set => PlayerPrefs.SetInt("CurrentLevel", value);
-    }*/
     public static Level instance;
     public List<AttackWave> attackWaves;
     public int waveIndex;

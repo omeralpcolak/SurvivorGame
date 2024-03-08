@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Random = UnityEngine.Random;
 
 public class PlayerController : CharacterBase
 {
@@ -55,7 +56,7 @@ public class PlayerController : CharacterBase
     {
         foreach (Skill skill in skills)
         {
-            skill.Activate(spawnPos, this);
+            skill.Activate(spawnPos,this);
         }
     }
 
@@ -76,4 +77,5 @@ public class PlayerController : CharacterBase
         Debug.Log("Player is celebrating");
         anim.SetTrigger("celebrating");
     }
+
 }

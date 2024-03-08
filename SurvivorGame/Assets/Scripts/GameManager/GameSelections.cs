@@ -31,7 +31,7 @@ public class GameSelections : ScriptableObject
     public void OnEnable()
     {
         LoadCoinValue();
-        ResetSelectedObjects();
+        //ResetSelectedObjects();
     }
 
     public void LoadCoinValue()

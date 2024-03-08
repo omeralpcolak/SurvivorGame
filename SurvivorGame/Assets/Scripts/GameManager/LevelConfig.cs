@@ -19,7 +19,7 @@ public  class LevelConfig : ScriptableObject
 
     public void ClearTheLevelPrefab()
     {
-        levelPrefab = null;
+        //levelPrefab = null;
     }
 
     public void LevelCompleteSave(int levelId)

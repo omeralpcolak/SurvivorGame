@@ -21,13 +21,14 @@ MonoBehaviour:
     rotateTime: 0
     level: 1
   skillPrefab: {fileID: 3618873452437044647, guid: 294331529b0224cc9bdea327d9258896, type: 3}
-  skillIns: {fileID: 0}
   isSingleUse: 0
-  level: 2
-  isOwned: 1
+  spawnAtRandomPos: 0
+  level: 1
+  skillIns: {fileID: 0}
+  skillScale: {x: 4, y: 4, z: 4}
+  isOwned: 0
   canBeUpgraded: 1
   isUsed: 0
-  isCooldown: 1
-  damage: 20
-  skillScale: {x: 4, y: 4, z: 4}
+  isCooldown: 0
+  damage: 10
   rotateTime: 0

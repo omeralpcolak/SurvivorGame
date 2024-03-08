@@ -2077,6 +2077,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fc71a5faf3f2043b384c9efaee0177e1, type: 2}
   - {fileID: 11400000, guid: b960f42edfc6e4a7b9d0acc1d9d3ee38, type: 2}
   - {fileID: 11400000, guid: b7491a98213024801aa36903237de0e3, type: 2}
+  - {fileID: 11400000, guid: 655e3643b930b47e1acfee8046bc0868, type: 2}
   inGameCoinTxt: {fileID: 323528304}
   totalCoinText: {fileID: 1428284424}
   earnedCoinText: {fileID: 1155295951}

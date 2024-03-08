@@ -19,6 +19,7 @@ public class ProjectileBehaviour : SkillBehaviour
     public override void Upgrade()
     {
         skill.damage *= 2;
+        skill.skillProperty.cooldownDuration -= 0.05f;
     }
     private void Start()
     {
