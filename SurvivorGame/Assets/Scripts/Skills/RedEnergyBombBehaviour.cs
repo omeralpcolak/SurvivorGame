@@ -18,11 +18,12 @@ public class RedEnergyBombBehaviour : SkillBehaviour
         skill.skillScale *= 1.5f;
     }
 
+    [System.Obsolete]
     IEnumerator Start()
     {
         transform.parent = null;
         sphereCollider = GetComponent<SphereCollider>();
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(particle.startLifetime);
         Collider[] enemies = Physics.OverlapSphere(transform.position, sphereCollider.radius);
 
         Debug.Log(enemies);
@@ -34,6 +35,8 @@ public class RedEnergyBombBehaviour : SkillBehaviour
                 enemy.GetComponent<Health>().TakeDamage(skill.damage);
             }
         }
+
+        yield return new WaitForSeconds(particle.duration - particle.startLifetime);
 
         Destroy(gameObject);
     }
