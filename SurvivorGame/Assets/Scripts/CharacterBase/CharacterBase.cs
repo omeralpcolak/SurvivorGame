@@ -43,6 +43,10 @@ public class CharacterBase : MonoBehaviour
 
     public virtual void CharacterTakingDamage()
     {
-        Instantiate(hitEffect, transform);
+        if (GameSessionManager.instance.gameStart)
+        {
+            Instantiate(hitEffect, transform);
+        }
+        
     }
 }

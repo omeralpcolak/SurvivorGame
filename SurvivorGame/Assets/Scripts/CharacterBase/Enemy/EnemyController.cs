@@ -10,7 +10,6 @@ public class EnemyController : CharacterBase
     private Transform player;
     private Tween scaleTween;
     [SerializeField]private Transform effectPos;
-    
     [HideInInspector]public AttackWaveGroup ownerAttackWaveGroup;
     public GameObject xp, coin,deathEffect;
 
@@ -19,7 +18,7 @@ public class EnemyController : CharacterBase
         SetUpComponents(this);
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
+        GameSessionManager.instance.EnemySelfDestory += SelfDestroy;
         transform.localScale = Vector3.zero;
         scaleTween = transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.5f);
     }
@@ -28,7 +27,6 @@ public class EnemyController : CharacterBase
     {
         if (!gameObject || !GameSessionManager.instance.gameStart)
         {
-            Destroy(gameObject);
             return;
         }
 
@@ -64,6 +62,13 @@ public class EnemyController : CharacterBase
         ownerAttackWaveGroup.Killed();
         Level.instance.CheckLevelComplete();
         
+    }
+
+
+    public void SelfDestroy()
+    {
+        Instantiate(deathEffect, effectPos.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

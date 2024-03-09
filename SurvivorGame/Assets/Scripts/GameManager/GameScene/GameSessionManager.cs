@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 using TMPro;
 using System.Linq;
+using System;
+using Random = UnityEngine.Random;
 
 public class GameSessionManager : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class GameSessionManager : MonoBehaviour
     private PlayerController playerController;
 
     public List<Skill> allSkills;
+
+    public Action EnemySelfDestory;
 
     public TMP_Text inGameCoinTxt; //during game session
     public TMP_Text totalCoinText;
@@ -77,6 +81,8 @@ public class GameSessionManager : MonoBehaviour
         else if (!_bool)
         {
             gameCompleteText.text = "GAME OVER";
+            EnemySelfDestory();
+
         }
 
         if(coin == 0)
