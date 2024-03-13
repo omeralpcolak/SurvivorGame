@@ -26,8 +26,6 @@ public class RedEnergyBombBehaviour : SkillBehaviour
         yield return new WaitForSeconds(particle.startLifetime);
         Collider[] enemies = Physics.OverlapSphere(transform.position, sphereCollider.radius);
 
-        Debug.Log(enemies);
-
         foreach (Collider enemy in enemies)
         {
             if (enemy.gameObject.CompareTag("Enemy"))

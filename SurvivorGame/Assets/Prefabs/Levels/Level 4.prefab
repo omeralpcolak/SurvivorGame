@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackWaves:
-  - duration: 15
+  - duration: 5
     currentTime: 0
     groups:
     - enemyPrefab: {fileID: 3358929398916733999, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
@@ -55,15 +55,15 @@ MonoBehaviour:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 30
-          outSlope: 30
+          inSlope: 20
+          outSlope: 20
           tangentMode: 34
           weightedMode: 0
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 0.5
-          value: 15
+          value: 10
           inSlope: 0
           outSlope: 0
           tangentMode: 34
@@ -73,8 +73,8 @@ MonoBehaviour:
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: -30
-          outSlope: -30
+          inSlope: -20
+          outSlope: -20
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
@@ -91,15 +91,15 @@ MonoBehaviour:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 40
-          outSlope: 40
+          inSlope: 20
+          outSlope: 20
           tangentMode: 34
           weightedMode: 0
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 0.5
-          value: 20
+          value: 10
           inSlope: 0
           outSlope: 0
           tangentMode: 34
@@ -109,8 +109,8 @@ MonoBehaviour:
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: -40
-          outSlope: -40
+          inSlope: -20
+          outSlope: -20
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
@@ -205,15 +205,15 @@ MonoBehaviour:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 40
-          outSlope: 40
+          inSlope: 20
+          outSlope: 20
           tangentMode: 34
           weightedMode: 0
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 0.5
-          value: 20
+          value: 10
           inSlope: 0
           outSlope: 0
           tangentMode: 34
@@ -223,8 +223,8 @@ MonoBehaviour:
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: -40
-          outSlope: -40
+          inSlope: -20
+          outSlope: -20
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334

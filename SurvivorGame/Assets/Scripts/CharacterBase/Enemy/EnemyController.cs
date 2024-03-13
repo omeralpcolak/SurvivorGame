@@ -18,7 +18,6 @@ public class EnemyController : CharacterBase
         SetUpComponents(this);
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        GameSessionManager.instance.EnemySelfDestory += SelfDestroy;
         transform.localScale = Vector3.zero;
         scaleTween = transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.5f);
     }
@@ -27,6 +26,7 @@ public class EnemyController : CharacterBase
     {
         if (!gameObject || !GameSessionManager.instance.gameStart)
         {
+            SelfDestroy();
             return;
         }
 
@@ -52,6 +52,13 @@ public class EnemyController : CharacterBase
     }
 
 
+    private void SelfDestroy()
+    {
+        Instantiate(deathEffect, effectPos.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
+
     public override void CharacterDeath()
     {
         scaleTween.Kill();
@@ -62,13 +69,6 @@ public class EnemyController : CharacterBase
         ownerAttackWaveGroup.Killed();
         Level.instance.CheckLevelComplete();
         
-    }
-
-
-    public void SelfDestroy()
-    {
-        Instantiate(deathEffect, effectPos.position, Quaternion.identity);
-        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

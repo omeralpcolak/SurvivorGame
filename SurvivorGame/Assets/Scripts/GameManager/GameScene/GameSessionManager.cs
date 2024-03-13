@@ -17,7 +17,7 @@ public class GameSessionManager : MonoBehaviour
 
     public List<Skill> allSkills;
 
-    public Action EnemySelfDestory;
+    public Action OnEnemySelfDestory;
 
     public TMP_Text inGameCoinTxt; //during game session
     public TMP_Text totalCoinText;
@@ -70,19 +70,17 @@ public class GameSessionManager : MonoBehaviour
         gameUI.SetActive(false);
         gameOverScreen.SetActive(true);
 
-        if (_bool)
+        if (_bool == true)
         {
             gameCompleteText.text = "LEVEL COMPLETE";
             playerController.CelebrateAnim();
             List<CoinController> leftCoins = FindObjectsOfType<CoinController>().ToList();
             leftCoins.ForEach(x => x.OnTriggeringWithThePlayer());
-            
         }
-        else if (!_bool)
+
+        if (_bool == false)
         {
             gameCompleteText.text = "GAME OVER";
-            EnemySelfDestory();
-
         }
 
         if(coin == 0)
@@ -146,7 +144,6 @@ public class GameSessionManager : MonoBehaviour
 
     IEnumerator CoinAnim(int addingCoinAmount, float addingSpeed)
     {
-       
         int targetCoinValue = coin + gameSelections.coin;
 
         while(gameSelections.coin < targetCoinValue)
